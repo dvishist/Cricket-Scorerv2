@@ -1,5 +1,5 @@
 const { app, BrowserWindow, Menu } = require('electron')
-
+const loadTeams = require('./match/loader')
 
 const createWindow = () => {
     const win = new BrowserWindow({
