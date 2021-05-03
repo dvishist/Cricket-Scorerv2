@@ -13,6 +13,7 @@ class Team {
                 player.name = player.name.replace('#WK', '')
                 this.wk = player
             }
+            player.name = player.name.trim()
         });
     }
 }

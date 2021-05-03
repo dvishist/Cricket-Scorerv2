@@ -1,7 +1,7 @@
 class Player {
 
     constructor(playerName) {
-        this.name = playerName
+        this.name = playerName.trim()
         this.batStats = {
             balls: 0,
             runs: 0,

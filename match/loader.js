@@ -12,15 +12,13 @@ const loadTeams = function () {
     //load team csv files as array
 
     const team1String = fs.readFileSync('./match/teams/team1.csv', 'utf8')
-    const team1Array = team1String.split('\r\n').slice(0, 15)
+    const team1Array = team1String.split('\r\n').slice(0, 15).map(str => str.split(',')[1])
     const team1Name = team1Array[0]
     const team1Short = team1Array[1]
     team1Array.splice(0, 3)
 
-    console.log(team1Name, team1Short, team1Array)
-
     const team2String = fs.readFileSync('./match/teams/team2.csv', 'utf8')
-    const team2Array = team2String.split('\r\n').slice(0, 15)
+    const team2Array = team2String.split('\r\n').slice(0, 15).map(str => str.split(',')[1])
     const team2Name = team2Array[0]
     const team2Short = team2Array[1]
     team2Array.splice(0, 3)
@@ -32,9 +30,8 @@ const loadTeams = function () {
     //convert array of players to team objects
 
     const team1Obj = new Team(team1Name, team1Short, team1)
-    console.log(team1Obj)
-
-    return { team1, team2 }
+    const team2Obj = new Team(team2Name, team2Short, team2)
+    return { team1Obj, team2Obj }
 }()
 
 module.exports = loadTeams
