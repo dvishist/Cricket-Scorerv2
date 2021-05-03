@@ -14,7 +14,8 @@ const createMatch = function (team1, team2, toss, decision, overs) {
             overs,
             toss,
             battingTeam,
-            bowlingTeam
+            bowlingTeam,
+            target: null
         }
     }
 }

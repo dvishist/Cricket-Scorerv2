@@ -1,5 +1,5 @@
-const play = function (match) {
-    console.log(match)
+const play = function ({ innings, overs, toss, battingTeam, bowlingTeam, target }) {
+
 }
 
 module.exports = play
