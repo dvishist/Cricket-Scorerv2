@@ -1,6 +1,9 @@
 const { app, BrowserWindow, Menu } = require('electron')
 const { team1, team2 } = require('./match/loader')
-console.log(team2)
+const createMatch = require('./match/matchSetup')
+const play = require('./match/matchController')
+play(createMatch(team1, team2, team2, 'bat', 20))
+
 
 const createWindow = () => {
     const win = new BrowserWindow({
