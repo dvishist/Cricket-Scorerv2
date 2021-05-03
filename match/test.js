@@ -1,6 +1,4 @@
-let balls = 12
-let runs = 23
+let name = 'Vishist #C'
 
-let sr = runs / balls * 6
-sr = sr.toPrecision(3)
-console.log(sr)
+let n = name.replace('#C', '')
+console.log(n)

@@ -1,19 +1,17 @@
 class Player {
 
     constructor(playerName) {
-        this.name = playerName.replace('#C', '').replace('#WK', ''),
-            this.captain = playerName.includes('#C'),
-            this.wk = playerName.includes('#WK'),
-            this.batStats = {
-                balls: 0,
-                runs: 0,
-                fours: 0,
-                sixes: 0,
-                dots: 0,
-                // ones: 0,
-                // twos: 0,
-                // threes:0
-            },
+        this.name = playerName
+        this.batStats = {
+            balls: 0,
+            runs: 0,
+            fours: 0,
+            sixes: 0,
+            dots: 0,
+            // ones: 0,
+            // twos: 0,
+            // threes:0
+        },
             this.bowlStats = {
                 balls: 0,
                 runs: 0,
@@ -40,4 +38,11 @@ class Player {
         return (this.bowlStats.runs / this.bowlStats.balls * 6).toPrecision(3)
     }
 
+    //returns a String representing overs eg:2.5 being 17balls
+    getOversBowled() {
+        return Math.trunc(this.bowlStats.balls / 6) + '.' + (this.bowlStats.balls % 6)
+    }
+
 }
+
+module.exports = Player
