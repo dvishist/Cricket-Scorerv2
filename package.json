@@ -11,8 +11,5 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^10.1.3"
-  },
-  "dependencies": {
-    "csv-parser": "^3.0.0"
   }
 }
