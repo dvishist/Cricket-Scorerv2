@@ -16,18 +16,19 @@ const createWindow = () => {
     })
     win.maximize()
     win.setMovable(false)
-    win.loadFile('index.html')
+    win.loadFile('views/index.html')
 }
 
 const createSetupWindow = () => {
     const win2 = new BrowserWindow({
-        width: 400,
-        height: 300,
+        width: 450,
+        height: 600,
         title: 'Setup Cricket Match',
-        show: false
+        show: false,
+        resizable: false
     })
     win2.show()
-    win2.loadFile("setuoWindow.html")
+    win2.loadFile("views/setupWindow.html")
 }
 
 const createMenus = () => {

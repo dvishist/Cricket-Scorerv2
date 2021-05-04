@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Setup Cricket Match</title>
+    <link rel="stylesheet" href="../styles/setupStyle.css">
+</head>
+
+<body>
+    <div id="setupForm">
+        <h3 id="heading">SETUP MATCH</h3>
+        <p>Team 1 File Name</p>
+        <input type="text" id="team1FileName">
+        <p>Team 2 File Name</p>
+        <input type="text" id="team2FileName">
+        <p>Overs</p>
+        <input type="text" id="overs">
+    </div>
+    <br><br><br>
+    <div id="toss">
+        <p>Toss Won By</p>
+        <input type="text" id="tossWinner">
+        <p>Decision</p>
+        <input type="radio" name="toss" value="bat">
+        <label for="bat">Bat</label>
+        <input type="radio" name="toss" value="bowl">
+        <label for="bowl">Bowl</label><br><br>
+    </div>
+
+    <button type="submit" >START</button>
+    <script>
+        const startButton = document.querySelector('button')
+        startButton.addEventListener('click', ()=>{
+            console.log('clicked')
+        })
+    </script>
+</body>
+
+</html>

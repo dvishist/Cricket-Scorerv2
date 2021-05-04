@@ -11,13 +11,13 @@ const mapTeamToObjects = team =>
 const loadTeams = function () {
     //load team csv files as array
 
-    const team1String = fs.readFileSync('./match/teams/team1.csv', 'utf8')
+    const team1String = fs.readFileSync('./teams/team1.csv', 'utf8')
     const team1Array = team1String.split('\r\n').slice(0, 15).map(str => str.split(',')[1])
     const team1Name = team1Array[0]
     const team1Short = team1Array[1]
     team1Array.splice(0, 3)
 
-    const team2String = fs.readFileSync('./match/teams/team2.csv', 'utf8')
+    const team2String = fs.readFileSync('./teams/team2.csv', 'utf8')
     const team2Array = team2String.split('\r\n').slice(0, 15).map(str => str.split(',')[1])
     const team2Name = team2Array[0]
     const team2Short = team2Array[1]

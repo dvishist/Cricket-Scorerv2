@@ -1,0 +1,21 @@
+body{
+    margin-left: 4%;
+}
+
+h1,h3{
+    color: #028090;
+    font-size:40;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+p{
+    font-family: Impact, Haettenschweiler, sans-serif;
+    font-size: 20;
+}
+#setupForm{
+    margin: 0%;
+}
+
+button{
+    width:max-content;
+}
