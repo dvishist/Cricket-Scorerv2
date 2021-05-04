@@ -9,14 +9,13 @@ const createMatch = function (team1, team2, toss, decision, overs) {
         bowlingTeam = team1
     }
     return {
-        match: {
-            innings: 1,
-            overs,
-            toss,
-            battingTeam,
-            bowlingTeam,
-            target: null
-        }
+        innings: 1,
+        overs,
+        toss,
+        decision,
+        battingTeam,
+        bowlingTeam,
+        target: null
     }
 }
 

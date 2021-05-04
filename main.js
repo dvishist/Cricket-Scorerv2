@@ -2,7 +2,9 @@ const { app, BrowserWindow, Menu } = require('electron')
 const { team1Obj, team2Obj } = require('./match/loader')
 const createMatch = require('./match/createMatch')
 const play = require('./match/matchController')
-play(createMatch(team1Obj, team2Obj, team2Obj, 'bat', 20))
+
+const match = createMatch(team1Obj, team2Obj, team2Obj, 'bat', 20)
+play(match)
 
 
 const createWindow = () => {
@@ -10,11 +12,22 @@ const createWindow = () => {
         webPreferences: {
             nodeIntegration: true
         },
-        show: false
+        show: false,
     })
     win.maximize()
-    win.show()
+    win.setMovable(false)
     win.loadFile('index.html')
+}
+
+const createSetupWindow = () => {
+    const win2 = new BrowserWindow({
+        width: 400,
+        height: 300,
+        title: 'Setup Cricket Match',
+        show: false
+    })
+    win2.show()
+    win2.loadFile("setuoWindow.html")
 }
 
 const createMenus = () => {
@@ -47,9 +60,13 @@ const createMenus = () => {
     Menu.setApplicationMenu(mainMenu)
 }
 
+
+
 app.on('ready', () => {
     createWindow()
+    createSetupWindow()
     createMenus()
+
 })
 
 

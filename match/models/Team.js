@@ -12,6 +12,14 @@ class Team {
             sixes: 0
         }
 
+        this.extras = {
+            wides: 0,
+            noBalls: 0,
+            byes: 0,
+            legByes: 0,
+            penalties: 0
+        }
+
         this.playerList.forEach(player => {
             if (player.name.includes('#C')) {
                 player.name = player.name.replace('#C', '')
