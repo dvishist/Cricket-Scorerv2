@@ -1,10 +1,10 @@
 const { app, BrowserWindow, Menu } = require('electron')
-const { team1Obj, team2Obj } = require('./match/loader')
-const createMatch = require('./match/createMatch')
-const play = require('./match/matchController')
+// const { team1Obj, team2Obj } = require('./match/teamsLoader')
+// const createMatch = require('./match/createMatch')
+// const play = require('./match/matchController')
 
-const match = createMatch(team1Obj, team2Obj, team2Obj, 'bat', 20)
-play(match)
+// const match = createMatch(team1Obj, team2Obj, team2Obj, 'bat', 20)
+// play(match)
 
 
 const createWindow = () => {
@@ -25,7 +25,10 @@ const createSetupWindow = () => {
         height: 600,
         title: 'Setup Cricket Match',
         show: false,
-        resizable: false
+        resizable: false,
+        webPreferences: {
+            nodeIntegration: true
+        },
     })
     win2.show()
     win2.loadFile("views/setupWindow.html")
