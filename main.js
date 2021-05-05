@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require('electron')
+const { app, BrowserWindow, Menu, ipcRenderer, ipcMain } = require('electron')
 // const { team1Obj, team2Obj } = require('./match/teamsLoader')
 // const createMatch = require('./match/createMatch')
 // const play = require('./match/matchController')
@@ -6,6 +6,9 @@ const { app, BrowserWindow, Menu } = require('electron')
 // const match = createMatch(team1Obj, team2Obj, team2Obj, 'bat', 20)
 // play(match)
 
+ipcMain.on('match-created', (e, match) => {
+    console.log(match)
+})
 
 const createWindow = () => {
     const win = new BrowserWindow({
@@ -27,7 +30,8 @@ const createSetupWindow = () => {
         show: false,
         resizable: false,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            enableRemoteModule: true
         },
     })
     win2.show()

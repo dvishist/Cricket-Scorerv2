@@ -1,6 +1,8 @@
 const { ipcRenderer } = require('electron')
+const remote = require('electron').remote
 const loadTeams = require('../match/teamsLoader')
 const createMatch = require('../match/createMatch')
+
 
 const form = document.querySelector('form')
 
@@ -14,13 +16,18 @@ form.addEventListener('submit', e => {
 
     try {
         const { team1Obj, team2Obj } = loadTeams(team1FileName, team2FileName)
+
         let tossWinner = tossWinnerName === team1FileName ? team1Obj : team2Obj
         let decision = bat ? 'bat' : 'bowl'
         let overs = parseInt(oversText)
         const match = createMatch(team1Obj, team2Obj, tossWinner, decision, overs)
-        console.log(match)
+
+        ipcRenderer.send('match-created', match)
+        alert('Match Created! \nReady to Play')
+        remote.getCurrentWindow().close()
     } catch (err) {
         alert('Please make sure file names are correct')
     }
+
 
 })
