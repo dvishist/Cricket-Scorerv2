@@ -72,7 +72,7 @@ const createMenus = () => {
 
 app.on('ready', () => {
     createWindow()
-    createSetupWindow()
+    //createSetupWindow()
     createMenus()
 
 })

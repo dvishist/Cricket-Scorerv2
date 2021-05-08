@@ -3,7 +3,204 @@ body{
     text-align: center;
 }
 
-h1,h3{
-    color: #028090;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+#scoreBar{
+    background-color:#3b97db;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+#leftLogoBar , #rightLogoBar{
+    margin: 0;
+    width:185px;
+    height: 80px;
+    background-color: #f1f2f1;
+    box-shadow: inset 0px -15px 35px -15px #2f3c4d;
+    background-image: linear-gradient(#fdfdf6, #c7d3eb);
+}
+
+#leftLogoBar{
+    border-radius: 0px 100px 100px 0px;
+}
+
+#rightLogoBar{
+    border-radius: 100px 0px 0px 100px;
+}
+
+.logoBars{
+    display: flex;
+}
+
+.logoBars img{
+    height :70px;
+    width: 70px;
+    margin:auto;
+}
+
+#centreScoreBar{
+    width: 1180px;
+    border-radius: 100px;
+    background-image: linear-gradient(#fdfdf6, #c7d3eb);
+    box-shadow: inset 0px -15px 35px -15px #2f3c4d;
+    display: flex;
+    flex-direction: row;
+    height:80px;
+}
+
+#scoreOval{
+    width: 350px;
+    margin: auto;
+    height:74px;
+    display: flex;
+    flex-direction: column;
+}
+
+#score{
+    width: 100%;
+    height: 40px;
+    border-radius: 100px 100px 0px 0px;
+    background-color: #222677;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+#msgDisplay{
+    width: 100%;
+    height: 34px;
+    background-color: #151749;
+    border-radius: 0px 0px 100px 100px;
+}
+
+#scoreText{
+    background-image: linear-gradient(to right, #222677, #db1640);
+    width: 65%;
+    height:86%;
+    border-radius: 100px;   
+    align-items: center;    
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-left: 25px;
+}
+
+
+#bwlTeamShort{
+    margin: auto;
+    color:#71abf3;
+    font-size: 18px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    /* font-weight: bold; */
+    margin-bottom: 5px;
+}
+
+
+#batTeamShort{
+    margin: auto;
+    color: white;
+    font-size: 24px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: bolder;
+}
+
+#runsWickets{
+    margin: auto;
+    color: white;
+    font-size: 24px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-weight: bolder;
+    padding-right: 10px;
+}
+
+#oversText{
+    width: 20%;
+    display: flex;
+    background-image: linear-gradient(to right, #222677, #3b97db);
+    height: 86%;;
+    margin: auto;
+    margin-right: 20px;
+    border-radius: 0px 100px 100px 0px;
+}
+
+#oversText p{
+    color: white;
+    font-size: 20px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    margin: auto;
+    font-weight: 400;
+}
+
+#msgDisplay{
+    display: flex;
+}
+
+#msgDisplay p{
+    margin: auto;
+    color: white;
+    font-size: 16px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    margin: auto;
+}
+
+.playerOval{
+    width: 28%;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+#batsmanOval{
+    margin-left: 50px;   
+}
+
+#bowlerOval{
+    margin-right: 50px;
+}
+
+.batsman{
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    margin: auto;
+    height: 40%;
+    width: 90%;
+}
+
+.batsmanName{
+    margin: auto;
+    font-family: Tahoma, sans-serif;
+    font-size: 18px;
+    font-weight: bolder;
+    color: #27256e;
+    width: 70%;
+}
+
+.batsmanScore p{
+    margin: auto;
+    font-family: Tahoma, sans-serif;
+    color: #27256e;
+    width:40px;
+}
+
+.batsmanRuns{
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.batsmanBalls{
+    left: 0;
+    font-size: 16px;
+}
+
+.batsmanScore{
+    display: inline-flex;
+    flex-direction: row;
+    /* background-color: red; */
+}
+
+
+img{
+    width: 100%;
 }

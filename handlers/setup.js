@@ -16,9 +16,13 @@ form.addEventListener('submit', e => {
     try {
         const { team1Obj, team2Obj } = loadTeams(team1FileName, team2FileName)
 
+        //needs refactoring lol
         let tossWinner = tossWinnerName === team1FileName ? team1Obj : team2Obj
+
+        //needs refactoring to check if any radio is selected 
         let decision = bat ? 'bat' : 'bowl'
         let overs = parseInt(oversText)
+
         const match = createMatch(team1Obj, team2Obj, tossWinner, decision, overs)
 
         ipcRenderer.send('match-created', match)
