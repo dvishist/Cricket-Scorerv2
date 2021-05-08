@@ -4,7 +4,7 @@ body{
 }
 
 #scoreBar{
-    background-color:#3b97db;
+    background-color:black;
     margin: auto;
     display: flex;
     flex-direction: row;
@@ -90,7 +90,7 @@ body{
     margin: auto;
     color:#71abf3;
     font-size: 18px;
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-family: Tahoma, AppleGothic, sans-serif;
     /* font-weight: bold; */
     margin-bottom: 5px;
 }
@@ -100,7 +100,7 @@ body{
     margin: auto;
     color: white;
     font-size: 24px;
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-family: Tahoma, AppleGothic, sans-serif;
     font-weight: bolder;
 }
 
@@ -139,7 +139,7 @@ body{
     margin: auto;
     color: white;
     font-size: 16px;
-    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    font-family:  Tahoma, AppleGothic, sans-serif;
     margin: auto;
 }
 
@@ -168,13 +168,14 @@ body{
     width: 90%;
 }
 
-.batsmanName{
+.playerName{
     margin: auto;
     font-family: Tahoma, sans-serif;
     font-size: 18px;
-    font-weight: bolder;
+    font-weight: bold;
     color: #27256e;
-    width: 70%;
+    width: 90%;
+    margin-left: 10px;
 }
 
 .batsmanScore p{
@@ -198,6 +199,69 @@ body{
     display: inline-flex;
     flex-direction: row;
     /* background-color: red; */
+}
+
+.bowler{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    width:90%;
+    height:50%;
+
+}
+
+#bowlerOval{
+    text-align: left;
+}
+
+#bowlerScore{
+    margin:auto;
+    font-family: Tahoma, sans-serif;
+    color: #27256e;
+    font-weight: bolder;
+    width:30%;
+}
+
+#bowlerOvers{
+    font-family: Tahoma, sans-serif;
+    color: #27256e;
+    margin:auto;
+}
+
+.overBalls{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    height: 50%;
+}
+
+.overBall{
+    margin-right: 140px;
+    margin-bottom: 10px;;
+    display: flex;
+    flex-direction: row;
+}
+
+.overBall p{
+    margin: auto;
+    padding: 2px;
+    font-family: Tahoma, sans-serif;
+    font-size: 22px;
+    color: #27256e;
+}
+
+.logoBars img{
+    filter: drop-shadow(6px 6px 6px #61605f);
+}
+
+.pointer{
+    margin:auto;
+    height:15px;
+    width:15px;
+}
+
+#batsman1Pointer{
+    visibility: hidden;
 }
 
 
