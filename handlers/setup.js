@@ -31,6 +31,4 @@ form.addEventListener('submit', e => {
     } catch (err) {
         alert('Please make sure file names are correct')
     }
-
-
 })

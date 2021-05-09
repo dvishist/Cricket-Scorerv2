@@ -11,6 +11,7 @@ const overSymbols = {
     four: "④",
     five: "⑤",
     six: "⑥",
+    empty: "◯"
 }
 
 module.exports = overSymbols

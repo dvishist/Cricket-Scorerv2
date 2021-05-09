@@ -86,7 +86,7 @@ body{
 }
 
 
-#bwlTeamShort{
+#bowlTeamShort{
     margin: auto;
     color:#71abf3;
     font-size: 18px;
@@ -233,13 +233,14 @@ body{
     flex-direction: row;
     margin: auto;
     height: 50%;
+    margin-left: 20px;
 }
 
 .overBall{
-    margin-right: 140px;
     margin-bottom: 10px;;
-    display: flex;
-    flex-direction: row;
+    display: inline-flex;
+    width: 100%;
+    flex-direction:row;
 }
 
 .overBall p{

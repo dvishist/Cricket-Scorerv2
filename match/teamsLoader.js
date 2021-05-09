@@ -1,6 +1,6 @@
 const fs = require('fs')
-const Player = require('./models/Player')
-const Team = require('./models/Team')
+const Player = require('../models/Player')
+const Team = require('../models/Team')
 
 //function to convert array of names to player objects with initialised values
 const mapTeamToObjects = team =>
