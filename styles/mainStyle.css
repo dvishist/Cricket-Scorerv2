@@ -261,7 +261,7 @@ body{
     width:15px;
 }
 
-#batsman2Pointer{
+.pointer{
     visibility: hidden;
 }
 
