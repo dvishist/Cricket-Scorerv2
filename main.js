@@ -63,6 +63,7 @@ app.on('ready', () => {
     createMenus()
 
     ipcMain.on('match-created', (e, match) => {
+        console.log(match)
         indexWindow.webContents.send('match-created', match)
     })
 
