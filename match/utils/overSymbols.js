@@ -1,17 +1,16 @@
 
 const overSymbols = {
-    dot: "⓿",
-    wicket: "Ⓧ",
-    noBall: "Ⓝ",
-    legBy: "Ⓛ",
-    by: "Ⓑ",
-    one: "①",
-    two: "②",
-    three: "③",
-    four: "④",
-    five: "⑤",
-    six: "⑥",
-    empty: "◯"
+    dot: "◉",
+    wicket: "W",
+    noBall: "nb",
+    legBy: "lb",
+    by: "b",
+    one: "1",
+    two: "2",
+    three: "3",
+    four: "4",
+    five: "5",
+    six: "6",
 }
 
 module.exports = overSymbols

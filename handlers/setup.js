@@ -26,7 +26,6 @@ form.addEventListener('submit', e => {
         const match = createMatch(team1Obj, team2Obj, tossWinner, decision, overs)
 
         ipcRenderer.send('match-created', match)
-        alert('Match Created! \nReady to Play')
         remote.getCurrentWindow().close()
     } catch (err) {
         alert('Please make sure file names are correct')

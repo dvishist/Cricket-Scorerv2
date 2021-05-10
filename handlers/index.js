@@ -6,7 +6,7 @@ const batTeamShort = document.querySelector("#batTeamShort")
 const runsWickets = document.querySelector("#runsWickets")
 
 const overs = document.querySelector("#overs")
-const overSymbols = document.querySelector(".overBall")
+const overSymbols = document.querySelector(".overBalls")
 
 const msgDisplay = document.querySelector("#msgDisplay p")
 
@@ -32,6 +32,8 @@ const bowler = {
     overs: document.querySelector("#bowlerOvers"),
 }
 
+
+//initialise scoreboard
 ipcRenderer.on('match-created', (e, match) => {
     bowlTeamShort.innerHTML = match.bowlingTeam.short.toUpperCase() + " v"
     batTeamShort.innerHTML = match.battingTeam.short.toUpperCase()
@@ -39,23 +41,26 @@ ipcRenderer.on('match-created', (e, match) => {
     overs.innerHTML = "0"
     msgDisplay.innerHTML = "READY TO PLAY"
 
-    batsman1.name.innerHTML = match.battingTeam.playerList[0].name.toUpperCase()
-    batsman1.balls.innerHTML = 0
-    batsman1.runs.innerHTML = 0
-    batsman1.pointer.setAttribute("style", "visibility:visible")
+    // batsman1.name.innerHTML = match.battingTeam.playerList[0].name.toUpperCase()
+    // batsman1.balls.innerHTML = 0
+    // batsman1.runs.innerHTML = 0
+    // batsman1.pointer.setAttribute("style", "visibility:visible")
 
-    batsman2.name.innerHTML = match.battingTeam.playerList[1].name.toUpperCase()
-    batsman2.balls.innerHTML = 0
-    batsman2.runs.innerHTML = 0
-    batsman2.pointer.setAttribute("style", "visibility:hidden")
+    // batsman2.name.innerHTML = match.battingTeam.playerList[1].name.toUpperCase()
+    // batsman2.balls.innerHTML = 0
+    // batsman2.runs.innerHTML = 0
+    // batsman2.pointer.setAttribute("style", "visibility:hidden")
 
-    bowler.name.innerHTML = match.bowlingTeam.playerList[10].name.toUpperCase()
-    bowler.score.innerHTML = "0-0"
-    bowler.overs.innerHTML = "0"
+    // bowler.name.innerHTML = match.bowlingTeam.playerList[10].name.toUpperCase()
+    // bowler.score.innerHTML = "0-0"
+    // bowler.overs.innerHTML = "0"
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 1; i <= 6; i++) {
         let p = document.createElement("p")
-        p.appendChild(document.createTextNode("◯"))
-        overSymbols.appendChild(p)
+        p.appendChild(document.createTextNode(""))
+        let overBall = document.createElement("div")
+        overBall.setAttribute("class", "overBall")
+        overBall.appendChild(p)
+        overSymbols.appendChild(overBall)
     }
 })
