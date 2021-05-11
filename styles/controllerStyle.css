@@ -1,0 +1,67 @@
+body{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 16px;
+}
+
+body div{
+    /* border-style: solid;
+    border-width: 1px; */
+    margin: 5px;
+    padding: 5px;
+    background-color:aliceblue;
+}
+
+h3{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;;
+    font-weight: bolder;
+    color:darkslateblue;
+    margin-top: 0;
+}
+
+
+select{
+    width:150px;
+    font-size: 16px;
+    border-radius: 50px;
+}
+
+
+button{
+    border-radius: 100px;
+    border-width: 0;
+    color: white;
+    font-size: 16px;
+    background-color:crimson;
+    padding-left : 10px;
+    padding-right: 10px;
+}
+
+button:hover{
+    background-color: brown;
+}
+
+button:focus{
+    outline: 0;
+}
+
+.boundary{
+    background-color: cornflowerblue;
+}
+
+.boundary:hover{
+    background-color: darkcyan;
+}
+
+.wicketButtons{
+    background-color: darkcyan;
+}
+
+.dot ,.changeStrike{
+ border-radius: 40px;   
+}
+
+#changeStrike{
+    margin-left: 80px;
+}

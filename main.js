@@ -33,6 +33,7 @@ const mainMenu = Menu.buildFromTemplate([
 
 
 app.on('ready', () => {
+
     const indexWindow = new BrowserWindow({
         webPreferences: {
             nodeIntegration: true
@@ -41,7 +42,7 @@ app.on('ready', () => {
     })
     indexWindow.setMenu(mainMenu)
     indexWindow.maximize()
-    indexWindow.setMovable(false)
+    indexWindow.setResizable(false)
     indexWindow.loadFile('views/index.html')
 
     const setupWindow = new BrowserWindow({
@@ -55,18 +56,16 @@ app.on('ready', () => {
             enableRemoteModule: true
         },
     })
+
     setupWindow.setMenu(null)
     setupWindow.show()
     setupWindow.loadFile("views/setupWindow.html")
 
-    // createMenus()
-
     ipcMain.on('match-created', (e, match) => {
-        indexWindow.webContents.send('match-created', match)
 
         const controllerWindow = new BrowserWindow({
-            width: 800,
-            height: 450,
+            width: 600,
+            height: 650,
             title: 'Match Controller',
             show: false,
             resizable: false,
@@ -77,12 +76,16 @@ app.on('ready', () => {
         })
         controllerWindow.setMenu(null)
         controllerWindow.show()
-        controllerWindow.loadFile("views/setupWindow.html")
+        controllerWindow.loadFile("views/controllerWindow.html")
+        controllerWindow.setMenu(mainMenu)
+
+        indexWindow.webContents.send('match-created', match)
+        controllerWindow.webContents.on('dom-ready', () => {
+            controllerWindow.webContents.send('setup', match)
+        })
 
     })
-
 })
-
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {

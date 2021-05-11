@@ -3,32 +3,97 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Setup Cricket Match</title>
-    <link rel="stylesheet" href="../styles/setupStyle.css">
+    <title>Match Controller</title>
+    <link rel="stylesheet" href="../styles/controllerStyle.css">
 </head>
 
 <body>
-            <h3 id="heading">SETUP MATCH</h3>
-            <p>Team 1 File Name</p>
-            <input type="text" id="team1FileName" value="gcc">
-            <p>Team 2 File Name</p>
-            <input type="text" id="team2FileName" value="esb">
-            <p>Overs</p>
-            <input type="text" id="overs" value="20">
+    
+    <div id = "ballByBall">
+        <h3>BALL BY BALL</h3>
         
-        <br><br><br>
-        <div id="toss">
-            <p>Toss Won By</p>
-            <input type="text" id="tossWinner" value="gcc">
-            <p>Decision</p>
-            <input type="radio" name="toss" id = "bat" value="bat">
-            <label for="bat">Bat</label>
-            <input type="radio" name="toss" id = "bowl" value="bowl">
-            <label for="bowl">Bowl</label><br><br>
-        </div>
-        <button type="submit" >START</button>
-    <script src="../handlers/setup.js">
-    </script>
+        <input type="radio" name="ballType" id="ball" value="ball" checked>
+        <label for="ball">Ball</label>
+        <input type="radio" name="ballType" id="noBall" value="noBall">
+        <label for="noBall">No Ball</label>
+        <input type="radio" name="ballType" id="wide" value="wide">
+        <label for="wide">Wide</label>
+        <br><br>
+        
+        <input type="radio" name="runsType" id="runs" value="runs" checked>
+        <label for="runs">Runs</label>
+        <input type="radio" name="runsType" id="byes" value="byes">
+        <label for="byes">Byes</label>
+        <input type="radio" name="runsType" id="legByes" value="legByes">
+        <label for="legByes">Leg Byes</label>
+        <input type="radio" name="runsType" id="penalties" value="penalties">
+        <label for="penalties">Penalties</label>
+        <br><br>
+
+        <button class = "ballButtons dot" id = "dot">DOT</button>
+        <button class = "ballButtons" id = "dot">1</button>
+        <button class = "ballButtons" id = "dot">2</button>
+        <button class = "ballButtons" id = "dot">3</button>
+        <button class = "ballButtons boundary" id = "dot">4</button>
+        <button class = "ballButtons" id = "dot">5</button>
+        <button class = "ballButtons boundary" id = "dot">6</button>
+        <button class = "ballButtons changeStrike" id = "changeStrike">CHANGE STRIKE</button>
+    </div>
+
+    <div id = "selectBowlerBatsman">
+        <h3>PLAYERS</h3>
+        <select name = "selectBowler" id="bowlerDropdown">
+            <option selected disabled>Select Bowler</option>
+        </select>
+        <br><br>
+        <select name = "selectBatsman" id="batsmanDropdown">
+            <option selected disabled>Select Batsman</option>
+        </select>
+        <button class = "ballButtons" id="addBatsmanButton">Add</button>
+    </div>
+
+    <div id="wicket">
+        <h3>WICKET</h3>
+        <button class = "wicketButtons" id = "bowled">Bowled</button>
+        <button class = "wicketButtons" id = "lbw">LBW</button>
+        <button class = "wicketButtons" id = "retired">Retired</button>
+        <br><br>
+        <select name="wicketFielder" id="wicketFielder">
+            <option selected disabled>Select Fielder</option>
+        </select>
+        <button class = "wicketButtons" id = "caught">Caught</button>
+        <button class = "wicketButtons" id = "stumped">Stumped</button>
+        <br><br>
+        <select name="runoutFielder" id="runoutFielder">
+            <option selected disabled>Select Fielder</option>
+        </select>
+        <select name="runoutBatsman" id="runoutBatsman">
+            <option selected disabled>Out Batsman</option>
+        </select>
+        <button class = "wicketButtons" id = "runout">Run Out</button>
+    </div>
+
+    <div id="messageDisplay">
+        <h3>MESSAGE DISPLAY</h3>
+        <input type="radio" name="msg" id="textMessageRadio">
+        <label for="textMessageRadio">Text</label>
+        <input type="text" size="60">
+        <br><br>
+        <input type="radio" name="msg" id="tossRadio">
+        <label for="textMessageRadio">Toss</label>
+        <input type="radio" name="msg" id="runRateRadio">
+        <label for="textMessageRadio">Run Rate</label>
+        <input type="radio" name="msg" id="reqRunRateRadio">
+        <label for="textMessageRadio">Required RR</label>
+        <br><br>
+        <input type="radio" name="msg" id="lastWicketRadio">
+        <label for="textMessageRadio">Last Wicket</label>
+        <input type="radio" name="msg" id="partnershipRadio">
+        <label for="textMessageRadio">Partnership</label>
+        <input type="radio" name="msg" id="targetRadio">
+        <label for="textMessageRadio">Target</label>
+    </div>
+    <script src="../handlers/controller.js"></script>
 </body>
 
 </html>

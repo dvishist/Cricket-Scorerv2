@@ -217,6 +217,7 @@ body{
 #bowlerScore{
     margin:auto;
     font-family: Tahoma, sans-serif;
+    font-size: 16px;
     color: #27256e;
     font-weight: bolder;
     width:30%;
@@ -224,6 +225,7 @@ body{
 
 #bowlerOvers{
     font-family: Tahoma, sans-serif;
+    font-size: 16px;
     color: #27256e;
     margin:auto;
 }
