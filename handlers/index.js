@@ -60,7 +60,38 @@ ipcRenderer.on('match-created', (e, match) => {
     // overBall.setAttribute("class", "overBall")
     // overBall.appendChild(p)
     // overSymbols.appendChild(overBall)
+})
 
+ipcRenderer.on('update-main', (e, matchState) => {
+    console.log(matchState.live.batsman1.batStats.runs)
+
+    bowlTeamShort.innerHTML = matchState.bowlingTeam.short + " v"
+    batTeamShort.innerHTML = matchState.battingTeam.short
+    runsWickets.innerHTML = matchState.battingTeam.batStats.runs + "-" + matchState.battingTeam.batStats.wickets
+    let teamOversText = (Math.trunc(matchState.battingTeam.batStats.balls / 6) + '.' + (matchState.battingTeam.batStats.balls % 6)).replace('.0', '')
+    overs.innerHTML = teamOversText
+    // msgDisplay.innerHTML = "READY TO PLAY"
+
+    batsman1.name.innerHTML = matchState.live.batsman1.name
+    batsman1.balls.innerHTML = matchState.live.batsman1.batStats.balls
+    batsman1.runs.innerHTML = matchState.live.batsman1.batStats.runs
+
+    batsman2.name.innerHTML = matchState.live.batsman2.name
+    batsman2.balls.innerHTML = matchState.live.batsman2.batStats.balls
+    batsman2.runs.innerHTML = matchState.live.batsman2.batStats.runs
+
+    if (matchState.live.batsman1 === matchState.live.striker) {
+        batsman1.pointer.setAttribute("style", "visibility:visible")
+        batsman2.pointer.setAttribute("style", "visibility:hidden")
+    } else {
+        batsman2.pointer.setAttribute("style", "visibility:visible")
+        batsman1.pointer.setAttribute("style", "visibility:hidden")
+    }
+
+    bowler.name.innerHTML = matchState.live.bowler.name
+    bowler.score.innerHTML = matchState.live.bowler.bowlStats.wickets + '-' + matchState.live.bowler.bowlStats.runs
+    let bowlerOverText = (Math.trunc(matchState.live.bowler.bowlStats.balls / 6) + '.' + (matchState.live.bowler.bowlStats.balls % 6)).replace('.0', '')
+    bowler.overs.innerHTML = bowlerOverText
 })
 
 

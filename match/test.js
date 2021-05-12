@@ -1,4 +1,5 @@
-let name = 'Vishist #C'
+const Team = require('../models/Team')
 
-let n = name.replace('#C', '')
-console.log(n)
+const t = new Team('gcc', 'gc', [])
+t.batStats.balls = 23
+console.log(t.oversPlayed)

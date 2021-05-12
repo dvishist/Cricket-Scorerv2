@@ -14,6 +14,7 @@ class Player {
         },
             this.bowlStats = {
                 balls: 0,
+                wickets: 0,
                 runs: 0,
                 wides: 0,
                 noBalls: 0,
@@ -30,16 +31,16 @@ class Player {
             }
     }
 
-    getStrikeRate() {
+    get strikeRate() {
         return (this.batStats.runs / this.batStats.balls * 100).toPrecision(5)
     }
 
-    getEconomy() {
+    get economy() {
         return (this.bowlStats.runs / this.bowlStats.balls * 6).toPrecision(3)
     }
 
     //returns a String representing overs eg:2.5 being 17balls
-    getOversBowled() {
+    get oversBowled() {
         return Math.trunc(this.bowlStats.balls / 6) + '.' + (this.bowlStats.balls % 6)
     }
 

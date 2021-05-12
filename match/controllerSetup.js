@@ -31,7 +31,7 @@ ipcRenderer.on('controller-setup', (e, match) => {
     })
 
     //remove sub fielder
-    let bowlersList = bowlingTeam.slice(0, 10)
+    let bowlersList = bowlingTeam.slice(0, 11)
 
     //populate bowler dropdown
     bowlersList.forEach(playerObj => {
@@ -44,7 +44,7 @@ ipcRenderer.on('controller-setup', (e, match) => {
 
     const battingTeam = match.battingTeam.playerList
     //remove openers
-    let batsmanList = battingTeam.slice(2, 10)
+    let batsmanList = battingTeam.slice(2, 11)
 
     //populate batsman dropdown
     batsmanList.forEach(playerObj => {

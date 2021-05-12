@@ -28,7 +28,6 @@ ipcRenderer.on('controller-setup', (e, match) => {
     matchState.live.batsman2 = matchState.battingTeam.playerList[1]
     matchState.live.striker = matchState.live.batsman1
     matchState.live.bowler = matchState.bowlingTeam.playerList[10]
-    console.log(matchState)
 })
 
 const playBall = (runs, boundary) => {
@@ -36,6 +35,7 @@ const playBall = (runs, boundary) => {
     if (penaltiesRadio.checked) {
         matchState.battingTeam.batStats.runs += runs
         matchState.bowlingTeam.extras.penalties += runs
+        ipcRenderer.send('update-main', matchState)
         return
     }
 
@@ -47,10 +47,12 @@ const playBall = (runs, boundary) => {
     } else if (noBallRadio.checked) {
         matchState.bowlingTeam.extras.noBalls++
         matchState.live.bowler.bowlStats.noBalls++
+        matchState.live.bowler.bowlStats.runs++
         matchState.battingTeam.batStats.runs++
     } else if (wideRadio.checked) {
         matchState.bowlingTeam.extras.wides++
         matchState.live.bowler.bowlStats.wides++
+        matchState.live.bowler.bowlStats.runs++
         matchState.battingTeam.batStats.runs++
     }
 
@@ -73,7 +75,8 @@ const playBall = (runs, boundary) => {
     } else if (legByesRadio.checked) {
         matchState.bowlingTeam.extras.legByes += runs
     }
-    console.log(matchState.live)
+
+    ipcRenderer.send('update-main', matchState)
 }
 
 const changeStrike = document.getElementById('changeStrikeButton')
@@ -81,9 +84,4 @@ changeStrike.addEventListener('click', () => {
     let state = matchState.live
     state.striker = state.striker === state.batsman1 ? state.batsman2 : state.batsman1
     ipcRenderer.send('update-players', matchState.live)
-})
-
-const dot = document.getElementById('dotButton')
-dot.addEventListener('click', () => {
-    playBall('ball', 'runs', 0, false)
 })

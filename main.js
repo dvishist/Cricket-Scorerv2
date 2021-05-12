@@ -85,6 +85,11 @@ app.on('ready', () => {
         indexWindow.webContents.send('update-players', liveState)
     })
 
+    ipcMain.on('update-main', (e, matchState) => {
+        console.log(matchState)
+        indexWindow.webContents.send('update-main', matchState)
+    })
+
 })
 
 app.on('window-all-closed', () => {
