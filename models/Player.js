@@ -7,7 +7,7 @@ class Player {
             runs: 0,
             fours: 0,
             sixes: 0,
-            dots: 0,
+            //dots: 0,
             // ones: 0,
             // twos: 0,
             // threes:0

@@ -1,4 +1,3 @@
-
 const overSymbols = {
     dot: "◉",
     wicket: "W",

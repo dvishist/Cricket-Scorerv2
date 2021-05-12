@@ -18,7 +18,7 @@
         <label for="noBall">No Ball</label>
         <input type="radio" name="ballType" id="wide" value="wide">
         <label for="wide">Wide</label>
-        <br><br>
+        <br>
         
         <input type="radio" name="runsType" id="runs" value="runs" checked>
         <label for="runs">Runs</label>
@@ -28,16 +28,16 @@
         <label for="legByes">Leg Byes</label>
         <input type="radio" name="runsType" id="penalties" value="penalties">
         <label for="penalties">Penalties</label>
-        <br><br>
+        <br>
 
-        <button class = "ballButtons dot" id = "dot">DOT</button>
-        <button class = "ballButtons" id = "dot">1</button>
-        <button class = "ballButtons" id = "dot">2</button>
-        <button class = "ballButtons" id = "dot">3</button>
-        <button class = "ballButtons boundary" id = "dot">4</button>
-        <button class = "ballButtons" id = "dot">5</button>
-        <button class = "ballButtons boundary" id = "dot">6</button>
-        <button class = "ballButtons changeStrike" id = "changeStrike">CHANGE STRIKE</button>
+        <button class = "ballButtons dot" id = "dotButton">DOT</button>
+        <button class = "ballButtons" id = "oneButton">1</button>
+        <button class = "ballButtons" id = "twoButton">2</button>   
+        <button class = "ballButtons" id = "threeButton">3</button>
+        <button class = "ballButtons boundary" id = "fourButton">4</button>
+        <button class = "ballButtons" id = "fiveButton">5</button>
+        <button class = "ballButtons boundary" id = "sixButton">6</button>
+        <button class = "ballButtons changeStrike" id = "changeStrikeButton">CHANGE STRIKE</button>
     </div>
 
     <div id = "selectBowlerBatsman">
@@ -45,7 +45,7 @@
         <select name = "selectBowler" id="bowlerDropdown">
             <option selected disabled>Select Bowler</option>
         </select>
-        <br><br>
+        <br>
         <select name = "selectBatsman" id="batsmanDropdown">
             <option selected disabled>Select Batsman</option>
         </select>
@@ -57,18 +57,20 @@
         <button class = "wicketButtons" id = "bowled">Bowled</button>
         <button class = "wicketButtons" id = "lbw">LBW</button>
         <button class = "wicketButtons" id = "retired">Retired</button>
-        <br><br>
+        <br>
         <select name="wicketFielder" id="wicketFielder">
             <option selected disabled>Select Fielder</option>
         </select>
         <button class = "wicketButtons" id = "caught">Caught</button>
         <button class = "wicketButtons" id = "stumped">Stumped</button>
-        <br><br>
+        <br>
         <select name="runoutFielder" id="runoutFielder">
             <option selected disabled>Select Fielder</option>
         </select>
         <select name="runoutBatsman" id="runoutBatsman">
             <option selected disabled>Out Batsman</option>
+            <option>Striker</option>
+            <option>Non Striker</option>
         </select>
         <button class = "wicketButtons" id = "runout">Run Out</button>
     </div>
@@ -78,21 +80,24 @@
         <input type="radio" name="msg" id="textMessageRadio">
         <label for="textMessageRadio">Text</label>
         <input type="text" size="60">
-        <br><br>
+        <br>
         <input type="radio" name="msg" id="tossRadio">
         <label for="textMessageRadio">Toss</label>
         <input type="radio" name="msg" id="runRateRadio">
         <label for="textMessageRadio">Run Rate</label>
         <input type="radio" name="msg" id="reqRunRateRadio">
         <label for="textMessageRadio">Required RR</label>
-        <br><br>
+        <br>
         <input type="radio" name="msg" id="lastWicketRadio">
         <label for="textMessageRadio">Last Wicket</label>
         <input type="radio" name="msg" id="partnershipRadio">
         <label for="textMessageRadio">Partnership</label>
         <input type="radio" name="msg" id="targetRadio">
         <label for="textMessageRadio">Target</label>
+        <input type="radio" name="msg" id="runsFromBallsRadio">
+        <label for="runsFromBallsRadio">Runs From Balls</label>
     </div>
+    <script src="../match/controllerSetup.js"></script>
     <script src="../handlers/controller.js"></script>
 </body>
 

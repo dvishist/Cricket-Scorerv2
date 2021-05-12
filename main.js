@@ -1,7 +1,4 @@
 const { app, BrowserWindow, Menu, ipcRenderer, remote, ipcMain } = require('electron')
-const { team1Obj, team2Obj } = require('./match/teamsLoader')
-const createMatch = require('./match/createMatch')
-const play = require('./match/matchController')
 
 const mainMenu = Menu.buildFromTemplate([
     {
@@ -62,10 +59,9 @@ app.on('ready', () => {
     setupWindow.loadFile("views/setupWindow.html")
 
     ipcMain.on('match-created', (e, match) => {
-
         const controllerWindow = new BrowserWindow({
-            width: 600,
-            height: 650,
+            width: 1000,
+            height: 670,
             title: 'Match Controller',
             show: false,
             resizable: false,
@@ -81,10 +77,14 @@ app.on('ready', () => {
 
         indexWindow.webContents.send('match-created', match)
         controllerWindow.webContents.on('dom-ready', () => {
-            controllerWindow.webContents.send('setup', match)
+            controllerWindow.webContents.send('controller-setup', match)
         })
-
     })
+
+    ipcMain.on('update-players', (e, liveState) => {
+        indexWindow.webContents.send('update-players', liveState)
+    })
+
 })
 
 app.on('window-all-closed', () => {
