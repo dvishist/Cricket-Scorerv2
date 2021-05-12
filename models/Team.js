@@ -34,11 +34,6 @@ class Team {
         });
     }
 
-    //returns a String representing overs eg:2.5 being 17balls
-    getOversPlayed() {
-        return Math.trunc(this.batStats.balls / 6).toString() + '.' + (this.batStats.balls % 6).toString()
-    }
-
 }
 
 module.exports = Team

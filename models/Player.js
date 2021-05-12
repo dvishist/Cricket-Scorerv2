@@ -38,12 +38,6 @@ class Player {
     get economy() {
         return (this.bowlStats.runs / this.bowlStats.balls * 6).toPrecision(3)
     }
-
-    //returns a String representing overs eg:2.5 being 17balls
-    get oversBowled() {
-        return Math.trunc(this.bowlStats.balls / 6) + '.' + (this.bowlStats.balls % 6)
-    }
-
 }
 
 module.exports = Player
