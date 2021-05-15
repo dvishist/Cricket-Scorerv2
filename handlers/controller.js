@@ -35,6 +35,8 @@ const playBall = (runs, boundary) => {
     if (penaltiesRadio.checked) {
         matchState.battingTeam.batStats.runs += runs
         matchState.bowlingTeam.extras.penalties += runs
+        ballRadio.checked = true
+        runsRadio.checked = true
         ipcRenderer.send('update-main', matchState)
         return
     }
@@ -76,12 +78,37 @@ const playBall = (runs, boundary) => {
         matchState.bowlingTeam.extras.legByes += runs
     }
 
+    ballRadio.checked = true
+    runsRadio.checked = true
+    if (runs % 2 === 1) changeStriker()
+    if (matchState.battingTeam.batStats.balls % 6 == 0) changeStriker()
     ipcRenderer.send('update-main', matchState)
 }
 
 const changeStrike = document.getElementById('changeStrikeButton')
 changeStrike.addEventListener('click', () => {
+    changeStriker()
+    ipcRenderer.send('update-players', matchState.live)
+})
+
+const changeStriker = () => {
     let state = matchState.live
     state.striker = state.striker === state.batsman1 ? state.batsman2 : state.batsman1
-    ipcRenderer.send('update-players', matchState.live)
+}
+
+
+
+
+
+
+
+//BOWLER CHANGE
+
+bowlerDropdown.addEventListener('change', function () {
+
+    //matchState.live.bowler = bowlerDropdown.value
+    matchState.bowlingTeam.playerList.forEach(player => {
+        if (player.name === bowlerDropdown.value) matchState.live.bowler = player
+    })
+    ipcRenderer.send('update-main', matchState)
 })

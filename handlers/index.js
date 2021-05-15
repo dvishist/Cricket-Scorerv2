@@ -63,8 +63,6 @@ ipcRenderer.on('match-created', (e, match) => {
 })
 
 ipcRenderer.on('update-main', (e, matchState) => {
-    console.log(matchState.live.batsman1.batStats.runs)
-
     bowlTeamShort.innerHTML = matchState.bowlingTeam.short + " v"
     batTeamShort.innerHTML = matchState.battingTeam.short
     runsWickets.innerHTML = matchState.battingTeam.batStats.runs + "-" + matchState.battingTeam.batStats.wickets

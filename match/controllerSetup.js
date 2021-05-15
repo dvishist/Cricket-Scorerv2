@@ -20,11 +20,11 @@ ipcRenderer.on('controller-setup', (e, match) => {
 
         let player1 = document.createElement('option')
         player1.appendChild(document.createTextNode(playerName))
-        player1.value = playerName
+        player1.value = playerObj.name
 
         let player2 = document.createElement('option')
         player2.appendChild(document.createTextNode(playerName))
-        player2.value = playerName
+        player2.value = playerObj.name
 
         wicketFielderDropdown.appendChild(player1)
         runoutFielderDropdown.appendChild(player2)

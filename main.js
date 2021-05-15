@@ -86,7 +86,6 @@ app.on('ready', () => {
     })
 
     ipcMain.on('update-main', (e, matchState) => {
-        console.log(matchState)
         indexWindow.webContents.send('update-main', matchState)
     })
 
