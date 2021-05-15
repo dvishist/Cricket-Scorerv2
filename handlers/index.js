@@ -91,25 +91,3 @@ ipcRenderer.on('update-main', (e, matchState) => {
     let bowlerOverText = (Math.trunc(matchState.live.bowler.bowlStats.balls / 6) + '.' + (matchState.live.bowler.bowlStats.balls % 6)).replace('.0', '')
     bowler.overs.innerHTML = bowlerOverText
 })
-
-
-ipcRenderer.on('update-players', (e, liveState) => {
-    console.log(liveState)
-
-    batsman1.name.innerHTML = liveState.batsman1.name
-    batsman1.balls.innerHTML = liveState.batsman1.batStats.balls
-    batsman1.runs.innerHTML = liveState.batsman1.batStats.runs
-
-    batsman2.name.innerHTML = liveState.batsman2.name
-    batsman2.balls.innerHTML = liveState.batsman2.batStats.balls
-    batsman2.runs.innerHTML = liveState.batsman2.batStats.runs
-
-    if (liveState.batsman1 === liveState.striker) {
-        batsman1.pointer.setAttribute("style", "visibility:visible")
-        batsman2.pointer.setAttribute("style", "visibility:hidden")
-    } else {
-        batsman2.pointer.setAttribute("style", "visibility:visible")
-        batsman1.pointer.setAttribute("style", "visibility:hidden")
-    }
-
-})

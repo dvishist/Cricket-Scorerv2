@@ -92,7 +92,7 @@ const playBall = (runs, boundary) => {
 const changeStrike = document.getElementById('changeStrikeButton')
 changeStrike.addEventListener('click', () => {
     changeStriker()
-    ipcRenderer.send('update-players', matchState.live)
+    updateMain()
 })
 
 const changeStriker = () => {
@@ -107,6 +107,7 @@ bowlerDropdown.addEventListener('change', function () {
         if (player.name === bowlerDropdown.value) matchState.live.bowler = player
     })
     updateMain()
+    bowlerDropdown.selectedIndex = 0
 })
 
 
