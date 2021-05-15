@@ -11,13 +11,21 @@ const byesRadio = document.getElementById("byes")
 const legByesRadio = document.getElementById("legByes")
 const penaltiesRadio = document.getElementById("penalties")
 
-document.getElementById("dotButton").addEventListener('click', () => { playBall(0, false) })
-document.getElementById("oneButton").addEventListener('click', () => { playBall(1, false) })
-document.getElementById("twoButton").addEventListener('click', () => { playBall(2, false) })
-document.getElementById("threeButton").addEventListener('click', () => { playBall(3, false) })
-document.getElementById("fourButton").addEventListener('click', () => { playBall(4, true) })
-document.getElementById("fiveButton").addEventListener('click', () => { playBall(5, false) })
-document.getElementById("sixButton").addEventListener('click', () => { playBall(6, true) })
+// ball by ball buttons
+Array.from(document.getElementsByClassName("valued")).forEach(btn => {
+    btn.addEventListener('click', () => {
+        playBall(btn.value, btn.value == 4 || btn.value == 6)
+    })
+})
+
+
+// document.getElementById("dotButton").addEventListener('click', () => { playBall(0, false) })
+// document.getElementById("oneButton").addEventListener('click', () => { playBall(1, false) })
+// document.getElementById("twoButton").addEventListener('click', () => { playBall(2, false) })
+// document.getElementById("threeButton").addEventListener('click', () => { playBall(3, false) })
+// document.getElementById("fourButton").addEventListener('click', () => { playBall(4, true) })
+// document.getElementById("fiveButton").addEventListener('click', () => { playBall(5, false) })
+//document.getElementById("sixButton").addEventListener('click', () => { playBall(6, true) })
 
 const changeStrikeButton = document.getElementById("changeStrikeButton")
 
@@ -31,6 +39,7 @@ ipcRenderer.on('controller-setup', (e, match) => {
 })
 
 const playBall = (runs, boundary) => {
+    runs = parseInt(runs)
     //check penalty
     if (penaltiesRadio.checked) {
         matchState.battingTeam.batStats.runs += runs
@@ -99,13 +108,8 @@ const changeStriker = () => {
 
 
 
-
-
-
-//BOWLER CHANGE
-
+//Change Bowler on select option change
 bowlerDropdown.addEventListener('change', function () {
-
     //matchState.live.bowler = bowlerDropdown.value
     matchState.bowlingTeam.playerList.forEach(player => {
         if (player.name === bowlerDropdown.value) matchState.live.bowler = player
