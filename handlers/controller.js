@@ -11,21 +11,16 @@ const byesRadio = document.getElementById("byes")
 const legByesRadio = document.getElementById("legByes")
 const penaltiesRadio = document.getElementById("penalties")
 
+const updateMain = () => {
+    ipcRenderer.send('update-main', matchState)
+}
+
 // ball by ball buttons
 Array.from(document.getElementsByClassName("valued")).forEach(btn => {
     btn.addEventListener('click', () => {
         playBall(btn.value, btn.value == 4 || btn.value == 6)
     })
 })
-
-
-// document.getElementById("dotButton").addEventListener('click', () => { playBall(0, false) })
-// document.getElementById("oneButton").addEventListener('click', () => { playBall(1, false) })
-// document.getElementById("twoButton").addEventListener('click', () => { playBall(2, false) })
-// document.getElementById("threeButton").addEventListener('click', () => { playBall(3, false) })
-// document.getElementById("fourButton").addEventListener('click', () => { playBall(4, true) })
-// document.getElementById("fiveButton").addEventListener('click', () => { playBall(5, false) })
-//document.getElementById("sixButton").addEventListener('click', () => { playBall(6, true) })
 
 const changeStrikeButton = document.getElementById("changeStrikeButton")
 
@@ -46,7 +41,7 @@ const playBall = (runs, boundary) => {
         matchState.bowlingTeam.extras.penalties += runs
         ballRadio.checked = true
         runsRadio.checked = true
-        ipcRenderer.send('update-main', matchState)
+        updateMain()
         return
     }
 
@@ -91,7 +86,7 @@ const playBall = (runs, boundary) => {
     runsRadio.checked = true
     if (runs % 2 === 1) changeStriker()
     if (matchState.battingTeam.batStats.balls % 6 == 0) changeStriker()
-    ipcRenderer.send('update-main', matchState)
+    updateMain()
 }
 
 const changeStrike = document.getElementById('changeStrikeButton')
@@ -106,13 +101,47 @@ const changeStriker = () => {
 }
 
 
-
-
-//Change Bowler on select option change
+//Change Bowler
 bowlerDropdown.addEventListener('change', function () {
-    //matchState.live.bowler = bowlerDropdown.value
     matchState.bowlingTeam.playerList.forEach(player => {
         if (player.name === bowlerDropdown.value) matchState.live.bowler = player
     })
-    ipcRenderer.send('update-main', matchState)
+    updateMain()
 })
+
+
+//Add batsman
+const addBatsmanButton = document.getElementById('addBatsmanButton')
+addBatsmanButton.addEventListener('click', () => {
+    replaceBatsman(batsmanDropdown.value, matchState.live.striker, false)
+    updateMain()
+})
+
+replaceBatsman = (newBatsmanName, oldBatsman, wicket) => {
+    matchState.battingTeam.playerList.forEach(player => {
+        if (player.name === newBatsmanName) {
+            newBatsman = player
+        }
+    })
+
+    if (!wicket && oldBatsman.batStats.balls !== 0 && oldBatsman.batStats.runs !== 0) {
+        oldBatsman.wicket.method = 'retired'
+    }
+
+    if (!wicket) {
+        let batsmanOption = document.createElement('option')
+        batsmanOption.appendChild(document.createTextNode(oldBatsman.name))
+        batsmanOption.value = oldBatsman.name
+        batsmanDropdown.append(batsmanOption)
+    }
+    batsmanDropdown.remove(batsmanDropdown.selectedIndex)
+    batsmanDropdown.selectedIndex = 0
+
+    if (matchState.live.batsman1 === oldBatsman) {
+        matchState.live.batsman1 = newBatsman
+    } else {
+        matchState.live.batsman2 = newBatsman
+    }
+    matchState.live.striker = newBatsman
+
+}

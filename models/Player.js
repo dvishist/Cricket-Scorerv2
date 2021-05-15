@@ -25,6 +25,7 @@ class Player {
             },
             this.wicket = {
                 out: false,
+                //methods: bowled, lbw, caught, runout, obstruction, retired
                 method: '',
                 bowler: null,
                 fielder: null
