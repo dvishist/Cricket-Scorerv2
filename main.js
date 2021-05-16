@@ -12,18 +12,6 @@ const mainMenu = Menu.buildFromTemplate([
                 accelerator: 'Ctrl+I'
             }
         ]
-    },
-    {
-        label: 'Match',
-        submenu: [
-            {
-                label: 'Toggle DevTools',
-                click(item, focusedWindow) {
-                    focusedWindow.toggleDevTools()
-                },
-                accelerator: 'Ctrl+I'
-            }
-        ]
     }
 ])
 
@@ -61,7 +49,9 @@ app.on('ready', () => {
     ipcMain.on('match-created', (e, match) => {
         const controllerWindow = new BrowserWindow({
             width: 1000,
-            height: 670,
+            height: 700,
+            x: 300,
+            y: 155,
             title: 'Match Controller',
             show: false,
             resizable: false,
@@ -79,6 +69,10 @@ app.on('ready', () => {
         controllerWindow.webContents.on('dom-ready', () => {
             controllerWindow.webContents.send('controller-setup', match)
         })
+    })
+
+    ipcMain.on('controller-Setup', (e, matchState) => {
+        controllerWindow.webContents.send('controller-setup', matchState)
     })
 
     ipcMain.on('update-players', (e, liveState) => {

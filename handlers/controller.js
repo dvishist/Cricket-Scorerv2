@@ -11,6 +11,20 @@ const byesRadio = document.getElementById("byes")
 const legByesRadio = document.getElementById("legByes")
 const penaltiesRadio = document.getElementById("penalties")
 
+
+const endOfInnings = () => {
+    [matchState.battingTeam, matchState.bowlingTeam] = [matchState.bowlingTeam, matchState.battingTeam]
+    matchState.innings = 2
+    matchState.target = matchState.bowlingTeam.batStats.runs + 1
+    matchState.live.batsman1 = matchState.battingTeam.playerList[0]
+    matchState.live.batsman2 = matchState.battingTeam.playerList[1]
+    matchState.live.striker = matchState.live.batsman1
+    matchState.live.bowler = matchState.bowlingTeam.playerList[10]
+    ipcRenderer.send('controller-setup', matchState)
+    updateMain()
+}
+
+
 const updateMain = () => {
     ipcRenderer.send('update-main', matchState)
 }
@@ -56,6 +70,7 @@ const playBall = (runs, boundary) => {
         matchState.live.bowler.bowlStats.runs++
         matchState.battingTeam.batStats.runs++
     } else if (wideRadio.checked) {
+        byesRadio.checked = true
         matchState.bowlingTeam.extras.wides++
         matchState.live.bowler.bowlStats.wides++
         matchState.live.bowler.bowlStats.runs++
@@ -142,8 +157,6 @@ replaceBatsman = (newBatsmanName, oldBatsman) => {
     matchState.live.striker = newBatsman
 }
 
-
-
 //WICKETS
 
 const bowledButton = document.getElementById('bowled')
@@ -217,6 +230,5 @@ runoutButton.addEventListener('click', () => {
     matchState.live.striker.wicket.fielder = matchState.bowlingTeam.playerList.filter(player => player.name === runoutFielder.value)[0]
 
     matchState.battingTeam.batStats.wickets++
-
-    matchState.bowlingTeam.playerList.filter(player => player.name === wicketFielder.value)[0].fieldStats.runouts++
+    matchState.bowlingTeam.playerList.filter(player => player.name === runoutFielder.value)[0].fieldStats.runouts++
 })

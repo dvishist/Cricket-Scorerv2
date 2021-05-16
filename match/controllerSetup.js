@@ -7,6 +7,7 @@ const wicketFielderDropdown = document.querySelector("#wicketFielder")
 const runoutFielderDropdown = document.querySelector("#runoutFielder")
 
 
+
 ipcRenderer.on('controller-setup', (e, match) => {
     const bowlingTeam = match.bowlingTeam.playerList
     //populate fielder dropdowns

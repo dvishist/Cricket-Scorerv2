@@ -6,8 +6,8 @@ body{
 }
 
 body div{
-    margin: 5px;
-    padding: 5px;
+    margin: 3px;
+    padding: 3px;
     background-color:aliceblue;
 }
 
@@ -56,7 +56,7 @@ button:focus{
     background-color: darkcyan;
 }
 
-.wicketButtons , .runoutButton{
+.wicketButtons{
     background-color: darkcyan;
 }
 
