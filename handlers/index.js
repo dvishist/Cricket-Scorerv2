@@ -91,3 +91,30 @@ ipcRenderer.on('update-main', (e, matchState) => {
     let bowlerOverText = (Math.trunc(matchState.live.bowler.bowlStats.balls / 6) + '.' + (matchState.live.bowler.bowlStats.balls % 6)).replace('.0', '')
     bowler.overs.innerHTML = bowlerOverText
 })
+
+
+ipcRenderer.on('fade-batsman', (e, batsman) => {
+    if (batsman1.name.innerHTML === batsman.name) {
+        batsman1.name.style.opacity = '30%'
+        batsman1.balls.style.opacity = '30%'
+        batsman1.runs.style.opacity = '30%'
+    } else {
+        batsman2.name.style.opacity = '30%'
+        batsman2.balls.style.opacity = '30%'
+        batsman2.runs.style.opacity = '30%'
+    }
+})
+
+
+ipcRenderer.on('unfade-batsman', (e, batsman) => {
+    console.log(batsman)
+    if (batsman1.name.innerHTML === batsman) {
+        batsman1.name.style.opacity = '100%'
+        batsman1.balls.style.opacity = '100%'
+        batsman1.runs.style.opacity = '100%'
+    } else {
+        batsman2.name.style.opacity = '100%'
+        batsman2.balls.style.opacity = '100%'
+        batsman2.runs.style.opacity = '100%'
+    }
+})

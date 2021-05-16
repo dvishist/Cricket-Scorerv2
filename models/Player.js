@@ -21,12 +21,13 @@ class Player {
             },
             this.fieldStats = {
                 catches: 0,
-                runOuts: 0
+                runouts: 0,
+                stumpings: 0
             },
             this.wicket = {
                 out: false,
                 //methods: bowled, lbw, caught, runout, obstruction, retired
-                method: '',
+                method: null,
                 bowler: null,
                 fielder: null
             }

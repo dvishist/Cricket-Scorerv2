@@ -56,9 +56,11 @@ button:focus{
     background-color: darkcyan;
 }
 
-.wicketButtons{
+.wicketButtons , .runoutButton{
     background-color: darkcyan;
 }
+
+
 
 .dot ,.changeStrike{
  border-radius: 40px;   

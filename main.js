@@ -89,6 +89,13 @@ app.on('ready', () => {
         indexWindow.webContents.send('update-main', matchState)
     })
 
+    ipcMain.on('fade-batsman', (e, batsman) => {
+        indexWindow.webContents.send('fade-batsman', batsman)
+    })
+
+    ipcMain.on('unfade-batsman', (e, batsman) => {
+        indexWindow.webContents.send('unfade-batsman', batsman)
+    })
 })
 
 app.on('window-all-closed', () => {

@@ -5,6 +5,8 @@ const createMatch = require('../match/createMatch')
 
 const form = document.querySelector('form')
 
+document.querySelector('button').focus()
+
 form.addEventListener('submit', e => {
     e.preventDefault()
     const team1FileName = document.querySelector('#team1FileName').value
