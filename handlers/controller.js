@@ -1,3 +1,4 @@
+
 let matchState
 
 //ball types
@@ -20,12 +21,92 @@ const endOfInnings = () => {
     matchState.live.batsman2 = matchState.battingTeam.playerList[1]
     matchState.live.striker = matchState.live.batsman1
     matchState.live.bowler = matchState.bowlingTeam.playerList[10]
+
     ipcRenderer.send('controller-setup', matchState)
+
+    bowlerDropdown.innerHTML = ""
+    let selectBowlerOption = document.createElement('option')
+    selectBowlerOption.appendChild(document.createTextNode('Select Bowler'))
+    selectBowlerOption.selected = true
+    selectBowlerOption.disabled = true
+    bowlerDropdown.appendChild(selectBowlerOption)
+
+    wicketFielder.innerHTML = ""
+
+    let selectFielderOption = document.createElement('option')
+    selectFielderOption.appendChild(document.createTextNode('Select Fielder'))
+    selectFielderOption.selected = true
+    selectFielderOption.disabled = true
+    wicketFielder.appendChild(selectFielderOption)
+
+    runoutFielder.innerHTML = ""
+    let selectROFielderOption = document.createElement('option')
+    selectROFielderOption.appendChild(document.createTextNode('Select Fielder'))
+    selectROFielderOption.selected = true
+    selectROFielderOption.disabled = true
+    runoutFielder.appendChild(selectROFielderOption)
+
+    batsmanDropdown.innerHTML = ""
+    let selectBatsman = document.createElement('option')
+    selectBatsman.appendChild(document.createTextNode('Select Batsman'))
+    selectBatsman.selected = true
+    selectBatsman.disabled = true
+    batsmanDropdown.appendChild(selectBatsman)
+
+    const bowlingTeam = matchState.bowlingTeam.playerList
+    //populate fielder dropdowns
+    bowlingTeam.forEach(playerObj => {
+
+        //add (SUB) in the name of sub fielder(12th man)
+        playerName = bowlingTeam.indexOf(playerObj) === (bowlingTeam.length - 1) ? playerObj.name + " (SUB)" : playerObj.name
+
+        //add (WK) in the name of wicket Keeper
+        playerName = matchState.bowlingTeam.wk === playerObj ? playerObj.name + " (WK)" : playerName
+
+        let player1 = document.createElement('option')
+        player1.appendChild(document.createTextNode(playerName))
+        player1.value = playerObj.name
+
+        let player2 = document.createElement('option')
+        player2.appendChild(document.createTextNode(playerName))
+        player2.value = playerObj.name
+
+        wicketFielderDropdown.appendChild(player1)
+        runoutFielderDropdown.appendChild(player2)
+    })
+
+    //remove sub fielder
+    let bowlersList = bowlingTeam.slice(0, 11)
+
+    //populate bowler dropdown
+    bowlersList.forEach(playerObj => {
+        let player = document.createElement('option')
+        player.appendChild(document.createTextNode(playerObj.name))
+        player.value = playerObj.name
+        bowlerDropdown.appendChild(player)
+    })
+
+    const battingTeam = matchState.battingTeam.playerList
+    //remove openers
+    let batsmanList = battingTeam.slice(2, 11)
+
+    //populate batsman dropdown
+    batsmanList.forEach(playerObj => {
+        let player = document.createElement('option')
+        player.appendChild(document.createTextNode(playerObj.name))
+        player.value = playerObj.name
+        batsmanDropdown.appendChild(player)
+    })
+
     updateMain()
 }
 
 
 const updateMain = () => {
+    ballRadio.checked = true
+    runsRadio.checked = true
+    wicketFielder.selectedIndex = 0
+    runoutFielder.selectedIndex = 0
     ipcRenderer.send('update-main', matchState)
 }
 
@@ -53,8 +134,6 @@ const playBall = (runs, boundary) => {
     if (penaltiesRadio.checked) {
         matchState.battingTeam.batStats.runs += runs
         matchState.bowlingTeam.extras.penalties += runs
-        ballRadio.checked = true
-        runsRadio.checked = true
         updateMain()
         return
     }
@@ -97,8 +176,6 @@ const playBall = (runs, boundary) => {
         matchState.bowlingTeam.extras.legByes += runs
     }
 
-    ballRadio.checked = true
-    runsRadio.checked = true
     if (runs % 2 === 1) changeStriker()
     if (matchState.battingTeam.batStats.balls % 6 == 0) changeStriker()
     updateMain()
@@ -174,6 +251,28 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
         batsmanDropdown.style.visibility = 'visible'
         addBatsmanButton.style.visibility = 'visible'
         ipcRenderer.send('fade-batsman', matchState.live.striker)
+        if (btn.id === 'runout') {
+            if (wideRadio.checked) {
+                matchState.live.bowler.bowlStats.runs++
+                matchState.battingTeam.batStats.runs++
+                matchState.live.bowler.bowlStats.wides++
+                matchState.bowlingTeam.extras.wides++
+            } else if (noBallRadio.checked) {
+                matchState.live.bowler.bowlStats.runs++
+                matchState.battingTeam.batStats.runs++
+                matchState.live.bowler.bowlStats.noBalls++
+                matchState.bowlingTeam.extras.noBalls++
+            } else {
+                matchState.battingTeam.batStats.balls++
+                matchState.live.bowler.bowlStats.balls++
+                matchState.live.striker.batStats.balls++
+            }
+        } else {
+            matchState.battingTeam.batStats.balls++
+            matchState.live.bowler.bowlStats.balls++
+            matchState.live.striker.batStats.balls++
+        }
+
     })
 
 })
