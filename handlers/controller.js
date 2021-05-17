@@ -1,4 +1,3 @@
-
 let matchState
 
 //ball types
@@ -22,7 +21,7 @@ const endOfInnings = () => {
     matchState.live.striker = matchState.live.batsman1
     matchState.live.bowler = matchState.bowlingTeam.playerList[10]
 
-    ipcRenderer.send('controller-setup', matchState)
+    // ipcRenderer.send('controller-setup', matchState)
 
     bowlerDropdown.innerHTML = ""
     let selectBowlerOption = document.createElement('option')
@@ -129,56 +128,58 @@ ipcRenderer.on('controller-setup', (e, match) => {
 })
 
 const playBall = (runs, boundary) => {
-    runs = parseInt(runs)
-    //check penalty
-    if (penaltiesRadio.checked) {
-        matchState.battingTeam.batStats.runs += runs
-        matchState.bowlingTeam.extras.penalties += runs
-        updateMain()
-        return
-    }
-
-    //check ball type
-    if (ballRadio.checked) {
-        matchState.battingTeam.batStats.balls++
-        matchState.live.bowler.bowlStats.balls++
-        matchState.live.striker.batStats.balls++
-    } else if (noBallRadio.checked) {
-        matchState.bowlingTeam.extras.noBalls++
-        matchState.live.bowler.bowlStats.noBalls++
-        matchState.live.bowler.bowlStats.runs++
-        matchState.battingTeam.batStats.runs++
-    } else if (wideRadio.checked) {
-        byesRadio.checked = true
-        matchState.bowlingTeam.extras.wides++
-        matchState.live.bowler.bowlStats.wides++
-        matchState.live.bowler.bowlStats.runs++
-        matchState.battingTeam.batStats.runs++
-    }
-
-    //check bat type
-    matchState.battingTeam.batStats.runs += runs
-    if (runsRadio.checked) {
-        matchState.live.striker.batStats.runs += runs
-        matchState.live.bowler.bowlStats.runs += runs
-        if (boundary) {
-            if (runs === 4) {
-                matchState.battingTeam.batStats.fours++
-                matchState.live.striker.batStats.fours++
-            } else {
-                matchState.battingTeam.batStats.sixes++
-                matchState.live.striker.batStats.sixes++
-            }
+    if (addBatsmanButton.style.visibility !== 'visible') {
+        runs = parseInt(runs)
+        //check penalty
+        if (penaltiesRadio.checked) {
+            matchState.battingTeam.batStats.runs += runs
+            matchState.bowlingTeam.extras.penalties += runs
+            updateMain()
+            return
         }
-    } else if (byesRadio.checked) {
-        matchState.bowlingTeam.extras.byes += runs
-    } else if (legByesRadio.checked) {
-        matchState.bowlingTeam.extras.legByes += runs
-    }
 
-    if (runs % 2 === 1) changeStriker()
-    if (matchState.battingTeam.batStats.balls % 6 == 0) changeStriker()
-    updateMain()
+        //check ball type
+        if (ballRadio.checked) {
+            matchState.battingTeam.batStats.balls++
+            matchState.live.bowler.bowlStats.balls++
+            matchState.live.striker.batStats.balls++
+        } else if (noBallRadio.checked) {
+            matchState.bowlingTeam.extras.noBalls++
+            matchState.live.bowler.bowlStats.noBalls++
+            matchState.live.bowler.bowlStats.runs++
+            matchState.battingTeam.batStats.runs++
+        } else if (wideRadio.checked) {
+            byesRadio.checked = true
+            matchState.bowlingTeam.extras.wides++
+            matchState.live.bowler.bowlStats.wides++
+            matchState.live.bowler.bowlStats.runs++
+            matchState.battingTeam.batStats.runs++
+        }
+
+        //check bat type
+        matchState.battingTeam.batStats.runs += runs
+        if (runsRadio.checked) {
+            matchState.live.striker.batStats.runs += runs
+            matchState.live.bowler.bowlStats.runs += runs
+            if (boundary) {
+                if (runs === 4) {
+                    matchState.battingTeam.batStats.fours++
+                    matchState.live.striker.batStats.fours++
+                } else {
+                    matchState.battingTeam.batStats.sixes++
+                    matchState.live.striker.batStats.sixes++
+                }
+            }
+        } else if (byesRadio.checked) {
+            matchState.bowlingTeam.extras.byes += runs
+        } else if (legByesRadio.checked) {
+            matchState.bowlingTeam.extras.legByes += runs
+        }
+
+        if (runs % 2 === 1) changeStriker()
+        if (matchState.battingTeam.batStats.balls % 6 == 0) changeStriker()
+        updateMain()
+    }
 }
 
 const changeStrike = document.getElementById('changeStrikeButton')
@@ -195,7 +196,7 @@ const changeStriker = () => {
 
 //Change Bowler
 bowlerDropdown.addEventListener('change', function () {
-    matchState.live.bowler = matchState.bowlingTeam.playerList.filter(player => player.name === bowlerDropdown.value)[0]
+    matchState.live.bowler = matchState.bowlingTeam.playerList.find(player => player.name === bowlerDropdown.value)
     updateMain()
     bowlerDropdown.selectedIndex = 0
 })
@@ -204,17 +205,20 @@ bowlerDropdown.addEventListener('change', function () {
 //Add batsman
 const addBatsmanButton = document.getElementById('addBatsmanButton')
 addBatsmanButton.addEventListener('click', () => {
-    let outBatsman = (matchState.live.batsman1.wicket.method != null) ? matchState.live.batsman1 : matchState.live.batsman2
-    let newBatsmanName = batsmanDropdown.value
-    replaceBatsman(newBatsmanName, outBatsman)
-    updateMain()
-    ipcRenderer.send('unfade-batsman', newBatsmanName)
-    batsmanDropdown.style.visibility = 'hidden'
-    addBatsmanButton.style.visibility = 'hidden'
+    if (batsmanDropdown.selectedIndex !== 0) {
+        let outBatsman = (matchState.live.batsman1.wicket.method != null) ? matchState.live.batsman1 : matchState.live.batsman2
+        let newBatsmanName = batsmanDropdown.value
+        replaceBatsman(newBatsmanName, outBatsman)
+        updateMain()
+        ipcRenderer.send('unfade-batsman', newBatsmanName)
+        batsmanDropdown.style.visibility = 'hidden'
+        addBatsmanButton.style.visibility = 'hidden'
+    }
+
 })
 
 replaceBatsman = (newBatsmanName, oldBatsman) => {
-    let newBatsman = matchState.battingTeam.playerList.filter(player => player.name === newBatsmanName)[0]
+    let newBatsman = matchState.battingTeam.playerList.find(player => player.name === newBatsmanName)
 
     if (oldBatsman.wicket.method === 'retired') {
         let batsmanOption = document.createElement('option')
@@ -272,7 +276,7 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
             matchState.live.bowler.bowlStats.balls++
             matchState.live.striker.batStats.balls++
         }
-
+        if (matchState.battingTeam.batStats.balls % 6 == 0) changeStriker()
     })
 
 })
@@ -303,31 +307,31 @@ caughtButton.addEventListener('click', () => {
     matchState.live.striker.wicket.out = true
     matchState.live.striker.wicket.method = 'caught'
     matchState.live.striker.wicket.bowler = matchState.live.bowler
-    matchState.live.striker.wicket.fielder = matchState.bowlingTeam.playerList.filter(player => player.name === wicketFielder.value)[0]
+    matchState.live.striker.wicket.fielder = matchState.bowlingTeam.playerList.find(player => player.name === wicketFielder.value)
 
     matchState.battingTeam.batStats.wickets++
     matchState.live.bowler.bowlStats.wickets++
 
-    matchState.bowlingTeam.playerList.filter(player => player.name === wicketFielder.value)[0].fieldStats.catches++
+    matchState.bowlingTeam.playerList.find(player => player.name === wicketFielder.value).fieldStats.catches++
 })
 
 stumpedButton.addEventListener('click', () => {
     matchState.live.striker.wicket.out = true
     matchState.live.striker.wicket.method = 'stumped'
     matchState.live.striker.wicket.bowler = matchState.live.bowler
-    matchState.live.striker.wicket.fielder = matchState.bowlingTeam.playerList.filter(player => player.name === wicketFielder.value)[0]
+    matchState.live.striker.wicket.fielder = matchState.bowlingTeam.playerList.find(player => player.name === wicketFielder.value)
 
     matchState.battingTeam.batStats.wickets++
     matchState.live.bowler.bowlStats.wickets++
 
-    matchState.bowlingTeam.playerList.filter(player => player.name === wicketFielder.value)[0].fieldStats.stumpings++
+    matchState.bowlingTeam.playerList.find(player => player.name === wicketFielder.value).fieldStats.stumpings++
 })
 
 runoutButton.addEventListener('click', () => {
     matchState.live.striker.wicket.out = true
     matchState.live.striker.wicket.method = 'runout'
-    matchState.live.striker.wicket.fielder = matchState.bowlingTeam.playerList.filter(player => player.name === runoutFielder.value)[0]
+    matchState.live.striker.wicket.fielder = matchState.bowlingTeam.playerList.find(player => player.name === runoutFielder.value)
 
     matchState.battingTeam.batStats.wickets++
-    matchState.bowlingTeam.playerList.filter(player => player.name === runoutFielder.value)[0].fieldStats.runouts++
+    matchState.bowlingTeam.playerList.find(player => player.name === runoutFielder.value).fieldStats.runouts++
 })
