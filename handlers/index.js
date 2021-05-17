@@ -1,4 +1,5 @@
 const { ipcRenderer, ipcMain } = require("electron")
+const { getOversText } = require('../match/utils')
 
 //centre score
 const bowlTeamShort = document.querySelector("#bowlTeamShort")
@@ -66,7 +67,7 @@ ipcRenderer.on('update-main', (e, matchState) => {
     bowlTeamShort.innerHTML = matchState.bowlingTeam.short + " v"
     batTeamShort.innerHTML = matchState.battingTeam.short
     runsWickets.innerHTML = matchState.battingTeam.batStats.runs + "-" + matchState.battingTeam.batStats.wickets
-    let teamOversText = (Math.trunc(matchState.battingTeam.batStats.balls / 6) + '.' + (matchState.battingTeam.batStats.balls % 6)).replace('.0', '')
+    let teamOversText = getOversText(matchState.battingTeam.batStats.balls)
     overs.innerHTML = teamOversText
     // msgDisplay.innerHTML = "READY TO PLAY"
 
@@ -88,7 +89,7 @@ ipcRenderer.on('update-main', (e, matchState) => {
 
     bowler.name.innerHTML = matchState.live.bowler.name
     bowler.score.innerHTML = matchState.live.bowler.bowlStats.wickets + '-' + matchState.live.bowler.bowlStats.runs
-    let bowlerOverText = (Math.trunc(matchState.live.bowler.bowlStats.balls / 6) + '.' + (matchState.live.bowler.bowlStats.balls % 6)).replace('.0', '')
+    let bowlerOverText = getOversText(matchState.live.bowler.bowlStats.balls)
     bowler.overs.innerHTML = bowlerOverText
 })
 

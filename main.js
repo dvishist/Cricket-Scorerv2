@@ -24,6 +24,7 @@ app.on('ready', () => {
             nodeIntegration: true
         },
         show: false,
+        title: 'CRICKET SCORER V2.0'
     })
     indexWindow.setMenu(mainMenu)
     indexWindow.maximize()
@@ -33,7 +34,7 @@ app.on('ready', () => {
     const setupWindow = new BrowserWindow({
         width: 450,
         height: 600,
-        title: 'Setup Cricket Match',
+        title: 'SETUP CRICKET MATCH',
         show: false,
         resizable: false,
         webPreferences: {
@@ -52,7 +53,7 @@ app.on('ready', () => {
             height: 700,
             x: 300,
             y: 155,
-            title: 'Match Controller',
+            title: 'MATCH CONTROLLER',
             show: false,
             resizable: false,
             webPreferences: {
@@ -69,6 +70,19 @@ app.on('ready', () => {
         controllerWindow.webContents.on('dom-ready', () => {
             controllerWindow.webContents.send('controller-setup', match)
         })
+
+        const scorecardWindow = new BrowserWindow({
+            title: 'SCORECARDS',
+            show: false,
+            resizable: false,
+            webPreferences: {
+                nodeIntegration: true,
+                enableRemoteModule: true
+            },
+        })
+        scorecardWindow.setMenu(null)
+        scorecardWindow.show()
+        scorecardWindow.loadFile("views/scorecardWindow.html")
     })
 
     ipcMain.on('controller-Setup', (e, matchState) => {

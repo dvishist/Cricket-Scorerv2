@@ -1,5 +1,4 @@
 class Player {
-
     constructor(playerName) {
         this.name = playerName.trim()
         this.batStats = {
@@ -31,14 +30,6 @@ class Player {
                 bowler: null,
                 fielder: null
             }
-    }
-
-    get strikeRate() {
-        return (this.batStats.runs / this.batStats.balls * 100).toPrecision(5)
-    }
-
-    get economy() {
-        return (this.bowlStats.runs / this.bowlStats.balls * 6).toPrecision(3)
     }
 }
 
