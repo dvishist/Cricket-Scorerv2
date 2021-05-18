@@ -1,4 +1,6 @@
 const { ipcRenderer } = require("electron")
+let activityStack = []
+const { cloneDeep } = require('lodash')
 
 //dropdowns
 const bowlerDropdown = document.querySelector("#bowlerDropdown")
@@ -172,3 +174,12 @@ const assessResult = () => {
     }
     resultRadio.click()
 }
+
+
+ipcRenderer.on('undo', e => {
+    if (activityStack.length > 1) {
+        activityStack.pop()
+        matchState = cloneDeep(activityStack.pop())
+        updateMain()
+    }
+})

@@ -15,6 +15,33 @@ const mainMenu = Menu.buildFromTemplate([
     }
 ])
 
+const controlMenu = Menu.buildFromTemplate([
+    {
+        label: 'File',
+        submenu: [
+            {
+                label: 'Toggle DevTools',
+                click(item, focusedWindow) {
+                    focusedWindow.toggleDevTools()
+                },
+                accelerator: 'Ctrl+I'
+            }
+        ]
+    },
+    {
+        label: 'Edit',
+        submenu: [
+            {
+                label: 'Undo',
+                click(item, focusedWindow) {
+                    focusedWindow.webContents.send('undo')
+                },
+                accelerator: 'Ctrl+Z'
+            }
+        ]
+    },
+
+])
 
 
 app.on('ready', () => {
@@ -24,7 +51,7 @@ app.on('ready', () => {
             nodeIntegration: true
         },
         show: false,
-        title: 'CRICKET SCORER V2.0                  ©Vishist Dura 2021'
+        title: 'CRICKET SCORER V2 ©Vishist Dura 2021'
     })
     indexWindow.setMenu(mainMenu)
     indexWindow.maximize()
@@ -64,7 +91,7 @@ app.on('ready', () => {
         controllerWindow.setMenu(null)
         controllerWindow.show()
         controllerWindow.loadFile("views/controllerWindow.html")
-        controllerWindow.setMenu(mainMenu)
+        controllerWindow.setMenu(controlMenu)
 
         indexWindow.webContents.send('match-created', match)
         controllerWindow.webContents.on('dom-ready', () => {

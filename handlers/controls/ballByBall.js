@@ -21,6 +21,8 @@ const updateMain = () => {
 
     //update msg display by auto clicking the checked radio
     document.querySelector('[name="msg"]:checked').click()
+
+    activityStack.push(cloneDeep(matchState))
 }
 
 // ball by ball buttons
