@@ -11,6 +11,7 @@ const lastWicketRadio = document.getElementById('lastWicketRadio')
 const partnershipRadio = document.getElementById('partnershipRadio')
 const targetRadio = document.getElementById('targetRadio')
 const chaseRadio = document.getElementById('chaseRadio')
+const resultRadio = document.getElementById('resultRadio')
 
 messageRadio.addEventListener('click', e => {
     sendMessage(textMessage.value)
@@ -71,5 +72,16 @@ reqRunRateRadio.addEventListener('click', e => {
         let runs = matchState.target - matchState.battingTeam.batStats.runs
         let balls = (matchState.overs * 6) - (matchState.battingTeam.batStats.balls)
         sendMessage("REQUIRED RUN RATE: " + getRunRate({ batStats: { runs, balls } }))
+    }
+})
+
+
+resultRadio.addEventListener('click', e => {
+    if (!matchState.result) {
+        chaseRadio.click()
+    } else if (matchState.result.method) {
+        sendMessage(matchState.result.winner.short + " WINS BY " + matchState.result.margin + " " + matchState.result.method)
+    } else {
+        sendMessage("MATCH TIED")
     }
 })
