@@ -23,6 +23,7 @@ const updateMain = () => {
     document.querySelector('[name="msg"]:checked').click()
 
     activityStack.push(cloneDeep(matchState))
+    if (activityStack.length > 20) activityStack.shift()
 }
 
 // ball by ball buttons
