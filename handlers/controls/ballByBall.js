@@ -42,7 +42,7 @@ ipcRenderer.on('controller-setup', (e, match) => {
 })
 
 const playBall = (runs, boundary) => {
-    if (addBatsmanButton.style.visibility !== 'visible') {
+    if (addBatsmanButton.style.visibility !== 'visible' && !matchState.result) {
         runs = parseInt(runs)
         //check penalty
         if (penaltiesRadio.checked) {

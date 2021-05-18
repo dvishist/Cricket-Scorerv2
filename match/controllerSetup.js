@@ -72,6 +72,7 @@ const endOfInnings = () => {
     ipcRenderer.send('unfade-batsman')
     batsmanDropdown.style.visibility = 'hidden'
     addBatsmanButton.style.visibility = 'hidden'
+    targetRadio.click()
 
     bowlerDropdown.innerHTML = ""
     let selectBowlerOption = document.createElement('option')
@@ -164,4 +165,5 @@ const assessResult = () => {
     } else {
         matchState.result.winner = "TIE"
     }
+    resultRadio.click()
 }

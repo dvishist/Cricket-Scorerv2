@@ -66,40 +66,41 @@ runoutButton.addEventListener('click', () => {
 
 Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
     btn.addEventListener('click', () => {
-        batsmanDropdown.style.visibility = 'visible'
-        addBatsmanButton.style.visibility = 'visible'
-        ipcRenderer.send('fade-batsman', matchState.live.striker)
-        if (btn.id === 'runout') {
-            if (wideRadio.checked) {
-                matchState.live.bowler.bowlStats.runs++
-                matchState.battingTeam.batStats.runs++
-                matchState.live.bowler.bowlStats.wides++
-                matchState.bowlingTeam.extras.wides++
-            } else if (noBallRadio.checked) {
-                matchState.live.bowler.bowlStats.runs++
-                matchState.battingTeam.batStats.runs++
-                matchState.live.bowler.bowlStats.noBalls++
-                matchState.bowlingTeam.extras.noBalls++
-            } else {
+        if (addBatsmanButton.style.visibility !== 'visible' && !matchState.result) {
+            batsmanDropdown.style.visibility = 'visible'
+            addBatsmanButton.style.visibility = 'visible'
+            ipcRenderer.send('fade-batsman', matchState.live.striker)
+            if (btn.id === 'runout') {
+                if (wideRadio.checked) {
+                    matchState.live.bowler.bowlStats.runs++
+                    matchState.battingTeam.batStats.runs++
+                    matchState.live.bowler.bowlStats.wides++
+                    matchState.bowlingTeam.extras.wides++
+                } else if (noBallRadio.checked) {
+                    matchState.live.bowler.bowlStats.runs++
+                    matchState.battingTeam.batStats.runs++
+                    matchState.live.bowler.bowlStats.noBalls++
+                    matchState.bowlingTeam.extras.noBalls++
+                } else {
+                    matchState.battingTeam.batStats.balls++
+                    matchState.live.bowler.bowlStats.balls++
+                    matchState.live.striker.batStats.balls++
+                }
+            } else if (btn.id !== 'retired') {
                 matchState.battingTeam.batStats.balls++
                 matchState.live.bowler.bowlStats.balls++
                 matchState.live.striker.batStats.balls++
             }
-        } else if (btn.id !== 'retired') {
-            matchState.battingTeam.batStats.balls++
-            matchState.live.bowler.bowlStats.balls++
-            matchState.live.striker.batStats.balls++
-        }
-        if (matchState.battingTeam.batStats.balls % 6 == 0) changeStriker()
+            if (matchState.battingTeam.batStats.balls % 6 == 0) changeStriker()
 
-        //if overs completed or team all out
-        if (matchState.battingTeam.batStats.balls === matchState.overs * 6 || matchState.battingTeam.batStats.wickets === 10) {
-            if (matchState.innings === 2) {
-                assessResult()
-            } else {
-                endOfInnings()
+            //if overs completed or team all out
+            if (matchState.battingTeam.batStats.balls === matchState.overs * 6 || matchState.battingTeam.batStats.wickets === 10) {
+                if (matchState.innings === 2) {
+                    assessResult()
+                } else {
+                    endOfInnings()
+                }
             }
         }
     })
-
 })
