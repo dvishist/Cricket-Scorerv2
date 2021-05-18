@@ -42,3 +42,11 @@ partnershipRadio.addEventListener('click', e => {
         sendMessage("PARTNERSHIP: " + runs.toString() + " RUNS FROM " + balls.toString() + " BALLS")
     }
 })
+
+targetRadio.addEventListener('click', e => {
+    if (matchState.innings === 1) {
+        sendMessage("1ST INNINGS")
+    } else {
+        sendMessage("TARGET " + matchState.target.toString())
+    }
+})
