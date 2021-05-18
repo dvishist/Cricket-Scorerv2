@@ -24,7 +24,7 @@ app.on('ready', () => {
             nodeIntegration: true
         },
         show: false,
-        title: 'CRICKET SCORER V2.0'
+        title: 'CRICKET SCORER V2.0                  ©Vishist Dura 2021'
     })
     indexWindow.setMenu(mainMenu)
     indexWindow.maximize()

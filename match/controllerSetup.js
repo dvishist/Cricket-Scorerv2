@@ -8,6 +8,11 @@ const runoutFielderDropdown = document.querySelector("#runoutFielder")
 
 const { getStrikeRate, getEconomy, getRunRate, findPlayer } = require('../match/utils')
 
+const endOfInningsButton = document.getElementById('endOfInnings')
+endOfInningsButton.addEventListener('click', e => {
+    endOfInnings()
+    endOfInningsButton.style.visibility = 'hidden'
+})
 
 
 ipcRenderer.on('controller-setup', (e, match) => {

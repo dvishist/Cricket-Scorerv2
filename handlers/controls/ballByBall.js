@@ -42,7 +42,7 @@ ipcRenderer.on('controller-setup', (e, match) => {
 })
 
 const playBall = (runs, boundary) => {
-    if (addBatsmanButton.style.visibility !== 'visible' && !matchState.result) {
+    if (addBatsmanButton.style.visibility !== 'visible' && !matchState.result && matchState.innings !== 'break') {
         runs = parseInt(runs)
         //check penalty
         if (penaltiesRadio.checked) {
@@ -101,7 +101,8 @@ const playBall = (runs, boundary) => {
             if (matchState.innings === 2) {
                 assessResult()
             } else {
-                endOfInnings()
+                endOfInningsButton.style.visibility = 'visible'
+                matchState.innings = 'break'
             }
         }
         updateMain()

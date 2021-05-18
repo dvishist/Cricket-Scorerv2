@@ -4,7 +4,10 @@ const getStrikeRate = player => (player.batStats.runs / player.batStats.balls * 
 
 const getEconomy = player => (player.bowlStats.runs / player.bowlStats.balls * 6).toPrecision(3)
 
-const getRunRate = team => (team.batStats.runs / team.batStats.balls * 6).toPrecision(3)
+const getRunRate = team => {
+    if (team.batStats.balls == 0) return 0
+    else return (team.batStats.runs / team.batStats.balls * 6).toPrecision(3)
+}
 
 const findPlayer = (team, playerName) => team.playerList.find(player => player.name === playerName)
 

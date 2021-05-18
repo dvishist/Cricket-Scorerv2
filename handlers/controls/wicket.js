@@ -66,7 +66,7 @@ runoutButton.addEventListener('click', () => {
 
 Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
     btn.addEventListener('click', () => {
-        if (addBatsmanButton.style.visibility !== 'visible' && !matchState.result) {
+        if (addBatsmanButton.style.visibility !== 'visible' && !matchState.result && matchState.innings !== 'break') {
             batsmanDropdown.style.visibility = 'visible'
             addBatsmanButton.style.visibility = 'visible'
             ipcRenderer.send('fade-batsman', matchState.live.striker)
@@ -98,7 +98,8 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
                 if (matchState.innings === 2) {
                     assessResult()
                 } else {
-                    endOfInnings()
+                    endOfInningsButton.style.visibility = 'visible'
+                    matchState.innings = 'break'
                 }
             }
         }
