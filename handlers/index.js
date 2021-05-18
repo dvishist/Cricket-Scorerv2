@@ -119,3 +119,7 @@ ipcRenderer.on('unfade-batsman', (e, batsman) => {
         batsman2.runs.style.opacity = '100%'
     }
 })
+
+ipcRenderer.on('send-message', (e, msg) => {
+    msgDisplay.innerHTML = msg
+})

@@ -80,9 +80,9 @@ app.on('ready', () => {
                 enableRemoteModule: true
             },
         })
-        scorecardWindow.setMenu(null)
-        scorecardWindow.show()
-        scorecardWindow.loadFile("views/scorecardWindow.html")
+        // scorecardWindow.setMenu(null)
+        // scorecardWindow.show()
+        // scorecardWindow.loadFile("views/scorecardWindow.html")
     })
 
     ipcMain.on('controller-Setup', (e, matchState) => {
@@ -103,6 +103,10 @@ app.on('ready', () => {
 
     ipcMain.on('unfade-batsman', (e, batsman) => {
         indexWindow.webContents.send('unfade-batsman', batsman)
+    })
+
+    ipcMain.on('send-message', (e, msg) => {
+        indexWindow.webContents.send('send-message', msg)
     })
 })
 
