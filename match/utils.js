@@ -6,4 +6,6 @@ const getEconomy = player => (player.bowlStats.runs / player.bowlStats.balls * 6
 
 const getRunRate = team => (team.batStats.runs / team.batStats.balls * 6).toPrecision(3)
 
-module.exports = { getOversText, getStrikeRate, getEconomy, getRunRate }
+const findPlayer = (team, playerName) => team.playerList.find(player => player.name === playerName)
+
+module.exports = { getOversText, getStrikeRate, getEconomy, getRunRate, findPlayer }

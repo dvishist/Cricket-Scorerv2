@@ -1,6 +1,6 @@
 //Change Bowler
 bowlerDropdown.addEventListener('change', function () {
-    matchState.live.bowler = matchState.bowlingTeam.playerList.find(player => player.name === bowlerDropdown.value)
+    matchState.live.bowler = findPlayer(matchState.bowlingTeam, bowlerDropdown.value)
     updateMain()
     bowlerDropdown.selectedIndex = 0
 })
@@ -14,7 +14,7 @@ addBatsmanButton.addEventListener('click', () => {
         let newBatsmanName = batsmanDropdown.value
         replaceBatsman(newBatsmanName, outBatsman)
         updateMain()
-        ipcRenderer.send('unfade-batsman', newBatsmanName)
+        ipcRenderer.send('unfade-batsman')
         batsmanDropdown.style.visibility = 'hidden'
         addBatsmanButton.style.visibility = 'hidden'
     }
@@ -22,7 +22,7 @@ addBatsmanButton.addEventListener('click', () => {
 })
 
 replaceBatsman = (newBatsmanName, oldBatsman) => {
-    let newBatsman = matchState.battingTeam.playerList.find(player => player.name === newBatsmanName)
+    let newBatsman = findPlayer(matchState.battingTeam, newBatsmanName)
 
     if (oldBatsman.wicket.method === 'retired') {
         if (oldBatsman.batStats.runs < 1 && oldBatsman.batStats.balls < 1) oldBatsman.wicket.method = null

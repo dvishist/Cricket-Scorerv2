@@ -107,7 +107,7 @@ ipcRenderer.on('fade-batsman', (e, batsman) => {
 })
 
 
-ipcRenderer.on('unfade-batsman', (e, batsman) => {
+ipcRenderer.on('unfade-batsman', (e) => {
     batsman1.name.style.opacity = '100%'
     batsman1.balls.style.opacity = '100%'
     batsman1.runs.style.opacity = '100%'

@@ -35,33 +35,33 @@ caughtButton.addEventListener('click', () => {
     matchState.live.striker.wicket.out = true
     matchState.live.striker.wicket.method = 'caught'
     matchState.live.striker.wicket.bowler = matchState.live.bowler
-    matchState.live.striker.wicket.fielder = matchState.bowlingTeam.playerList.find(player => player.name === wicketFielder.value)
+    matchState.live.striker.wicket.fielder = findPlayer(matchState.bowlingTeam, wicketFielder.value)
 
     matchState.battingTeam.batStats.wickets++
     matchState.live.bowler.bowlStats.wickets++
 
-    matchState.bowlingTeam.playerList.find(player => player.name === wicketFielder.value).fieldStats.catches++
+    findPlayer(matchState.bowlingTeam, wicketFielder.value).fieldStats.catches++
 })
 
 stumpedButton.addEventListener('click', () => {
     matchState.live.striker.wicket.out = true
     matchState.live.striker.wicket.method = 'stumped'
     matchState.live.striker.wicket.bowler = matchState.live.bowler
-    matchState.live.striker.wicket.fielder = matchState.bowlingTeam.playerList.find(player => player.name === wicketFielder.value)
+    matchState.live.striker.wicket.fielder = findPlayer(matchState.bowlingTeam, wicketFielder.value)
 
     matchState.battingTeam.batStats.wickets++
     matchState.live.bowler.bowlStats.wickets++
 
-    matchState.bowlingTeam.playerList.find(player => player.name === wicketFielder.value).fieldStats.stumpings++
+    findPlayer(matchState.bowlingTeam, wicketFielder.value).fieldStats.stumpings++
 })
 
 runoutButton.addEventListener('click', () => {
     matchState.live.striker.wicket.out = true
     matchState.live.striker.wicket.method = 'runout'
-    matchState.live.striker.wicket.fielder = matchState.bowlingTeam.playerList.find(player => player.name === runoutFielder.value)
-
+    let fielder = findPlayer(matchState.bowlingTeam, runoutFielder.value)
+    matchState.live.striker.wicket.fielder = fielder
     matchState.battingTeam.batStats.wickets++
-    matchState.bowlingTeam.playerList.find(player => player.name === runoutFielder.value).fieldStats.runouts++
+    fielder.fieldStats.runouts++
 })
 
 Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
@@ -91,6 +91,15 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
             matchState.live.striker.batStats.balls++
         }
         if (matchState.battingTeam.batStats.balls % 6 == 0) changeStriker()
+
+        //if overs completed or team all out
+        if (matchState.battingTeam.batStats.balls === matchState.overs * 6 || matchState.battingTeam.batStats.wickets === 10) {
+            if (matchState.innings === 2) {
+                assessResult()
+            } else {
+                endOfInnings()
+            }
+        }
     })
 
 })

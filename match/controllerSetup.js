@@ -1,4 +1,4 @@
-const { ipcRenderer, ipcMain } = require("electron")
+const { ipcRenderer } = require("electron")
 
 //dropdowns
 const bowlerDropdown = document.querySelector("#bowlerDropdown")
@@ -6,7 +6,8 @@ const batsmanDropdown = document.querySelector("#batsmanDropdown")
 const wicketFielderDropdown = document.querySelector("#wicketFielder")
 const runoutFielderDropdown = document.querySelector("#runoutFielder")
 
-const { getStrikeRate, getEconomy, getRunRate } = require('../match/utils')
+const { getStrikeRate, getEconomy, getRunRate, findPlayer } = require('../match/utils')
+
 
 
 ipcRenderer.on('controller-setup', (e, match) => {
@@ -55,6 +56,7 @@ ipcRenderer.on('controller-setup', (e, match) => {
         player.value = playerObj.name
         batsmanDropdown.appendChild(player)
     })
+
 })
 
 
@@ -67,7 +69,9 @@ const endOfInnings = () => {
     matchState.live.striker = matchState.live.batsman1
     matchState.live.bowler = matchState.bowlingTeam.playerList[10]
 
-    // ipcRenderer.send('controller-setup', matchState)
+    ipcRenderer.send('unfade-batsman')
+    batsmanDropdown.style.visibility = 'hidden'
+    addBatsmanButton.style.visibility = 'hidden'
 
     bowlerDropdown.innerHTML = ""
     let selectBowlerOption = document.createElement('option')
@@ -144,4 +148,20 @@ const endOfInnings = () => {
     })
 
     updateMain()
+}
+
+
+const assessResult = () => {
+    matchState.result = {}
+    if (matchState.battingTeam.batStats.runs < matchState.bowlingTeam.batStats.runs) {
+        matchState.result.winner = matchState.bowlingTeam
+        matchState.result.margin = matchState.bowlingTeam.batStats.runs - matchState.battingTeam.batStats.runs
+        matchState.result.method = "RUNS"
+    } else if (matchState.battingTeam.batStats.runs >= matchState.target) {
+        matchState.result.winner = matchState.battingTeam
+        matchState.result.margin = 10 - matchState.battingTeam.batStats.wickets
+        matchState.result.method = "WICKETS"
+    } else {
+        matchState.result.winner = "TIE"
+    }
 }

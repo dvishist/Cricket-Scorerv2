@@ -92,7 +92,20 @@ const playBall = (runs, boundary) => {
 
         if (runs % 2 === 1) changeStriker()
         if (matchState.battingTeam.batStats.balls % 6 == 0) changeStriker()
+
+        //if overs completed or team all out
+        if (matchState.battingTeam.batStats.balls === matchState.overs * 6
+            || matchState.battingTeam.batStats.wickets === 10
+            || (matchState.innings === 2 && matchState.battingTeam.batStats.runs >= matchState.target)
+        ) {
+            if (matchState.innings === 2) {
+                assessResult()
+            } else {
+                endOfInnings()
+            }
+        }
         updateMain()
+
     }
 }
 
