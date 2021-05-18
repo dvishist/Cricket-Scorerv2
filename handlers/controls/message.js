@@ -50,3 +50,26 @@ targetRadio.addEventListener('click', e => {
         sendMessage("TARGET " + matchState.target.toString())
     }
 })
+
+chaseRadio.addEventListener('click', e => {
+    if (matchState.innings === 1) {
+        sendMessage("1ST INNINGS")
+    } else {
+        sendMessage(
+            "NEED "
+            + (matchState.target - matchState.battingTeam.batStats.runs).toString()
+            + " RUNS FROM "
+            + ((matchState.overs * 6) - (matchState.battingTeam.batStats.balls)).toString()
+            + " BALLS")
+    }
+})
+
+reqRunRateRadio.addEventListener('click', e => {
+    if (matchState.innings === 1) {
+        sendMessage("1ST INNINGS")
+    } else {
+        let runs = matchState.target - matchState.battingTeam.batStats.runs
+        let balls = (matchState.overs * 6) - (matchState.battingTeam.batStats.balls)
+        sendMessage("REQUIRED RUN RATE: " + getRunRate({ batStats: { runs, balls } }))
+    }
+})

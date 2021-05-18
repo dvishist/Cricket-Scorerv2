@@ -18,6 +18,9 @@ const updateMain = () => {
     wicketFielder.selectedIndex = 0
     runoutFielder.selectedIndex = 0
     ipcRenderer.send('update-main', matchState)
+
+    //update msg display by auto clicking the checked radio
+    document.querySelector('[name="msg"]:checked').click()
 }
 
 // ball by ball buttons
