@@ -31,7 +31,9 @@ class Team {
                 this.wk = player
             }
             player.name = player.name.trim()
-        });
+        })
+
+        this.fallOfWickets = []
     }
 
 }

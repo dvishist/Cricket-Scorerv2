@@ -108,16 +108,12 @@ ipcRenderer.on('fade-batsman', (e, batsman) => {
 
 
 ipcRenderer.on('unfade-batsman', (e, batsman) => {
-    console.log(batsman)
-    if (batsman1.name.innerHTML === batsman) {
-        batsman1.name.style.opacity = '100%'
-        batsman1.balls.style.opacity = '100%'
-        batsman1.runs.style.opacity = '100%'
-    } else {
-        batsman2.name.style.opacity = '100%'
-        batsman2.balls.style.opacity = '100%'
-        batsman2.runs.style.opacity = '100%'
-    }
+    batsman1.name.style.opacity = '100%'
+    batsman1.balls.style.opacity = '100%'
+    batsman1.runs.style.opacity = '100%'
+    batsman2.name.style.opacity = '100%'
+    batsman2.balls.style.opacity = '100%'
+    batsman2.runs.style.opacity = '100%'
 })
 
 ipcRenderer.on('send-message', (e, msg) => {

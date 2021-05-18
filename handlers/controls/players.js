@@ -30,6 +30,8 @@ replaceBatsman = (newBatsmanName, oldBatsman) => {
         batsmanOption.appendChild(document.createTextNode(oldBatsman.name))
         batsmanOption.value = oldBatsman.name
         batsmanDropdown.append(batsmanOption)
+    } else {
+        matchState.live.lastWicket = oldBatsman
     }
 
     batsmanDropdown.remove(batsmanDropdown.selectedIndex)
@@ -41,4 +43,5 @@ replaceBatsman = (newBatsmanName, oldBatsman) => {
         matchState.live.batsman2 = newBatsman
     }
     matchState.live.striker = newBatsman
+    matchState.battingTeam.fallOfWickets.push({ ...matchState.battingTeam.batStats })
 }

@@ -8,36 +8,6 @@ const runoutButton = document.getElementById('runout')
 const wicketFielder = document.getElementById('wicketFielder')
 const runoutFielder = document.getElementById('runoutFielder')
 
-Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
-    btn.addEventListener('click', () => {
-        batsmanDropdown.style.visibility = 'visible'
-        addBatsmanButton.style.visibility = 'visible'
-        ipcRenderer.send('fade-batsman', matchState.live.striker)
-        if (btn.id === 'runout') {
-            if (wideRadio.checked) {
-                matchState.live.bowler.bowlStats.runs++
-                matchState.battingTeam.batStats.runs++
-                matchState.live.bowler.bowlStats.wides++
-                matchState.bowlingTeam.extras.wides++
-            } else if (noBallRadio.checked) {
-                matchState.live.bowler.bowlStats.runs++
-                matchState.battingTeam.batStats.runs++
-                matchState.live.bowler.bowlStats.noBalls++
-                matchState.bowlingTeam.extras.noBalls++
-            } else {
-                matchState.battingTeam.batStats.balls++
-                matchState.live.bowler.bowlStats.balls++
-                matchState.live.striker.batStats.balls++
-            }
-        } else if (btn.id !== 'retired') {
-            matchState.battingTeam.batStats.balls++
-            matchState.live.bowler.bowlStats.balls++
-            matchState.live.striker.batStats.balls++
-        }
-        if (matchState.battingTeam.batStats.balls % 6 == 0) changeStriker()
-    })
-
-})
 
 bowledButton.addEventListener('click', () => {
     matchState.live.striker.wicket.out = true
@@ -92,4 +62,35 @@ runoutButton.addEventListener('click', () => {
 
     matchState.battingTeam.batStats.wickets++
     matchState.bowlingTeam.playerList.find(player => player.name === runoutFielder.value).fieldStats.runouts++
+})
+
+Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
+    btn.addEventListener('click', () => {
+        batsmanDropdown.style.visibility = 'visible'
+        addBatsmanButton.style.visibility = 'visible'
+        ipcRenderer.send('fade-batsman', matchState.live.striker)
+        if (btn.id === 'runout') {
+            if (wideRadio.checked) {
+                matchState.live.bowler.bowlStats.runs++
+                matchState.battingTeam.batStats.runs++
+                matchState.live.bowler.bowlStats.wides++
+                matchState.bowlingTeam.extras.wides++
+            } else if (noBallRadio.checked) {
+                matchState.live.bowler.bowlStats.runs++
+                matchState.battingTeam.batStats.runs++
+                matchState.live.bowler.bowlStats.noBalls++
+                matchState.bowlingTeam.extras.noBalls++
+            } else {
+                matchState.battingTeam.batStats.balls++
+                matchState.live.bowler.bowlStats.balls++
+                matchState.live.striker.batStats.balls++
+            }
+        } else if (btn.id !== 'retired') {
+            matchState.battingTeam.batStats.balls++
+            matchState.live.bowler.bowlStats.balls++
+            matchState.live.striker.batStats.balls++
+        }
+        if (matchState.battingTeam.batStats.balls % 6 == 0) changeStriker()
+    })
+
 })

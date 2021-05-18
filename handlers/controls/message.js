@@ -22,5 +22,23 @@ tossRadio.addEventListener('click', e => {
 })
 
 runRateRadio.addEventListener('click', e => {
-    sendMessage("Run Rate: " + getRunRate(matchState.battingTeam).toString())
+    sendMessage("RUN RATE: " + getRunRate(matchState.battingTeam).toString())
+})
+
+lastWicketRadio.addEventListener('click', e => {
+    if (matchState.live.lastWicket) {
+        let { name, batStats: { runs, balls } } = matchState.live.lastWicket
+        sendMessage("LAST WICKET:" + name + " " + runs.toString() + " (" + balls.toString() + ")")
+    }
+})
+
+partnershipRadio.addEventListener('click', e => {
+    let stats = matchState.battingTeam.batStats
+    if (matchState.battingTeam.fallOfWickets.length === 0) {
+        sendMessage("PARTNERSHIP: " + stats.runs.toString() + " RUNS FROM " + stats.balls.toString() + " BALLS")
+    } else {
+        let runs = stats.runs - matchState.battingTeam.fallOfWickets[matchState.battingTeam.fallOfWickets.length - 1].runs
+        let balls = stats.balls - matchState.battingTeam.fallOfWickets[matchState.battingTeam.fallOfWickets.length - 1].balls
+        sendMessage("PARTNERSHIP: " + runs.toString() + " RUNS FROM " + balls.toString() + " BALLS")
+    }
 })
