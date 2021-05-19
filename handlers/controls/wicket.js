@@ -107,6 +107,6 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
             }
             ipcRenderer.send('add-ball', 'W')
         }
-        updateMain()
+        updateMain('wicket')
     })
 })

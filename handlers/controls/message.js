@@ -29,7 +29,7 @@ runRateRadio.addEventListener('click', e => {
 lastWicketRadio.addEventListener('click', e => {
     if (matchState.live.lastWicket) {
         let { name, batStats: { runs, balls } } = matchState.live.lastWicket
-        sendMessage("LAST WICKET:" + name + " " + runs.toString() + " (" + balls.toString() + ")")
+        sendMessage("LAST WICKET: " + name + " " + runs.toString() + " (" + balls.toString() + ")")
     }
 })
 

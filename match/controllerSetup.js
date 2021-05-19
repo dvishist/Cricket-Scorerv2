@@ -183,7 +183,7 @@ ipcRenderer.on('undo', e => {
 
         //update Batsman dropdown to show notout or retired  batsmen
         let notOutBatsmen = matchState.battingTeam.playerList.filter(player => (player.wicket.method === null || player.wicket.method === 'retired') && player !== matchState.live.batsman1 && player !== matchState.live.batsman2)
-        notOutBatsmen.splice(notOutBatsmen.length - 2, 1)
+        notOutBatsmen.splice(notOutBatsmen.length - 1, 1)
         batsmanDropdown.innerHTML = null
         let option = document.createElement('option')
         option.disabled = true

@@ -12,7 +12,7 @@ const legByesRadio = document.getElementById("legByes")
 const penaltiesRadio = document.getElementById("penalties")
 
 
-const updateMain = () => {
+const updateMain = state => {
     ballRadio.checked = true
     runsRadio.checked = true
     wicketFielder.selectedIndex = 0
@@ -22,7 +22,7 @@ const updateMain = () => {
     //update msg display by auto clicking the checked radio
     document.querySelector('[name="msg"]:checked').click()
 
-    activityStack.push(cloneDeep(matchState))
+    if (state !== 'wicket') activityStack.push(cloneDeep(matchState))
     if (activityStack.length > 20) activityStack.shift()
 }
 
@@ -118,7 +118,7 @@ const playBall = (runs, boundary) => {
             }
         }
         updateMain()
-        // if (ballText === '0') ballText = '·'
+        if (ballText === '0') ballText = '·'
         ipcRenderer.send('add-ball', ballText)
     }
 }
