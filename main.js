@@ -50,11 +50,15 @@ app.on('ready', () => {
         webPreferences: {
             nodeIntegration: true
         },
+        height: 180,
+        width: 10000,
+        x: 0,
+        y: 0,
         show: false,
         title: 'CRICKET SCORER V2 ©Vishist Dura 2021'
     })
     indexWindow.setMenu(mainMenu)
-    indexWindow.maximize()
+    indexWindow.show()
     indexWindow.setResizable(false)
     indexWindow.loadFile('views/index.html')
 
