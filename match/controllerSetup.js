@@ -155,6 +155,7 @@ const endOfInnings = () => {
     })
 
     updateMain()
+    ipcRenderer.send('add-ball', 'clear')
 }
 
 
@@ -196,6 +197,7 @@ ipcRenderer.on('undo', e => {
             batsmanDropdown.appendChild(option)
         })
 
+        ipcRenderer.send('add-ball', 'remove')
         updateMain()
     }
 })

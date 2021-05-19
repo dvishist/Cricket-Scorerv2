@@ -56,6 +56,9 @@ stumpedButton.addEventListener('click', () => {
 })
 
 runoutButton.addEventListener('click', () => {
+    matchState.live.striker.batStats.balls--
+    matchState.battingTeam.batStats.balls--
+    matchState.bowler.bowlStats.balls--
     matchState.live.striker.wicket.out = true
     matchState.live.striker.wicket.method = 'runout'
     let fielder = findPlayer(matchState.bowlingTeam, runoutFielder.value)
@@ -102,6 +105,8 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
                     matchState.innings = 'break'
                 }
             }
+            ipcRenderer.send('add-ball', 'W')
         }
+        updateMain()
     })
 })

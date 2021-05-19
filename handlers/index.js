@@ -11,6 +11,9 @@ const overSymbols = document.querySelector(".overBalls")
 
 const msgDisplay = document.querySelector("#msgDisplay p")
 
+const leftLogoBar = document.querySelector("#leftLogoBar img")
+const rightLogoBar = document.querySelector("#rightLogoBar img")
+
 //batsman1
 const batsman1 = {
     name: document.querySelector("#batsman1Name"),
@@ -55,12 +58,8 @@ ipcRenderer.on('match-created', (e, match) => {
     bowler.score.innerHTML = "0-0"
     bowler.overs.innerHTML = "0"
 
-    // let p = document.createElement("p")
-    // p.appendChild(document.createTextNode(""))
-    // let overBall = document.createElement("div")
-    // overBall.setAttribute("class", "overBall")
-    // overBall.appendChild(p)
-    // overSymbols.appendChild(overBall)
+    leftLogoBar.src = match.battingTeam.logo ? "../images/" + match.battingTeam.logo : "../images/bat.png"
+    rightLogoBar.src = match.bowlingTeam.logo ? "../images/" + match.bowlingTeam.logo : "../images/bowl.png"
 })
 
 ipcRenderer.on('update-main', (e, matchState) => {
@@ -91,6 +90,10 @@ ipcRenderer.on('update-main', (e, matchState) => {
     bowler.score.innerHTML = matchState.live.bowler.bowlStats.wickets + '-' + matchState.live.bowler.bowlStats.runs
     let bowlerOverText = getOversText(matchState.live.bowler.bowlStats.balls)
     bowler.overs.innerHTML = bowlerOverText
+
+    leftLogoBar.src = matchState.battingTeam.logo ? "../images/" + matchState.battingTeam.logo : "../images/bat.png"
+    rightLogoBar.src = matchState.bowlingTeam.logo ? "../images/" + matchState.bowlingTeam.logo : "../images/bowl.png"
+
 })
 
 
@@ -106,7 +109,6 @@ ipcRenderer.on('fade-batsman', (e, batsman) => {
     }
 })
 
-
 ipcRenderer.on('unfade-batsman', (e) => {
     batsman1.name.style.opacity = '100%'
     batsman1.balls.style.opacity = '100%'
@@ -118,4 +120,27 @@ ipcRenderer.on('unfade-batsman', (e) => {
 
 ipcRenderer.on('send-message', (e, msg) => {
     msgDisplay.innerHTML = msg
+})
+
+ipcRenderer.on('add-ball', (e, ballText) => {
+    if (ballText === 'clear') {
+        overSymbols.innerHTML = null
+    } else if (ballText === 'remove') {
+        overSymbols.removeChild(overSymbols.lastChild)
+    } else {
+        let p = document.createElement("p")
+        p.appendChild(document.createTextNode(ballText))
+        let overBall = document.createElement("div")
+        overBall.setAttribute("class", "overBall")
+        if (ballText === 'W') {
+            overBall.style.backgroundColor = '#fc1d4e'
+        } else if (ballText === '4' || ballText === '6') {
+            overBall.style.backgroundColor = '#3796da'
+        } else if (ballText === '0') {
+            overBall.style.backgroundColor = '#151749'
+        }
+
+        overBall.appendChild(p)
+        overSymbols.appendChild(overBall)
+    }
 })

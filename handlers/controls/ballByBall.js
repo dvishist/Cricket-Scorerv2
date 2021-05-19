@@ -48,6 +48,7 @@ ipcRenderer.on('controller-setup', (e, match) => {
 const playBall = (runs, boundary) => {
     if (addBatsmanButton.style.visibility !== 'visible' && !matchState.result && matchState.innings !== 'break') {
         runs = parseInt(runs)
+        let ballText = ''
         //check penalty
         if (penaltiesRadio.checked) {
             matchState.battingTeam.batStats.runs += runs
@@ -62,11 +63,13 @@ const playBall = (runs, boundary) => {
             matchState.live.bowler.bowlStats.balls++
             matchState.live.striker.batStats.balls++
         } else if (noBallRadio.checked) {
+            ballText = ballText + 'nb'
             matchState.bowlingTeam.extras.noBalls++
             matchState.live.bowler.bowlStats.noBalls++
             matchState.live.bowler.bowlStats.runs++
             matchState.battingTeam.batStats.runs++
         } else if (wideRadio.checked) {
+            ballText = ballText + 'wd'
             byesRadio.checked = true
             matchState.bowlingTeam.extras.wides++
             matchState.live.bowler.bowlStats.wides++
@@ -76,6 +79,7 @@ const playBall = (runs, boundary) => {
 
         //check bat type
         matchState.battingTeam.batStats.runs += runs
+        ballText = runs + ballText
         if (runsRadio.checked) {
             matchState.live.striker.batStats.runs += runs
             matchState.live.bowler.bowlStats.runs += runs
@@ -89,13 +93,17 @@ const playBall = (runs, boundary) => {
                 }
             }
         } else if (byesRadio.checked) {
+            if (ballText.length === 1) ballText = ballText + 'b'
             matchState.bowlingTeam.extras.byes += runs
         } else if (legByesRadio.checked) {
+            if (ballText.length === 1) ballText = ballText + 'lb'
             matchState.bowlingTeam.extras.legByes += runs
         }
 
         if (runs % 2 === 1) changeStriker()
-        if (matchState.battingTeam.batStats.balls % 6 == 0) changeStriker()
+        if (matchState.battingTeam.batStats.balls % 6 == 0) {
+            changeStriker()
+        }
 
         //if overs completed or team all out
         if (matchState.battingTeam.batStats.balls === matchState.overs * 6
@@ -110,7 +118,8 @@ const playBall = (runs, boundary) => {
             }
         }
         updateMain()
-
+        // if (ballText === '0') ballText = '·'
+        ipcRenderer.send('add-ball', ballText)
     }
 }
 

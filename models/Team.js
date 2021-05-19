@@ -1,9 +1,10 @@
 class Team {
 
-    constructor(name, short, playerList) {
+    constructor(name, short, logo, playerList) {
         this.name = name
         this.short = short
         this.playerList = playerList
+        this.logo = logo
 
         this.batStats = {
             runs: 0,

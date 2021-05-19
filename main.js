@@ -135,6 +135,10 @@ app.on('ready', () => {
     ipcMain.on('send-message', (e, msg) => {
         indexWindow.webContents.send('send-message', msg)
     })
+
+    ipcMain.on('add-ball', (e, ballText) => {
+        indexWindow.webContents.send('add-ball', ballText)
+    })
 })
 
 app.on('window-all-closed', () => {
