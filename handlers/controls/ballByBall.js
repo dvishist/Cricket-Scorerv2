@@ -42,6 +42,7 @@ ipcRenderer.on('controller-setup', (e, match) => {
     matchState.live.batsman2 = matchState.battingTeam.playerList[1]
     matchState.live.striker = matchState.live.batsman1
     matchState.live.bowler = matchState.bowlingTeam.playerList[10]
+    activityStack.push(cloneDeep(matchState))
 })
 
 const playBall = (runs, boundary) => {

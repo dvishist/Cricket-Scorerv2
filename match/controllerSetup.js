@@ -63,7 +63,6 @@ ipcRenderer.on('controller-setup', (e, match) => {
         player.value = playerObj.name
         batsmanDropdown.appendChild(player)
     })
-
 })
 
 
