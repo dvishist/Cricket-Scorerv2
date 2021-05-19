@@ -47,7 +47,7 @@ partnershipRadio.addEventListener('click', e => {
 targetRadio.addEventListener('click', e => {
     if (matchState.innings === 1) {
         sendMessage("1ST INNINGS")
-    } else {
+    } else if (matchState.target) {
         sendMessage("TARGET " + matchState.target.toString())
     }
 })
