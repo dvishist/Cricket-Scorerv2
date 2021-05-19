@@ -83,7 +83,7 @@ app.on('ready', () => {
             width: 1000,
             height: 700,
             x: 300,
-            y: 155,
+            y: 160,
             title: 'MATCH CONTROLLER',
             show: false,
             resizable: false,
