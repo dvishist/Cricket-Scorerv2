@@ -180,6 +180,23 @@ ipcRenderer.on('undo', e => {
     if (activityStack.length > 1) {
         activityStack.pop()
         matchState = cloneDeep(activityStack.pop())
+
+        //update Batsman dropdown to show notout or retired  batsmen
+        let notOutBatsmen = matchState.battingTeam.playerList.filter(player => (player.wicket.method === null || player.wicket.method === 'retired') && player !== matchState.live.batsman1 && player !== matchState.live.batsman2)
+        notOutBatsmen.splice(notOutBatsmen.length - 2, 1)
+        batsmanDropdown.innerHTML = null
+        let option = document.createElement('option')
+        option.disabled = true
+        option.appendChild(document.createTextNode('Select Batsman'))
+        batsmanDropdown.appendChild(option)
+        batsmanDropdown.slectedIndex = 0
+        notOutBatsmen.forEach(player => {
+            let option = document.createElement('option')
+            option.appendChild(document.createTextNode(player.name))
+            option.value = player.name
+            batsmanDropdown.appendChild(option)
+        })
+
         updateMain()
     }
 })
