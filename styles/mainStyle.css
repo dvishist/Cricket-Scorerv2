@@ -3,7 +3,7 @@ body{
 }
 
 #scoreBar{
-    background-color:teal;
+    background-color:coral;
     margin: auto;
     display: flex;
     flex-direction: row;
@@ -253,6 +253,7 @@ body{
 .overBall p{
     margin: auto;
     padding: 2px;
+    padding-top:2.5px ;
     font-family: Century-Gothic, sans-serif;
     font-size: 14px;
     font-weight: bold;

@@ -56,9 +56,6 @@ stumpedButton.addEventListener('click', () => {
 })
 
 runoutButton.addEventListener('click', () => {
-    matchState.live.striker.batStats.balls--
-    matchState.battingTeam.batStats.balls--
-    matchState.bowler.bowlStats.balls--
     matchState.live.striker.wicket.out = true
     matchState.live.striker.wicket.method = 'runout'
     let fielder = findPlayer(matchState.bowlingTeam, runoutFielder.value)
@@ -74,6 +71,7 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
             addBatsmanButton.style.visibility = 'visible'
             ipcRenderer.send('fade-batsman', matchState.live.striker)
             if (btn.id === 'runout') {
+                ipcRenderer.send('add-ball', 'remove')
                 if (wideRadio.checked) {
                     matchState.live.bowler.bowlStats.runs++
                     matchState.battingTeam.batStats.runs++
@@ -84,10 +82,6 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
                     matchState.battingTeam.batStats.runs++
                     matchState.live.bowler.bowlStats.noBalls++
                     matchState.bowlingTeam.extras.noBalls++
-                } else {
-                    matchState.battingTeam.batStats.balls++
-                    matchState.live.bowler.bowlStats.balls++
-                    matchState.live.striker.batStats.balls++
                 }
             } else if (btn.id !== 'retired') {
                 matchState.battingTeam.batStats.balls++

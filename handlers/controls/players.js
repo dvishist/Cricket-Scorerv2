@@ -11,7 +11,7 @@ bowlerDropdown.addEventListener('change', function () {
 const addBatsmanButton = document.getElementById('addBatsmanButton')
 addBatsmanButton.addEventListener('click', () => {
     if (batsmanDropdown.selectedIndex !== 0) {
-        let outBatsman = (matchState.live.batsman1.wicket.method != null) ? matchState.live.batsman1 : matchState.live.batsman2
+        let outBatsman = matchState.live.striker
         let newBatsmanName = batsmanDropdown.value
         replaceBatsman(newBatsmanName, outBatsman)
         updateMain()
