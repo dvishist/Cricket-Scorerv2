@@ -99,6 +99,14 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
                 matchState.live.striker.batStats.balls++
             }
 
+            matchState.battingTeam.timeline.push({
+                ball: getOversText(matchState.battingTeam.batStats.balls),
+                batsman: cloneDeep(matchState.live.striker.name),
+                bowler: cloneDeep(matchState.live.bowler.name),
+                wicket: true,
+                wicketType: btn.id
+            })
+
             //if overs completed or team all out
             if (matchState.battingTeam.batStats.balls === matchState.overs * 6 || matchState.battingTeam.batStats.wickets === 10) {
                 if (matchState.innings === 2) {

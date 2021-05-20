@@ -65,6 +65,8 @@ app.on('ready', () => {
     const setupWindow = new BrowserWindow({
         width: 450,
         height: 600,
+        x: 600,
+        y: 160,
         title: 'SETUP CRICKET MATCH',
         show: false,
         resizable: false,
@@ -80,10 +82,10 @@ app.on('ready', () => {
 
     ipcMain.on('match-created', (e, match) => {
         const controllerWindow = new BrowserWindow({
-            width: 1000,
+            width: 1200,
             height: 700,
-            x: 300,
-            y: 160,
+            x: 200,
+            y: 170,
             title: 'MATCH CONTROLLER',
             show: false,
             resizable: false,

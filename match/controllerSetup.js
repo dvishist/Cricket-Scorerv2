@@ -1,5 +1,4 @@
 const { ipcRenderer } = require("electron")
-let activityStack = []
 const { cloneDeep } = require('lodash')
 
 //dropdowns
@@ -9,6 +8,8 @@ const wicketFielderDropdown = document.querySelector("#wicketFielder")
 const runoutFielderDropdown = document.querySelector("#runoutFielder")
 
 const { getStrikeRate, getEconomy, getRunRate, findPlayer, getOversText } = require('../match/utils')
+
+let activityStack = []
 
 const endOfInningsButton = document.getElementById('endOfInnings')
 endOfInningsButton.addEventListener('click', e => {
