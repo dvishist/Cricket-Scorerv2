@@ -112,7 +112,11 @@ const playBall = (runs, boundary) => {
             ball: getOversText(matchState.battingTeam.batStats.balls),
             batsman: cloneDeep(matchState.live.striker.name),
             bowler: cloneDeep(matchState.live.bowler.name),
-            ballType, runsType, runs, boundary
+            ballType, runsType, runs, boundary,
+            score: {
+                runs: matchState.battingTeam.batStats.runs,
+                wickets: matchState.battingTeam.batStats.wickets
+            }
         })
 
         if (runs % 2 === 1) changeStriker()
