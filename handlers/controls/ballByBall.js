@@ -101,7 +101,7 @@ const playBall = (runs, boundary) => {
         }
 
         if (runs % 2 === 1) changeStriker()
-        if (matchState.battingTeam.batStats.balls % 6 == 0) {
+        if (matchState.battingTeam.batStats.balls % 6 === 0 && !noBallRadio.checked && !wideRadio.checked) {
             changeStriker()
         }
 
