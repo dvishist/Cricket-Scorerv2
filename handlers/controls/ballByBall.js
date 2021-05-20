@@ -122,6 +122,9 @@ const playBall = (runs, boundary) => {
         if (runs % 2 === 1) changeStriker()
         if (matchState.battingTeam.batStats.balls % 6 === 0 && !noBallRadio.checked && !wideRadio.checked) {
             changeStriker()
+            bowlerDropdown.style.visibility = 'visible'
+        } else {
+            bowlerDropdown.style.visibility = 'hidden'
         }
 
         //if overs completed or team all out
