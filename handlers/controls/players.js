@@ -14,6 +14,7 @@ addBatsmanButton.addEventListener('click', () => {
         let outBatsman = matchState.live.striker
         let newBatsmanName = batsmanDropdown.value
         replaceBatsman(newBatsmanName, outBatsman)
+        if (matchState.battingTeam.batStats.balls % 6 == 0) changeStriker()
         updateMain()
         ipcRenderer.send('unfade-batsman')
         batsmanDropdown.style.visibility = 'hidden'
