@@ -7,7 +7,10 @@ const runoutButton = document.getElementById('runout')
 
 const wicketFielder = document.getElementById('wicketFielder')
 const runoutFielder = document.getElementById('runoutFielder')
+
 const runoutRuns = document.getElementById('runoutRuns')
+const strikerRunout = document.getElementById('strikerRunout')
+const nonStrikerRunout = document.getElementById('nonStrikerRunout')
 
 bowledButton.addEventListener('click', () => {
     matchState.live.striker.wicket.out = true
@@ -56,15 +59,19 @@ stumpedButton.addEventListener('click', () => {
 })
 
 runoutButton.addEventListener('click', () => {
-    matchState.live.striker.wicket.out = true
-    matchState.live.striker.wicket.method = 'runout'
-    let fielder = findPlayer(matchState.bowlingTeam, runoutFielder.value)
-
     if (runoutRuns.value) {
         matchState.battingTeam.batStats.runs += parseInt(runoutRuns.value)
         matchState.live.striker.batStats.runs += parseInt(runoutRuns.value)
         matchState.live.bowler.bowlStats.runs += parseInt(runoutRuns.value)
     }
+
+    if (nonStrikerRunout.checked) {
+        matchState.live.striker = matchState.live.striker === matchState.live.batsman1 ? matchState.live.batsman2 : matchState.live.batsman1
+    }
+
+    matchState.live.striker.wicket.out = true
+    matchState.live.striker.wicket.method = 'runout'
+    let fielder = findPlayer(matchState.bowlingTeam, runoutFielder.value)
 
     matchState.live.striker.wicket.fielder = fielder
     matchState.battingTeam.batStats.wickets++
@@ -89,7 +96,13 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
                     matchState.live.bowler.bowlStats.noBalls++
                     matchState.bowlingTeam.extras.noBalls++
                 } else {
-                    matchState.live.striker.batStats.balls++
+                    if (nonStrikerRunout.checked) {
+                        let batsman = matchState.live.striker === matchState.live.batsman1 ? matchState.live.batsman2 : matchState.live.batsman1
+                        batsman.batStats.balls++
+                    } else {
+                        matchState.live.striker.batStats.balls++
+                    }
+
                     matchState.live.bowler.bowlStats.balls++
                     matchState.battingTeam.batStats.balls++
                 }
@@ -104,7 +117,11 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
                 batsman: cloneDeep(matchState.live.striker.name),
                 bowler: cloneDeep(matchState.live.bowler.name),
                 wicket: true,
-                wicketType: btn.id
+                wicketType: btn.id,
+                score: {
+                    runs: matchState.battingTeam.batStats.runs,
+                    wickets: matchState.battingTeam.batStats.wickets
+                }
             })
 
             //if overs completed or team all out
