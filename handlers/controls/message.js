@@ -9,6 +9,7 @@ const runRateRadio = document.getElementById('runRateRadio')
 const reqRunRateRadio = document.getElementById('reqRunRateRadio')
 const lastWicketRadio = document.getElementById('lastWicketRadio')
 const partnershipRadio = document.getElementById('partnershipRadio')
+const boundariesRadio = document.getElementById('boundariesRadio')
 const targetRadio = document.getElementById('targetRadio')
 const chaseRadio = document.getElementById('chaseRadio')
 const resultRadio = document.getElementById('resultRadio')
@@ -42,6 +43,11 @@ partnershipRadio.addEventListener('click', e => {
         let balls = stats.balls - matchState.battingTeam.fallOfWickets[matchState.battingTeam.fallOfWickets.length - 1].balls
         sendMessage("PARTNERSHIP: " + runs.toString() + " RUNS FROM " + balls.toString() + " BALLS")
     }
+})
+
+boundariesRadio.addEventListener('click', e => {
+    let { fours, sixes } = matchState.battingTeam.batStats
+    sendMessage('BOUNDARIES: ' + fours.toString() + ' FOURS ' + sixes.toString() + ' SIXES')
 })
 
 targetRadio.addEventListener('click', e => {
