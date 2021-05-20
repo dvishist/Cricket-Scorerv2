@@ -7,7 +7,7 @@ const runoutButton = document.getElementById('runout')
 
 const wicketFielder = document.getElementById('wicketFielder')
 const runoutFielder = document.getElementById('runoutFielder')
-
+const runoutRuns = document.getElementById('runoutRuns')
 
 bowledButton.addEventListener('click', () => {
     matchState.live.striker.wicket.out = true
@@ -59,6 +59,13 @@ runoutButton.addEventListener('click', () => {
     matchState.live.striker.wicket.out = true
     matchState.live.striker.wicket.method = 'runout'
     let fielder = findPlayer(matchState.bowlingTeam, runoutFielder.value)
+
+    if (runoutRuns.value) {
+        matchState.battingTeam.batStats.runs += parseInt(runoutRuns.value)
+        matchState.live.striker.batStats.runs += parseInt(runoutRuns.value)
+        matchState.live.bowler.bowlStats.runs += parseInt(runoutRuns.value)
+    }
+
     matchState.live.striker.wicket.fielder = fielder
     matchState.battingTeam.batStats.wickets++
     fielder.fieldStats.runouts++
@@ -71,7 +78,6 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
             addBatsmanButton.style.visibility = 'visible'
             ipcRenderer.send('fade-batsman', matchState.live.striker)
             if (btn.id === 'runout') {
-                ipcRenderer.send('add-ball', 'remove')
                 if (wideRadio.checked) {
                     matchState.live.bowler.bowlStats.runs++
                     matchState.battingTeam.batStats.runs++
@@ -82,6 +88,10 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
                     matchState.battingTeam.batStats.runs++
                     matchState.live.bowler.bowlStats.noBalls++
                     matchState.bowlingTeam.extras.noBalls++
+                } else {
+                    matchState.live.striker.batStats.balls++
+                    matchState.live.bowler.bowlStats.balls++
+                    matchState.battingTeam.batStats.balls++
                 }
             } else if (btn.id !== 'retired') {
                 matchState.battingTeam.batStats.balls++
