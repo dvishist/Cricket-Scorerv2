@@ -11,6 +11,7 @@ const lastWicketRadio = document.getElementById('lastWicketRadio')
 const partnershipRadio = document.getElementById('partnershipRadio')
 const boundariesRadio = document.getElementById('boundariesRadio')
 const targetRadio = document.getElementById('targetRadio')
+const inning1Radio = document.getElementById('inning1Radio')
 const chaseRadio = document.getElementById('chaseRadio')
 const resultRadio = document.getElementById('resultRadio')
 
@@ -55,6 +56,15 @@ targetRadio.addEventListener('click', e => {
         sendMessage("1ST INNINGS")
     } else if (matchState.target) {
         sendMessage("TARGET " + matchState.target.toString())
+    }
+})
+
+inning1Radio.addEventListener('click', e => {
+    if (matchState.innings === 1) {
+        sendMessage("1ST INNINGS")
+    } else {
+        let score = matchState.bowlingTeam.timeline.find(ball => ball.ball === getOversText(matchState.battingTeam.batStats.balls)).score
+        sendMessage(matchState.bowlingTeam.short + " WERE " + score.runs + "-" + score.wickets)
     }
 })
 
