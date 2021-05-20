@@ -1,3 +1,4 @@
+const fs = require('fs')
 const { ipcRenderer } = require("electron")
 const { cloneDeep } = require('lodash')
 
@@ -174,6 +175,9 @@ const assessResult = () => {
         matchState.result.winner = "TIE"
     }
     resultRadio.click()
+
+    let matchData = JSON.stringify(matchState)
+    fs.writeFileSync("gg.json", matchData)
 }
 
 
