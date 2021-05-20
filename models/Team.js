@@ -11,7 +11,7 @@ class Team {
             wickets: 0,
             balls: 0,
             fours: 0,
-            sixes: 0
+            sixes: 0,
         }
 
         this.extras = {
@@ -35,6 +35,7 @@ class Team {
         })
 
         this.fallOfWickets = []
+        this.timeline = []
     }
 
 }

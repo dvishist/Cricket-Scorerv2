@@ -8,7 +8,7 @@ const batsmanDropdown = document.querySelector("#batsmanDropdown")
 const wicketFielderDropdown = document.querySelector("#wicketFielder")
 const runoutFielderDropdown = document.querySelector("#runoutFielder")
 
-const { getStrikeRate, getEconomy, getRunRate, findPlayer } = require('../match/utils')
+const { getStrikeRate, getEconomy, getRunRate, findPlayer, getOversText } = require('../match/utils')
 
 const endOfInningsButton = document.getElementById('endOfInnings')
 endOfInningsButton.addEventListener('click', e => {

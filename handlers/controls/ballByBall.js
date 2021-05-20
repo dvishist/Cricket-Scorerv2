@@ -58,17 +58,21 @@ const playBall = (runs, boundary) => {
         }
 
         //check ball type
+        let ballType
         if (ballRadio.checked) {
+            ballType = 'ball'
             matchState.battingTeam.batStats.balls++
             matchState.live.bowler.bowlStats.balls++
             matchState.live.striker.batStats.balls++
         } else if (noBallRadio.checked) {
+            ballType = 'noBall'
             ballText = ballText + 'nb'
             matchState.bowlingTeam.extras.noBalls++
             matchState.live.bowler.bowlStats.noBalls++
             matchState.live.bowler.bowlStats.runs++
             matchState.battingTeam.batStats.runs++
         } else if (wideRadio.checked) {
+            ballType = 'wide'
             ballText = ballText + 'wd'
             byesRadio.checked = true
             matchState.bowlingTeam.extras.wides++
@@ -80,7 +84,9 @@ const playBall = (runs, boundary) => {
         //check bat type
         matchState.battingTeam.batStats.runs += runs
         ballText = runs + ballText
+        let runsType
         if (runsRadio.checked) {
+            runsType = 'runs'
             matchState.live.striker.batStats.runs += runs
             matchState.live.bowler.bowlStats.runs += runs
             if (boundary) {
@@ -93,12 +99,21 @@ const playBall = (runs, boundary) => {
                 }
             }
         } else if (byesRadio.checked) {
+            runsType = 'byes'
             if (ballText.length === 1) ballText = ballText + 'b'
             matchState.bowlingTeam.extras.byes += runs
         } else if (legByesRadio.checked) {
+            runsType = 'legByes'
             if (ballText.length === 1) ballText = ballText + 'lb'
             matchState.bowlingTeam.extras.legByes += runs
         }
+
+        matchState.battingTeam.timeline.push({
+            ball: getOversText(matchState.battingTeam.batStats.balls),
+            batsman: cloneDeep(matchState.live.striker.name),
+            bowler: cloneDeep(matchState.live.bowler.name),
+            ballType, runsType, runs, boundary
+        })
 
         if (runs % 2 === 1) changeStriker()
         if (matchState.battingTeam.batStats.balls % 6 === 0 && !noBallRadio.checked && !wideRadio.checked) {
