@@ -17,6 +17,7 @@ class Player {
                 runs: 0,
                 wides: 0,
                 noBalls: 0,
+                maidens: 0
             },
             this.fieldStats = {
                 catches: 0,
