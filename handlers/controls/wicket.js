@@ -114,8 +114,8 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
 
             matchState.battingTeam.timeline.push({
                 ball: getOversText(matchState.battingTeam.batStats.balls),
-                batsman: cloneDeep(matchState.live.striker.name),
-                bowler: cloneDeep(matchState.live.bowler.name),
+                batsman: cloneDeep(matchState.live.striker),
+                bowler: cloneDeep(matchState.live.bowler),
                 wicket: true,
                 wicketType: btn.id,
                 score: {
