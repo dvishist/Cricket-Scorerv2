@@ -1,9 +1,12 @@
+let bowlerStartingRuns = 0
+
 //Change Bowler
 bowlerDropdown.addEventListener('change', function () {
     matchState.live.bowler = findPlayer(matchState.bowlingTeam, bowlerDropdown.value)
     updateMain()
     bowlerDropdown.selectedIndex = 0
     ipcRenderer.send('add-ball', 'clear')
+    bowlerStartingRuns = matchState.live.bowler.bowlStats.runs
 })
 
 

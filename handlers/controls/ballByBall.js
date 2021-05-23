@@ -110,8 +110,8 @@ const playBall = (runs, boundary) => {
 
         matchState.battingTeam.timeline.push({
             ball: getOversText(matchState.battingTeam.batStats.balls),
-            batsman: cloneDeep(matchState.live.striker.name),
-            bowler: cloneDeep(matchState.live.bowler.name),
+            batsman: cloneDeep(matchState.live.striker),
+            bowler: cloneDeep(matchState.live.bowler),
             ballType, runsType, runs, boundary,
             score: {
                 runs: matchState.battingTeam.batStats.runs,
@@ -122,6 +122,7 @@ const playBall = (runs, boundary) => {
         if (runs % 2 === 1) changeStriker()
         if (matchState.battingTeam.batStats.balls % 6 === 0 && !noBallRadio.checked && !wideRadio.checked) {
             changeStriker()
+            assessMaiden()
             bowlerDropdown.style.visibility = 'visible'
         } else {
             bowlerDropdown.style.visibility = 'hidden'
@@ -156,4 +157,15 @@ changeStrike.addEventListener('click', () => {
 const changeStriker = () => {
     let state = matchState.live
     state.striker = state.striker === state.batsman1 ? state.batsman2 : state.batsman1
+}
+
+const assessMaiden = () => {
+    let currentOver = Math.trunc(matchState.battingTeam.batStats.balls / 6).toString()
+    let lastOver = (currentOver - 1).toString()
+    console.log(lastOver)
+    let currentRuns = matchState.live.bowler.bowlStats.runs
+
+    let previousRuns = bowlerStartingRuns
+    if (currentRuns === previousRuns) matchState.live.bowler.bowlStats.maidens++
+    console.log(matchState.live.bowler.bowlStats)
 }
