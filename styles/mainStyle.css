@@ -3,7 +3,7 @@ body{
 }
 
 #scoreBar{
-    background-color:coral;
+    background-color:magenta;
     margin: auto;
     display: flex;
     flex-direction: row;
