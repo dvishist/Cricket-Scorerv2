@@ -17,6 +17,8 @@ const updateMain = state => {
     runsRadio.checked = true
     wicketFielder.selectedIndex = 0
     runoutFielder.selectedIndex = 0
+    runoutRuns.value = null
+
     ipcRenderer.send('update-main', matchState)
 
     //update msg display by auto clicking the checked radio

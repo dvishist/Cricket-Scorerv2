@@ -70,3 +70,9 @@ button:focus{
 #changeStrike{
     margin-left: 80px;
 }
+
+#runoutRuns{
+    border-radius: 100px;
+    text-align: center;
+    border-width: 0.2px;
+}
