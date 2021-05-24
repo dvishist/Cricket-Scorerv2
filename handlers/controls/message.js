@@ -14,9 +14,10 @@ const targetRadio = document.getElementById('targetRadio')
 const inning1Radio = document.getElementById('inning1Radio')
 const chaseRadio = document.getElementById('chaseRadio')
 const resultRadio = document.getElementById('resultRadio')
+const predictedRadio = document.getElementById('predictedRadio')
 
 messageRadio.addEventListener('click', e => {
-    sendMessage(textMessage.value)
+    sendMessage(textMessage.value.toUpperCase())
 })
 
 tossRadio.addEventListener('click', e => {
@@ -100,4 +101,11 @@ resultRadio.addEventListener('click', e => {
     } else {
         sendMessage("MATCH TIED")
     }
+})
+
+
+predictedRadio.addEventListener('click', e => {
+    let runRate = getRunRate(matchState.battingTeam)
+    let runs = parseInt(runRate * matchState.overs)
+    sendMessage("PREDICTED:   " + runs.toString() + " RUNS @ " + runRate.toString() + " RPO")
 })
