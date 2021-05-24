@@ -36,7 +36,7 @@ const controlMenu = Menu.buildFromTemplate([
                 click(item, focusedWindow) {
                     focusedWindow.webContents.send('undo')
                 },
-                accelerator: 'Ctrl+Z'
+                accelerator: 'Ctrl+Shift+Z'
             }
         ]
     },
