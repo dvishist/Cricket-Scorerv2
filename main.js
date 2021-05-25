@@ -88,7 +88,6 @@ app.on('ready', () => {
             y: 170,
             title: 'MATCH CONTROLLER',
             show: false,
-            resizable: false,
             webPreferences: {
                 nodeIntegration: true,
                 enableRemoteModule: true
