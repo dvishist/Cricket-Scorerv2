@@ -57,14 +57,14 @@ app.on('ready', () => {
         show: false,
         title: 'CRICKET SCORER V2 ©Vishist Dura 2021'
     })
-    indexWindow.setMenu(mainMenu)
+    indexWindow.setMenu(null)
     indexWindow.show()
     indexWindow.setResizable(false)
     indexWindow.loadFile('views/index.html')
 
     const setupWindow = new BrowserWindow({
         width: 450,
-        height: 600,
+        height: 700,
         x: 600,
         y: 160,
         title: 'SETUP CRICKET MATCH',
