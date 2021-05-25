@@ -1,14 +1,30 @@
 const { ipcRenderer, remote } = require('electron')
 const loadTeams = require('../match/teamsLoader')
 const createMatch = require('../match/createMatch')
-
+const axios = require('axios')
+axios.defaults.baseURL = 'https://cricketscorervalidator.herokuapp.com'
 
 const form = document.querySelector('form')
 
 document.querySelector('button').focus()
 
-form.addEventListener('submit', e => {
+form.addEventListener('submit', async e => {
     e.preventDefault()
+
+    //validate through API
+    document.getElementById('codeError').style.visibility = 'hidden'
+    const code = document.getElementById('code').value
+    if (code) {
+        const { data } = await axios.get('validate/' + code)
+        if (!data) {
+            document.getElementById('codeError').style.visibility = 'visible'
+            return
+        }
+    } else {
+        document.getElementById('codeError').style.visibility = 'visible'
+        return
+    }
+
     const team1FileName = document.querySelector('#team1FileName').value
     const team2FileName = document.querySelector('#team2FileName').value
     const oversText = document.querySelector('#overs').value

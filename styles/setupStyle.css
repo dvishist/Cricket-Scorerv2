@@ -8,10 +8,19 @@ h1,h3{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+
 p{
     font-family: Impact, Haettenschweiler, sans-serif;
     font-size: 20;
 }
+
+#codeError{
+    visibility: hidden;
+    color:red;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14;
+}
+
 #setupForm{
     margin: 0%;
 }
