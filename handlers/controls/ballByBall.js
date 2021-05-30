@@ -143,7 +143,7 @@ const playBall = (runs, boundary) => {
             }
         }
         updateMain()
-        if (ballText === '0') ballText = '·'
+        if (ballText === '0') ballText = '●'
         if (ballText === '0nb') ballText = 'nb'
         if (ballText === '0wd') ballText = 'wd'
         ipcRenderer.send('add-ball', ballText)

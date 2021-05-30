@@ -239,7 +239,7 @@ body{
 }
 
 .overBall{
-    background-color: #151749;
+    background-color: #222677;
     height:28px;
     width:28px;
     margin-bottom: 10px;
@@ -248,13 +248,6 @@ body{
     display: flex;
     border-radius: 100%;
     flex-direction:row;
-}
-
-.blankBall{
-    background-color: #f1f2f1;
-    border-radius: 0.5px;
-    border-color: #151749;
-    border-radius: 100%;
 }
 
 .overBall p{

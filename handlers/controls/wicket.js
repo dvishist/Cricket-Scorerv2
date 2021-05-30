@@ -136,5 +136,8 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
             ipcRenderer.send('add-ball', 'W')
         }
         updateMain('wicket')
+        let remBalls = 6 - matchState.battingTeam.batStats.balls % 6
+        remBalls = remBalls === 6 ? 0 : remBalls
+        ipcRenderer.send('add-remaining-balls', remBalls)
     })
 })
