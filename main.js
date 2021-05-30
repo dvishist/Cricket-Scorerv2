@@ -57,7 +57,7 @@ app.on('ready', () => {
         show: false,
         title: 'CRICKET SCORER V2 ©Vishist Dura 2021'
     })
-    indexWindow.setMenu(null)
+    indexWindow.setMenu(controlMenu)
     indexWindow.show()
     indexWindow.setResizable(false)
     indexWindow.loadFile('views/index.html')
@@ -143,6 +143,10 @@ app.on('ready', () => {
 
     ipcMain.on('add-ball', (e, ballText) => {
         indexWindow.webContents.send('add-ball', ballText)
+    })
+
+    ipcMain.on('add-remaining-balls', (e, n) => {
+        indexWindow.webContents.send('add-remaining-balls', n)
     })
 })
 

@@ -250,6 +250,13 @@ body{
     flex-direction:row;
 }
 
+.blankBall{
+    background-color: #f1f2f1;
+    border-radius: 0.5px;
+    border-color: #151749;
+    border-radius: 100%;
+}
+
 .overBall p{
     margin: auto;
     padding: 2px;

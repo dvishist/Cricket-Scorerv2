@@ -144,3 +144,21 @@ ipcRenderer.on('add-ball', (e, ballText) => {
         overSymbols.appendChild(overBall)
     }
 })
+
+ipcRenderer.on('add-remaining-balls', (e, n) => {
+    //remove all blank balls
+    let blankBalls = document.getElementsByClassName("blankBall")
+    while (blankBalls[0]) {
+        blankBalls[0].parentElement.removeChild(blankBalls[0])
+    }
+
+
+    for (let i = 0; i < n; i++) {
+        let p = document.createElement("p")
+        p.appendChild(document.createTextNode(""))
+        let overBall = document.createElement("div")
+        overBall.setAttribute("class", "overBall blankBall")
+        overBall.appendChild(p)
+        overSymbols.appendChild(overBall)
+    }
+})

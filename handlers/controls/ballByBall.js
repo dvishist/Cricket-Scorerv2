@@ -147,6 +147,9 @@ const playBall = (runs, boundary) => {
         if (ballText === '0nb') ballText = 'nb'
         if (ballText === '0wd') ballText = 'wd'
         ipcRenderer.send('add-ball', ballText)
+        let remBalls = 6 - matchState.battingTeam.batStats.balls % 6
+        remBalls = remBalls === 6 ? 0 : remBalls
+        ipcRenderer.send('add-remaining-balls', remBalls)
     }
 }
 
@@ -164,10 +167,7 @@ const changeStriker = () => {
 const assessMaiden = () => {
     let currentOver = Math.trunc(matchState.battingTeam.batStats.balls / 6).toString()
     let lastOver = (currentOver - 1).toString()
-    console.log(lastOver)
     let currentRuns = matchState.live.bowler.bowlStats.runs
-
     let previousRuns = bowlerStartingRuns
     if (currentRuns === previousRuns) matchState.live.bowler.bowlStats.maidens++
-    console.log(matchState.live.bowler.bowlStats)
 }
