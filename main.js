@@ -141,8 +141,8 @@ app.on('ready', () => {
         indexWindow.webContents.send('send-message', msg)
     })
 
-    ipcMain.on('add-ball', (e, ballText) => {
-        indexWindow.webContents.send('add-ball', ballText)
+    ipcMain.on('add-ball', (e, ballText, n) => {
+        indexWindow.webContents.send('add-ball', ballText, n)
     })
 
     ipcMain.on('add-remaining-balls', (e, n) => {

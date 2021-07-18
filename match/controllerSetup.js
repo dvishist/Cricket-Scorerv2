@@ -201,8 +201,9 @@ ipcRenderer.on('undo', e => {
             option.value = player.name
             batsmanDropdown.appendChild(option)
         })
-
-        ipcRenderer.send('add-ball', 'remove')
+        let remBalls = 6 - matchState.battingTeam.batStats.balls % 6
+        remBalls = remBalls === 6 ? 0 : remBalls
+        ipcRenderer.send('add-ball', 'remove', remBalls)
         updateMain()
     }
 })

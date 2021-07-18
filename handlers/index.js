@@ -122,16 +122,13 @@ ipcRenderer.on('send-message', (e, msg) => {
     msgDisplay.innerHTML = msg
 })
 
-ipcRenderer.on('add-ball', (e, ballText) => {
+ipcRenderer.on('add-ball', (e, ballText, n) => {
     if (ballText === 'clear') {
         overSymbols.innerHTML = null
     } else if (ballText === 'remove') {
-        //remove all blank balls
-        let blankBalls = document.getElementsByClassName("blankBall")
-        while (blankBalls[0]) {
-            blankBalls[0].parentElement.removeChild(blankBalls[0])
-        }
+        removeBlankBalls()
         overSymbols.removeChild(overSymbols.lastChild)
+        addRemainingBalls(n)
     } else {
         let p = document.createElement("p")
         p.appendChild(document.createTextNode(ballText))
@@ -151,13 +148,18 @@ ipcRenderer.on('add-ball', (e, ballText) => {
 })
 
 ipcRenderer.on('add-remaining-balls', (e, n) => {
-    //remove all blank balls
+    removeBlankBalls()
+    addRemainingBalls(n)
+})
+
+const removeBlankBalls = () => {
     let blankBalls = document.getElementsByClassName("blankBall")
     while (blankBalls[0]) {
         blankBalls[0].parentElement.removeChild(blankBalls[0])
     }
+}
 
-
+const addRemainingBalls = n => {
     for (let i = 0; i < n; i++) {
         let p = document.createElement("p")
         p.appendChild(document.createTextNode(""))
@@ -166,8 +168,4 @@ ipcRenderer.on('add-remaining-balls', (e, n) => {
         overBall.appendChild(p)
         overSymbols.appendChild(overBall)
     }
-})
-
-const addRemainingBalls = n => {
-
 }

@@ -133,7 +133,8 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
                     matchState.innings = 'break'
                 }
             }
-            ipcRenderer.send('add-ball', 'W')
+            if (btn.id !== 'retired')
+                ipcRenderer.send('add-ball', 'W')
         }
         updateMain('wicket')
         let remBalls = 6 - matchState.battingTeam.batStats.balls % 6
