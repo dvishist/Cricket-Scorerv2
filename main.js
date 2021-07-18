@@ -50,8 +50,8 @@ app.on('ready', () => {
         webPreferences: {
             nodeIntegration: true
         },
-        height: 180,
-        width: 10000,
+        height: 210,
+        width: 1600,
         x: 0,
         y: 0,
         show: false,

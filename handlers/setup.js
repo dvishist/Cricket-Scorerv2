@@ -12,21 +12,21 @@ form.addEventListener('submit', async e => {
     e.preventDefault()
 
     //validate through API
-    document.getElementById('codeError').style.visibility = 'visible'
-    const code = document.getElementById('code').value
-    document.getElementById('codeError').innerHTML = "verifying..."
-    if (code) {
-        const { data } = await axios.get('validate/' + code)
-        if (!data) {
-            document.getElementById('codeError').style.visibility = 'visible'
-            document.getElementById('codeError').innerHTML = "Subscription not active for the code entered! Please contact dvishist27@gmail.com"
-            return
-        }
-    } else {
-        document.getElementById('codeError').style.visibility = 'visible'
-        document.getElementById('codeError').innerHTML = "Subscription not active for the code entered! Please contact dvishist27@gmail.com"
-        return
-    }
+    // document.getElementById('codeError').style.visibility = 'visible'
+    // const code = document.getElementById('code').value
+    // document.getElementById('codeError').innerHTML = "verifying..."
+    // if (code) {
+    //     const { data } = await axios.get('validate/' + code)
+    //     if (!data) {
+    //         document.getElementById('codeError').style.visibility = 'visible'
+    //         document.getElementById('codeError').innerHTML = "Subscription not active for the code entered! Please contact dvishist27@gmail.com"
+    //         return
+    //     }
+    // } else {
+    //     document.getElementById('codeError').style.visibility = 'visible'
+    //     document.getElementById('codeError').innerHTML = "Subscription not active for the code entered! Please contact dvishist27@gmail.com"
+    //     return
+    // }
 
     const team1FileName = document.querySelector('#team1FileName').value
     const team2FileName = document.querySelector('#team2FileName').value

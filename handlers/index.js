@@ -126,6 +126,11 @@ ipcRenderer.on('add-ball', (e, ballText) => {
     if (ballText === 'clear') {
         overSymbols.innerHTML = null
     } else if (ballText === 'remove') {
+        //remove all blank balls
+        let blankBalls = document.getElementsByClassName("blankBall")
+        while (blankBalls[0]) {
+            blankBalls[0].parentElement.removeChild(blankBalls[0])
+        }
         overSymbols.removeChild(overSymbols.lastChild)
     } else {
         let p = document.createElement("p")
@@ -162,3 +167,7 @@ ipcRenderer.on('add-remaining-balls', (e, n) => {
         overSymbols.appendChild(overBall)
     }
 })
+
+const addRemainingBalls = n => {
+
+}
