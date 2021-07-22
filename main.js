@@ -121,10 +121,6 @@ app.on('ready', () => {
         controllerWindow.webContents.send('controller-setup', matchState)
     })
 
-    ipcMain.on('update-players', (e, liveState) => {
-        indexWindow.webContents.send('update-players', liveState)
-    })
-
     ipcMain.on('update-main', (e, matchState) => {
         indexWindow.webContents.send('update-main', matchState)
     })
