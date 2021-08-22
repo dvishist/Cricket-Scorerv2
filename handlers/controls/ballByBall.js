@@ -20,12 +20,13 @@ const updateMain = state => {
     runoutRuns.value = null
 
     ipcRenderer.send('update-main', matchState)
+    ipcRenderer.send('update-player', [matchState.live.batsman1, matchState.live.batsman2], matchState.battingTeam.logo)
 
     //update msg display by auto clicking the checked radio
     document.querySelector('[name="msg"]:checked').click()
 
     if (state !== 'wicket') activityStack.push(cloneDeep(matchState))
-    if (activityStack.length > 20) activityStack.shift()
+    if (activityStack.length > 30) activityStack.shift()
 }
 
 // ball by ball buttons
@@ -125,9 +126,6 @@ const playBall = (runs, boundary) => {
         if (matchState.battingTeam.batStats.balls % 6 === 0 && !noBallRadio.checked && !wideRadio.checked) {
             changeStriker()
             assessMaiden()
-            bowlerDropdown.style.visibility = 'visible'
-        } else {
-            bowlerDropdown.style.visibility = 'hidden'
         }
 
         //if overs completed or team all out

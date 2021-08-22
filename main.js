@@ -93,7 +93,6 @@ app.on('ready', () => {
                 enableRemoteModule: true
             },
         })
-        controllerWindow.setMenu(null)
         controllerWindow.show()
         controllerWindow.loadFile("views/controllerWindow.html")
         controllerWindow.setMenu(controlMenu)
@@ -102,6 +101,23 @@ app.on('ready', () => {
         controllerWindow.webContents.on('dom-ready', () => {
             controllerWindow.webContents.send('controller-setup', match)
         })
+
+        const playerWindow = new BrowserWindow({
+            title: 'PLAYER',
+            width: 900,
+            height: 250,
+            show: false,
+            resizable: false,
+            webPreferences: {
+                nodeIntegration: true,
+                enableRemoteModule: true
+            },
+        })
+
+        playerWindow.setMenu(null)
+        playerWindow.show()
+        playerWindow.loadFile("views/playerWindow.html")
+        playerWindow.setMenu(mainMenu)
 
         const scorecardWindow = new BrowserWindow({
             title: 'SCORECARDS',
@@ -112,37 +128,42 @@ app.on('ready', () => {
                 enableRemoteModule: true
             },
         })
-        // scorecardWindow.setMenu(null)
-        // scorecardWindow.show()
-        // scorecardWindow.loadFile("views/scorecardWindow.html")
-    })
 
-    ipcMain.on('controller-Setup', (e, matchState) => {
-        controllerWindow.webContents.send('controller-setup', matchState)
-    })
 
-    ipcMain.on('update-main', (e, matchState) => {
-        indexWindow.webContents.send('update-main', matchState)
-    })
+        ipcMain.on('controller-Setup', (e, matchState) => {
+            controllerWindow.webContents.send('controller-setup', matchState)
+        })
 
-    ipcMain.on('fade-batsman', (e, batsman) => {
-        indexWindow.webContents.send('fade-batsman', batsman)
-    })
+        ipcMain.on('update-player', (e, players, logo) => {
+            playerWindow.webContents.send('update-player', players)
+            playerWindow.webContents.send('set-logo', logo)
 
-    ipcMain.on('unfade-batsman', (e, batsman) => {
-        indexWindow.webContents.send('unfade-batsman', batsman)
-    })
+        })
 
-    ipcMain.on('send-message', (e, msg) => {
-        indexWindow.webContents.send('send-message', msg)
-    })
+        ipcMain.on('update-main', (e, matchState) => {
+            indexWindow.webContents.send('update-main', matchState)
+        })
 
-    ipcMain.on('add-ball', (e, ballText, n) => {
-        indexWindow.webContents.send('add-ball', ballText, n)
-    })
+        ipcMain.on('fade-batsman', (e, batsman) => {
+            indexWindow.webContents.send('fade-batsman', batsman)
+        })
 
-    ipcMain.on('add-remaining-balls', (e, n) => {
-        indexWindow.webContents.send('add-remaining-balls', n)
+        ipcMain.on('unfade-batsman', (e, batsman) => {
+            indexWindow.webContents.send('unfade-batsman', batsman)
+        })
+
+        ipcMain.on('send-message', (e, msg) => {
+            indexWindow.webContents.send('send-message', msg)
+        })
+
+        ipcMain.on('add-ball', (e, ballText, n) => {
+            indexWindow.webContents.send('add-ball', ballText, n)
+        })
+
+        ipcMain.on('add-remaining-balls', (e, n) => {
+            indexWindow.webContents.send('add-remaining-balls', n)
+        })
+
     })
 })
 

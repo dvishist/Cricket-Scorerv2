@@ -1,0 +1,104 @@
+body {
+	background-color: magenta;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+}
+
+#container {
+	margin: 15px;
+	align-self: center;
+	width: 98%;
+	height: 130px;
+	border-radius: 100px;
+	background-image: linear-gradient(to right, #111799, #f11a49);
+	z-index: 1;
+}
+
+#container #score {
+	margin-top: 40px;
+	margin-left: 50px;
+	width: 85%;
+	height: 55px;
+	font-size: 24px;
+	font-family: Tahoma, AppleGothic, sans-serif;
+	color: white;
+}
+
+#container #score #wicket {
+	height: 10px;
+	display: flex;
+	flex-direction: row;
+}
+
+#container #score #stats {
+	margin-top: 20px;
+	height: 10px;
+	display: flex;
+	flex-direction: row;
+}
+
+#container #score #wicket p {
+	margin-right: 35px;
+}
+
+#container #score #stats p {
+	margin-right: 45px;
+}
+
+#nameBar {
+	position: absolute;
+	width: 92%;
+	height: 59px;
+	background-image: linear-gradient(#fdfdf6, #c7d3eb);
+	align-self: center;
+	top: 18px;
+	border-radius: 100px;
+	z-index: 2;
+	font-size: 32px;
+	font-family: Tahoma, AppleGothic, sans-serif;
+	color: #111799;
+	display: flex;
+}
+
+#logoImg {
+	position: absolute;
+	top: 2px;
+	right: 40px;
+	height: 55px;
+	width: 55px;
+}
+
+#nameBar #name {
+	margin-top: 10px;
+	margin-left: 40px;
+	margin-right: 80px;
+	font-weight: bold;
+}
+
+#nameBar #runs {
+	margin-top: 10px;
+	font-weight: bolder;
+}
+
+#nameBar #balls {
+	margin-top: 19px;
+	font-size: 20px;
+}
+
+#whiteSpace {
+	position: absolute;
+	width: 89%;
+	top: 98px;
+	height: 59px;
+	background-image: linear-gradient(#fdfdf6, #b6bbc5);
+	align-self: center;
+	border-radius: 100px;
+}
+
+#radioButtons {
+	align-self: center;
+	font-size: 16px;
+	font-family: Tahoma, AppleGothic, sans-serif;
+	color: white;
+}

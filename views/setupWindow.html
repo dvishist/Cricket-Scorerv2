@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="../styles/setupStyle.css" />
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../styles/setupStyle.css">
-</head>
-
-<body>
-    <form>
-        <div id="setupForm">
-            <h3 id="heading">SETUP MATCH</h3>
-            <input type="text" id="code" placeholder="SUBSCRIPTION CODE">
-            <p id = "codeError">Subscription not active for the code entered! Please contact dvishist27@gmail.com</p>
-            <p>Team 1 File Name</p>
-            <input type="text" id="team1FileName" value="gcc">
-            <p>Team 2 File Name</p>
-            <input type="text" id="team2FileName" value="esb">
-            <p>Overs</p>
-            <input type="text" id="overs" value="5">
-        </div>
-        <br><br><br>
-        <div id="toss">
-            <p>Toss Won By</p>
-            <input type="text" id="tossWinner" value="gcc">
-            <p>Decision</p>
-            <input type="radio" name="toss" id = "bat" value="bat" checked>
-            <label for="bat">Bat</label>
-            <input type="radio" name="toss" id = "bowl" value="bowl">
-            <label for="bowl">Bowl</label><br><br>
-        </div>
-        <button type="submit" >START</button>
-    </form>
-    <script src="../handlers/setup.js"></script>
-</body>
-
+	<body>
+		<form>
+			<div id="setupForm">
+				<h3 id="heading">SETUP MATCH</h3>
+				<!-- <input type="text" id="code" placeholder="SUBSCRIPTION CODE">
+            <p id = "codeError">Subscription not active for the code entered! Please contact dvishist27@gmail.com</p> -->
+				<p>Team 1 File Name</p>
+				<input type="text" id="team1FileName" value="gcc" />
+				<p>Team 2 File Name</p>
+				<input type="text" id="team2FileName" value="esb" />
+				<p>Overs</p>
+				<input type="text" id="overs" value="5" />
+			</div>
+			<br /><br /><br />
+			<div id="toss">
+				<p>Toss Won By</p>
+				<input type="text" id="tossWinner" value="gcc" />
+				<p>Decision</p>
+				<input type="radio" name="toss" id="bat" value="bat" checked />
+				<label for="bat">Bat</label>
+				<input type="radio" name="toss" id="bowl" value="bowl" />
+				<label for="bowl">Bowl</label><br /><br />
+			</div>
+			<button type="submit">START</button>
+		</form>
+		<script src="../handlers/setup.js"></script>
+	</body>
 </html>
