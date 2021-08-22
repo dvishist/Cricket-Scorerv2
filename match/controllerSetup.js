@@ -1,6 +1,7 @@
 const fs = require('fs')
 const { ipcRenderer } = require("electron")
 const { cloneDeep } = require('lodash')
+const randomstring = require('randomstring')
 
 //dropdowns
 const bowlerDropdown = document.querySelector("#bowlerDropdown")
@@ -176,8 +177,12 @@ const assessResult = () => {
     }
     resultRadio.click()
 
+    const date = new Date().toLocaleDateString('en-US').replaceAll('/', '-')
+    const code = randomstring.generate(5)
+    const filename = matchState.battingTeam.short + 'v' + matchState.bowlingTeam.short + '(' + date + ')' + code + '.json'
     let matchData = JSON.stringify(matchState)
-    fs.writeFileSync("gg.json", matchData)
+    console.log(filename)
+    fs.writeFileSync(`./saved-games/${filename}`, matchData)
 }
 
 
