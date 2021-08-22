@@ -49,7 +49,9 @@ const updateView = () => {
 
     const { name, batStats, wicket } = viewPlayer
     playerName.innerHTML = name
-    runs.innerHTML = batStats.runs + (wicket.out || '*')
+    let runsText = batStats.runs
+    if (!wicket.out) runsText += "*"
+    runs.innerHTML = runsText
     balls.innerHTML = " (" + batStats.balls + ")"
 
     bowler.innerHTML = wicket.bowler ? "b " + wicket.bowler.name : ""
