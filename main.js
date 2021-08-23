@@ -144,7 +144,7 @@ app.on('ready', () => {
         playerWindow.show()
         playerWindow.loadFile("views/playerWindow.html")
 
-        const scorecardWindow = new BrowserWindow({
+        const battingScorecardWindow = new BrowserWindow({
             title: 'BATTING SCORECARDS',
             show: false,
             height: 930,
@@ -156,11 +156,10 @@ app.on('ready', () => {
             },
         })
 
-        scorecardWindow.setMenu(null)
-        scorecardWindow.show()
-        scorecardWindow.loadFile("views/scorecardWindow.html")
-        scorecardWindow.setMenu(scorecardMenu)
-
+        battingScorecardWindow.setMenu(null)
+        battingScorecardWindow.show()
+        battingScorecardWindow.loadFile("views/battingScorecardWindow.html")
+        battingScorecardWindow.setMenu(scorecardMenu)
 
         ipcMain.on('controller-Setup', (e, matchState) => {
             controllerWindow.webContents.send('controller-setup', matchState)
@@ -174,7 +173,7 @@ app.on('ready', () => {
 
         ipcMain.on('update-main', (e, matchState) => {
             indexWindow.webContents.send('update-main', matchState)
-            scorecardWindow.webContents.send('update-main', matchState)
+            battingScorecardWindow.webContents.send('update-main', matchState)
         })
 
         ipcMain.on('fade-batsman', (e, batsman) => {
