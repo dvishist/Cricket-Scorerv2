@@ -1,5 +1,5 @@
 const { ipcRenderer } = require("electron")
-const { getStrikeRate } = require('../match/utils')
+const { getStrikeRate, outMethods } = require('../match/utils')
 
 const playerName = document.getElementById('name')
 const runs = document.getElementById('runs')
@@ -54,7 +54,15 @@ const updateView = () => {
     runs.innerHTML = runsText
     balls.innerHTML = " (" + batStats.balls + ")"
 
-    bowler.innerHTML = wicket.bowler ? "b " + wicket.bowler.name : ""
+    if (wicket.bowler) {
+        if (wicket.method === "lbw")
+            bowler.innerHTML = "lbw " + wicket.bowler.name
+        else {
+            bowler.innerHTML = "b " + wicket.bowler.name
+        }
+    } else {
+        bowler.innerHTML = ""
+    }
     if (wicket.method === "retired") fielder.innerHTML = 'retired'
     else if (Object.keys(outMethods).includes(wicket.method)) fielder.innerHTML = outMethods[wicket.method] + " " + wicket.fielder.name
     else fielder.innerHTML = ""
@@ -64,10 +72,4 @@ const updateView = () => {
     const sr = getStrikeRate(viewPlayer)
     strikeRate.innerHTML = "STRIKE-RATE " + sr
     if (sr === NaN) strikeRate.innerHTML = "STRIKE-RATE 0"
-}
-
-const outMethods = {
-    caught: 'c',
-    stumped: 'st',
-    runout: 'runout',
 }
