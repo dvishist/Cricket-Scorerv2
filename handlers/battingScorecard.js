@@ -22,7 +22,6 @@ ipcRenderer.on('toggle-teams', () => {
 
 ipcRenderer.on('update-main', (e, matchState) => {
     oldState = matchState
-    console.log(matchState)
     update(matchState)
 })
 
