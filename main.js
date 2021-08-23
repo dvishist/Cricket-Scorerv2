@@ -161,6 +161,23 @@ app.on('ready', () => {
         battingScorecardWindow.loadFile("views/battingScorecardWindow.html")
         battingScorecardWindow.setMenu(scorecardMenu)
 
+        const bowlingScorecardWindow = new BrowserWindow({
+            title: 'BOWLING SCORECARDS',
+            show: false,
+            height: 930,
+            width: 1500,
+            resizable: false,
+            webPreferences: {
+                nodeIntegration: true,
+                enableRemoteModule: true
+            },
+        })
+
+        bowlingScorecardWindow.setMenu(null)
+        bowlingScorecardWindow.show()
+        bowlingScorecardWindow.loadFile("views/bowlingScorecardWindow.html")
+        bowlingScorecardWindow.setMenu(scorecardMenu)
+
         ipcMain.on('controller-Setup', (e, matchState) => {
             controllerWindow.webContents.send('controller-setup', matchState)
         })
@@ -174,6 +191,7 @@ app.on('ready', () => {
         ipcMain.on('update-main', (e, matchState) => {
             indexWindow.webContents.send('update-main', matchState)
             battingScorecardWindow.webContents.send('update-main', matchState)
+            bowlingScorecardWindow.webContents.send('update-main', matchState)
         })
 
         ipcMain.on('fade-batsman', (e, batsman) => {

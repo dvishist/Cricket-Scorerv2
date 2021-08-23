@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+	<link rel="stylesheet" href="../styles/bowlingScorecardStyle.css" />
+</head>
+<body>
+	<div id="teamNames">
+		<div class="teamName" id="team1Name">
+			<img id="team1Img" src="../images/default.png" />
+			<p>BATTING TEAM</p>
+			<img src="../images/bat.png" />
+		</div>
+		<div class="teamName" id="team2Name">
+			<img src="../images/bowl.png" />
+			<p>BOWLING TEAM</p>
+			<img id="team2Img" src="../images/default.png" />
+		</div>
+	</div>
+	<div id="battingContainer">
+		<div class="batsman labels topBatsman" id="bowlStats">
+			<div class="bowlerName"><p></p></div>
+			<div class="bowlerStats whiteText"><p>OVERS</p></div>
+			<div class="bowlerStats whiteText"><p>MAIDENS</p></div>
+			<div class="bowlerStats whiteText"><p>RUNS</p></div>
+			<div class="bowlerStats whiteText"><p>WICKETS</p></div>
+			<div class="bowlerStats whiteText"><p>ECONOMY</p></div>
+		</div>
+		<div id="bowlerList"></div>
+
+		<div class="batsman labels">
+			<div class="bowlerName fowName whiteText"><p>FALL OF WICKETS</p></div>
+			<div class="bowlerStats fowStats whiteText"><p>1</p></div>
+			<div class="bowlerStats fowStats whiteText"><p>2</p></div>
+			<div class="bowlerStats fowStats whiteText"><p>3</p></div>
+			<div class="bowlerStats fowStats whiteText"><p>4</p></div>
+			<div class="bowlerStats fowStats whiteText"><p>5</p></div>
+			<div class="bowlerStats fowStats whiteText"><p>6</p></div>
+			<div class="bowlerStats fowStats whiteText"><p>7</p></div>
+			<div class="bowlerStats fowStats whiteText"><p>8</p></div>
+			<div class="bowlerStats fowStats whiteText"><p>9</p></div>
+			<div class="bowlerStats fowStats whiteText"><p>10</p></div>
+		</div>
+		<div class="batsman botBatsman" id="fowStats">
+			<div class="bowlerName fowName"><p></p></div>
+		</div>
+	</div>
+
+	<div id="bottomBars">
+		<div id="botBar1" class="bottomBar"></div>
+		<div id="stats" class="bottomBar">
+			<div class="botBarText">
+				<p class="normal">EXTRAS</p>
+				<p id="extras"></p>
+			</div>
+			<div class="botBarText">
+				<p class="normal">OVERS</p>
+				<p id="overs"></p>
+			</div>
+		</div>
+		<div id="total" class="bottomBar">
+			<p class="normal">TOTAL</p>
+			<p id="totalRuns"></p>
+		</div>
+	</div>
+	<script src="../handlers/bowlingScorecard.js"></script>
+</body>

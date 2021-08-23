@@ -1,0 +1,160 @@
+body {
+	background-color: magenta;
+}
+
+#teamNames {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.teamName {
+	width: 700px;
+	height: 70px;
+	margin-left: 20px;
+	margin-right: 20px;
+	box-shadow: inset 0px -10px 20px -10px #2f3c4d;
+	background-image: linear-gradient(#fdfdf6, #c7d3eb);
+	border-radius: 100px;
+	display: flex;
+	color: #222677;
+	font-size: 30px;
+	font-family: sans-serif;
+	font-weight: bolder;
+	justify-content: space-between;
+	padding: 5px;
+}
+
+.teamName p {
+	margin-top: 18px;
+}
+
+#team1Name p {
+	color: #aeaed1;
+}
+
+.teamName img {
+	padding: 5px;
+	height: 60px;
+	width: 60px;
+	background-color: aliceblue;
+	border-radius: 100px;
+}
+
+#battingContainer {
+	margin: 10px;
+	margin-left: 63px;
+	background-color: white;
+	height: 682px;
+	width: 1350px;
+	background-color: transparent;
+}
+
+.batsman {
+	height: 62px;
+	width: 1300px;
+	background-image: linear-gradient(to bottom, #fdfdf6, #d6d8dd);
+	margin-left: 25px;
+	display: flex;
+	flex-direction: row;
+	font-size: 26px;
+	font-family: sans-serif;
+	font-weight: bold;
+	justify-content: space-around;
+	color: #222677;
+}
+
+.labels {
+	background-image: linear-gradient(to right, #f11a49, #222677);
+}
+
+.bowlerName {
+	width: 450px;
+	color: #222677;
+	display: flex;
+	justify-content: start;
+	padding-left: 20px;
+	align-items: center;
+}
+
+.bowlerStats {
+	color: #222677;
+	width: 180px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #f11a49;
+	border-top: 0;
+	border-bottom: 0;
+	border-right: 0;
+}
+
+.whiteText {
+	color: #f2f2fd;
+}
+
+.fowStats {
+	width: 89px;
+}
+
+.topBatsman {
+	border-radius: 10px 10px 0 0;
+}
+
+.botBatsman {
+	border-radius: 0 0 10px 10px;
+}
+
+#bottomBars {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.bottomBar {
+	height: 70px;
+	margin-left: 20px;
+	margin-right: 20px;
+	box-shadow: inset 0px -10px 20px -10px #2f3c4d;
+	background-image: linear-gradient(#fdfdf6, #c7d3eb);
+	border-radius: 100px;
+	display: flex;
+	color: #222677;
+	font-size: 32px;
+	font-family: sans-serif;
+	font-weight: bolder;
+	justify-content: space-around;
+	padding: 5px;
+}
+
+.bottomBar p {
+	margin-top: 15px;
+}
+
+.bottomBar .normal {
+	font-weight: normal;
+}
+
+.botBarText {
+	display: flex;
+	flex-direction: row;
+}
+
+.botBarText p {
+	margin: 5px;
+	margin-top: 15px;
+}
+
+#botBar1 {
+	width: 300px;
+}
+
+#stats {
+	width: 600px;
+}
+
+#total {
+	width: 300px;
+}
