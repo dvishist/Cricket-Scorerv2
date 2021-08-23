@@ -11,4 +11,10 @@ const getRunRate = team => {
 
 const findPlayer = (team, playerName) => team.playerList.find(player => player.name === playerName)
 
-module.exports = { getOversText, getStrikeRate, getEconomy, getRunRate, findPlayer }
+const outMethods = {
+    caught: 'c',
+    stumped: 'st',
+    runout: 'runout',
+}
+
+module.exports = { getOversText, getStrikeRate, getEconomy, getRunRate, findPlayer, outMethods }
