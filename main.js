@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, ipcRenderer, remote, ipcMain } = require('electron')
+const { app, BrowserWindow, Menu, ipcMain } = require('electron')
 
 const mainMenu = Menu.buildFromTemplate([
     {
@@ -10,6 +10,32 @@ const mainMenu = Menu.buildFromTemplate([
                     focusedWindow.toggleDevTools()
                 },
                 accelerator: 'Ctrl+I'
+            }
+        ]
+    }
+])
+
+const scorecardMenu = Menu.buildFromTemplate([
+    {
+        label: 'File',
+        submenu: [
+            {
+                label: 'Toggle DevTools',
+                click(item, focusedWindow) {
+                    focusedWindow.toggleDevTools()
+                },
+                accelerator: 'Ctrl+I'
+            }
+        ]
+    }, {
+        label: 'Toggle Teams',
+        submenu: [
+            {
+                label: 'Toggle',
+                click(item, focusedWindow) {
+                    focusedWindow.webContents.send('toggle-teams')
+                },
+                accelerator: 'Ctrl+Shift+T'
             }
         ]
     }
@@ -117,17 +143,23 @@ app.on('ready', () => {
         playerWindow.setMenu(null)
         playerWindow.show()
         playerWindow.loadFile("views/playerWindow.html")
-        playerWindow.setMenu(mainMenu)
 
         const scorecardWindow = new BrowserWindow({
-            title: 'SCORECARDS',
+            title: 'BATTING SCORECARDS',
             show: false,
+            height: 930,
+            width: 1500,
             resizable: false,
             webPreferences: {
                 nodeIntegration: true,
                 enableRemoteModule: true
             },
         })
+
+        scorecardWindow.setMenu(null)
+        scorecardWindow.show()
+        scorecardWindow.loadFile("views/scorecardWindow.html")
+        scorecardWindow.setMenu(scorecardMenu)
 
 
         ipcMain.on('controller-Setup', (e, matchState) => {
@@ -142,6 +174,7 @@ app.on('ready', () => {
 
         ipcMain.on('update-main', (e, matchState) => {
             indexWindow.webContents.send('update-main', matchState)
+            scorecardWindow.webContents.send('update-main', matchState)
         })
 
         ipcMain.on('fade-batsman', (e, batsman) => {
