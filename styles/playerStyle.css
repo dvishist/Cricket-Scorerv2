@@ -21,7 +21,7 @@ body {
 	width: 85%;
 	height: 55px;
 	font-size: 24px;
-	font-family: Tahoma, AppleGothic, sans-serif;
+	font-family: sans-serif;
 	color: white;
 }
 
@@ -50,13 +50,14 @@ body {
 	position: absolute;
 	width: 92%;
 	height: 59px;
+	box-shadow: inset 0px -10px 20px -10px #2f3c4d;
 	background-image: linear-gradient(#fdfdf6, #c7d3eb);
 	align-self: center;
 	top: 18px;
 	border-radius: 100px;
 	z-index: 2;
 	font-size: 32px;
-	font-family: Tahoma, AppleGothic, sans-serif;
+	font-family: sans-serif;
 	color: #111799;
 	display: flex;
 }
@@ -99,6 +100,6 @@ body {
 #radioButtons {
 	align-self: center;
 	font-size: 16px;
-	font-family: Tahoma, AppleGothic, sans-serif;
+	font-family: sans-serif;
 	color: white;
 }

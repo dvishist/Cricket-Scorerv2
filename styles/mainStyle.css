@@ -74,7 +74,7 @@ body {
 }
 
 #scoreText {
-	background-image: linear-gradient(to right, #202699, #f11a49);
+	background-image: linear-gradient(to right, #222677, #f11a49);
 	width: 65%;
 	height: 86%;
 	border-radius: 100px;
@@ -89,7 +89,7 @@ body {
 	margin: auto;
 	color: #71abf3;
 	font-size: 18px;
-	font-family: Tahoma, AppleGothic, sans-serif;
+	font-family: sans-serif;
 	/* font-weight: bold; */
 	margin-bottom: 5px;
 }
@@ -98,7 +98,7 @@ body {
 	margin: auto;
 	color: white;
 	font-size: 24px;
-	font-family: Tahoma, AppleGothic, sans-serif;
+	font-family: sans-serif;
 	font-weight: bolder;
 }
 
@@ -106,7 +106,7 @@ body {
 	margin: auto;
 	color: white;
 	font-size: 24px;
-	font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+	font-family: sans-serif;
 	font-weight: bolder;
 	padding-right: 10px;
 }
@@ -124,7 +124,7 @@ body {
 #oversText p {
 	color: white;
 	font-size: 20px;
-	font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+	font-family: sans-serif;
 	margin: auto;
 	justify-content: center;
 	font-weight: 400;
@@ -138,7 +138,7 @@ body {
 	margin: auto;
 	color: white;
 	font-size: 16px;
-	font-family: Tahoma, AppleGothic, sans-serif;
+	font-family: sans-serif;
 	margin: auto;
 }
 
@@ -169,7 +169,7 @@ body {
 
 .playerName {
 	margin: auto;
-	font-family: Tahoma, sans-serif;
+	font-family: sans-serif;
 	font-size: 18px;
 	font-weight: bold;
 	color: #27256e;
@@ -179,7 +179,7 @@ body {
 
 .batsmanScore p {
 	margin: auto;
-	font-family: Tahoma, sans-serif;
+	font-family: sans-serif;
 	color: #27256e;
 	width: 40px;
 }
@@ -214,7 +214,7 @@ body {
 
 #bowlerScore {
 	margin: auto;
-	font-family: Tahoma, sans-serif;
+	font-family: sans-serif;
 	font-size: 16px;
 	color: #27256e;
 	font-weight: bolder;
@@ -222,7 +222,7 @@ body {
 }
 
 #bowlerOvers {
-	font-family: Tahoma, sans-serif;
+	font-family: sans-serif;
 	font-size: 16px;
 	color: #27256e;
 	margin: auto;
