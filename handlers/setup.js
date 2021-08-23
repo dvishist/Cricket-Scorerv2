@@ -44,8 +44,10 @@ form.addEventListener('submit', async e => {
         let decision = bat ? 'bat' : 'bowl'
         let overs = parseInt(oversText)
 
-        const match = createMatch(team1Obj, team2Obj, tossWinner, decision, overs)
+        tossWinner.playerList[0].batStats.order = 1
+        tossWinner.playerList[1].batStats.order = 2
 
+        const match = createMatch(team1Obj, team2Obj, tossWinner, decision, overs)
         ipcRenderer.send('match-created', match)
         remote.getCurrentWindow().close()
     } catch (err) {

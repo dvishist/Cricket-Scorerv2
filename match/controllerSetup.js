@@ -75,6 +75,8 @@ const endOfInnings = () => {
     matchState.target = matchState.bowlingTeam.batStats.runs + 1
     matchState.live.batsman1 = matchState.battingTeam.playerList[0]
     matchState.live.batsman2 = matchState.battingTeam.playerList[1]
+    matchState.live.batsman1.batStats.order = 1
+    matchState.live.batsman2.batStats.order = 2
     matchState.live.striker = matchState.live.batsman1
     matchState.live.bowler = matchState.bowlingTeam.playerList[10]
 
