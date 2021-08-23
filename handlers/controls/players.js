@@ -29,6 +29,11 @@ addBatsmanButton.addEventListener('click', () => {
 
 replaceBatsman = (newBatsmanName, oldBatsman) => {
     let newBatsman = findPlayer(matchState.battingTeam, newBatsmanName)
+    const order = matchState.battingTeam.playerList.reduce((max, player) => {
+        return Math.max(max, player.batStats.order || 0)
+    }, 0)
+
+    newBatsman.batStats.order = order + 1
 
     if (oldBatsman.wicket.method === 'retired') {
         if (oldBatsman.batStats.runs < 1 && oldBatsman.batStats.balls < 1) oldBatsman.wicket.method = null
