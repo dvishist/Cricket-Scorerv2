@@ -184,21 +184,36 @@ const assessResult = () => {
     const filename = matchState.battingTeam.short + 'v' + matchState.bowlingTeam.short + '(' + date + ')' + code + '.json'
 
     //prep clonedState object for JSON
+    const cloneState = parseMatch(matchState)
+
+    let matchData = JSON.stringify(cloneState)
+    fs.writeFileSync(`./saved-games/${filename}`, matchData)
+}
+
+const parseMatch = matchState => {
     const cloneState = cloneDeep(matchState)
+
     cloneState.toss = cloneState.toss.name
     cloneState.result.winner = cloneState.result.winner.name
     cloneState.battingTeam.captain = cloneState.battingTeam.captain.name
     cloneState.battingTeam.wk = cloneState.battingTeam.wk.name
     cloneState.bowlingTeam.captain = cloneState.bowlingTeam.captain.name
     cloneState.bowlingTeam.wk = cloneState.bowlingTeam.wk.name
+    cloneState.battingTeam.batStats.overs = getOversText(cloneState.battingTeam.batStats.balls)
+    cloneState.bowlingTeam.batStats.overs = getOversText(cloneState.bowlingTeam.batStats.balls)
     delete cloneState.innings
     delete cloneState.live
     delete cloneState.battingTeam.logo
     delete cloneState.bowlingTeam.logo
 
-    let matchData = JSON.stringify(cloneState)
-    fs.writeFileSync(`./saved-games/${filename}`, matchData)
+    cloneState[cloneState.bowlingTeam.name + ' - inn1'] = cloneDeep(cloneState.bowlingTeam)
+    cloneState[cloneState.battingTeam.name + ' - inn2'] = cloneDeep(cloneState.battingTeam)
+    delete cloneState.battingTeam
+    delete cloneState.bowlingTeam
+
+    return cloneState
 }
+
 
 
 ipcRenderer.on('undo', e => {
