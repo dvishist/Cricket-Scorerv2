@@ -182,12 +182,21 @@ const assessResult = () => {
     const date = new Date().toLocaleDateString('en-US').replaceAll('/', '-')
     const code = randomstring.generate(5)
     const filename = matchState.battingTeam.short + 'v' + matchState.bowlingTeam.short + '(' + date + ')' + code + '.json'
-    matchState.toss = matchState.toss.name
-    delete matchState.innings
-    delete matchState.live
 
-    let matchData = JSON.stringify(matchState)
-    console.log(filename)
+    //prep clonedState object for JSON
+    const cloneState = cloneDeep(matchState)
+    cloneState.toss = cloneState.toss.name
+    cloneState.result.winner = cloneState.result.winner.name
+    cloneState.battingTeam.captain = cloneState.battingTeam.captain.name
+    cloneState.battingTeam.wk = cloneState.battingTeam.wk.name
+    cloneState.bowlingTeam.captain = cloneState.bowlingTeam.captain.name
+    cloneState.bowlingTeam.wk = cloneState.bowlingTeam.wk.name
+    delete cloneState.innings
+    delete cloneState.live
+    delete cloneState.battingTeam.logo
+    delete cloneState.bowlingTeam.logo
+
+    let matchData = JSON.stringify(cloneState)
     fs.writeFileSync(`./saved-games/${filename}`, matchData)
 }
 
