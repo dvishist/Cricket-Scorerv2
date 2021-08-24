@@ -68,6 +68,10 @@ body {
 	background-image: linear-gradient(to right, #f11a49, #222677);
 }
 
+.labels2 {
+	background-image: linear-gradient(to right, #222677, #f11a49);
+}
+
 .bowlerName {
 	width: 450px;
 	color: #222677;
