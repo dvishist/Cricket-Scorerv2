@@ -1,21 +1,35 @@
 {
-  "name": "cricketscorerv2",
-  "version": "1.0.0",
-  "description": "Cricket Scorer",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron ."
-  },
-  "keywords": [],
-  "author": "dvishist27@gmail.com",
-  "license": "ISC",
-  "devDependencies": {
-    "electron": "^10.1.3",
-    "electron-packager": "^15.3.0"
-  },
-  "dependencies": {
-    "axios": "^0.21.1",
-    "lodash": "^4.17.21",
-    "randomstring": "^1.2.1"
-  }
+	"name": "cricketscorerv2",
+	"version": "1.0.0",
+	"description": "Cricket Scorer",
+	"main": "main.js",
+	"scripts": {
+		"start": "electron .",
+		"dist": "electron-builder"
+	},
+	"keywords": [],
+	"author": "dvishist27@gmail.com",
+	"license": "ISC",
+	"devDependencies": {
+		"electron": "^10.1.3",
+		"electron-builder": "^22.11.7",
+		"electron-packager": "^15.3.0"
+	},
+	"dependencies": {
+		"axios": "^0.21.1",
+		"lodash": "^4.17.21",
+		"randomstring": "^1.2.1"
+	},
+	"build": {
+		"appId": "com.dvishist.cricketscorerv2",
+		"productName": "Cricket Scorer 2",
+		"target": "NSIS",
+		"directories": {
+			"output": "build"
+		},
+		"nsis": {
+			"allowToChangeInstallationDirectory": true,
+			"oneClick": false
+		}
+	}
 }
