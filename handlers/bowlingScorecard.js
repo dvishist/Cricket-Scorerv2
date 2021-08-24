@@ -109,6 +109,32 @@ const populateBowlers = (playerList) => {
     for (let i = 0; i < yetToBowl; i++) {
         const bowlerDiv = document.createElement('div')
         bowlerDiv.className = "batsman"
+
+        const nameDiv = document.createElement('div')
+        nameDiv.className = "bowlerName"
+
+        const oversDiv = document.createElement('div')
+        oversDiv.className = "bowlerStats"
+
+        const maidensDiv = document.createElement('div')
+        maidensDiv.className = "bowlerStats"
+
+        const runsDiv = document.createElement('div')
+        runsDiv.className = "bowlerStats"
+
+        const wicketsDiv = document.createElement('div')
+        wicketsDiv.className = "bowlerStats"
+
+        const economyDiv = document.createElement('div')
+        economyDiv.className = "bowlerStats"
+
+        bowlerDiv.appendChild(nameDiv)
+        bowlerDiv.appendChild(oversDiv)
+        bowlerDiv.appendChild(maidensDiv)
+        bowlerDiv.appendChild(runsDiv)
+        bowlerDiv.appendChild(wicketsDiv)
+        bowlerDiv.appendChild(economyDiv)
+
         bowlerList.appendChild(bowlerDiv)
 
     }
@@ -120,9 +146,7 @@ const populateFow = fow => {
     const fowName = document.createElement('div')
     fowName.classList.add('bowlerName')
     fowName.classList.add('fowName')
-    // const randText = document.createElement('p')
-    // randText.innerHTML = "ASDHBJABHSD"
-    // fowName.appendChild(randText)
+
     fowStats.appendChild(fowName)
     fow.forEach(wicket => {
         const wicketDiv = document.createElement('div')
