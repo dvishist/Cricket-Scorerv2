@@ -84,7 +84,7 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
             batsmanDropdown.style.visibility = 'visible'
             addBatsmanButton.style.visibility = 'visible'
             ipcRenderer.send('fade-batsman', matchState.live.striker)
-            if (btn.id === 'runout') {
+            if (btn.id === 'runout' || btn.id === 'stumped') {
                 if (wideRadio.checked) {
                     matchState.live.bowler.bowlStats.runs++
                     matchState.battingTeam.batStats.runs++
