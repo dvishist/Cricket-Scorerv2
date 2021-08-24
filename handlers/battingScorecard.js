@@ -68,8 +68,16 @@ const populateBatsmen = (playerList) => {
 
         const wicketDiv = document.createElement('div')
         wicketDiv.classList.add('wicket')
+        const wicketFielderDiv = document.createElement('div')
+        wicketFielderDiv.classList.add('wicketFielder')
         const fielderText = document.createElement('p')
+
+        const wicketBowlerDiv = document.createElement('div')
+        wicketBowlerDiv.classList.add('wicketFielder')
         const bowlerText = document.createElement('p')
+
+
+
         if (player.wicket.out) {
             if (player.wicket.bowler) {
                 if (player.wicket.method === "lbw")
@@ -88,8 +96,12 @@ const populateBatsmen = (playerList) => {
         else {
             fielderText.innerHTML = 'NOT OUT'
         }
-        wicketDiv.appendChild(fielderText)
-        wicketDiv.appendChild(bowlerText)
+
+        wicketFielderDiv.appendChild(fielderText)
+        wicketBowlerDiv.appendChild(bowlerText)
+        wicketDiv.appendChild(wicketFielderDiv)
+        wicketDiv.appendChild(wicketBowlerDiv)
+
 
         const runsDiv = document.createElement('div')
         runsDiv.classList.add('runs')
