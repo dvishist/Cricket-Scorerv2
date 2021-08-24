@@ -49,11 +49,9 @@ const populateBatsmen = (playerList) => {
     battingContainer.innerHTML = ''
     playerList = playerList.slice(0, playerList.length - 1)
 
-    const batted = playerList
+    let batted = playerList
         .filter(player => player.batStats.order)
-        .sort((p1, p2) => {
-            p1.batStats.order - p2.batStats.order
-        })
+        .sort((p1, p2) => p1.batStats.order - p2.batStats.order)
 
     const yetToBat = playerList
         .filter(player => !player.batStats.order)
