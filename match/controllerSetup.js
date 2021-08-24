@@ -182,6 +182,10 @@ const assessResult = () => {
     const date = new Date().toLocaleDateString('en-US').replaceAll('/', '-')
     const code = randomstring.generate(5)
     const filename = matchState.battingTeam.short + 'v' + matchState.bowlingTeam.short + '(' + date + ')' + code + '.json'
+    matchState.toss = matchState.toss.name
+    delete matchState.innings
+    delete matchState.live
+
     let matchData = JSON.stringify(matchState)
     console.log(filename)
     fs.writeFileSync(`./saved-games/${filename}`, matchData)
