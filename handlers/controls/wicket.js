@@ -1,6 +1,7 @@
 const bowledButton = document.getElementById('bowled')
 const lbwButton = document.getElementById('lbw')
 const retiredButton = document.getElementById('retired')
+const hitWicketButton = document.getElementById('hitWicket')
 const caughtButton = document.getElementById('caught')
 const stumpedButton = document.getElementById('stumped')
 const runoutButton = document.getElementById('runout')
@@ -24,6 +25,15 @@ bowledButton.addEventListener('click', () => {
 lbwButton.addEventListener('click', () => {
     matchState.live.striker.wicket.out = true
     matchState.live.striker.wicket.method = 'lbw'
+    matchState.live.striker.wicket.bowler = matchState.live.bowler
+
+    matchState.battingTeam.batStats.wickets++
+    matchState.live.bowler.bowlStats.wickets++
+})
+
+hitWicket.addEventListener('click', () => {
+    matchState.live.striker.wicket.out = true
+    matchState.live.striker.wicket.method = 'hitWicket'
     matchState.live.striker.wicket.bowler = matchState.live.bowler
 
     matchState.battingTeam.batStats.wickets++

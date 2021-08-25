@@ -82,9 +82,10 @@ const populateBatsmen = (playerList) => {
             if (player.wicket.bowler) {
                 if (player.wicket.method === "lbw")
                     bowlerText.innerHTML = "lbw " + player.wicket.bowler.name
-                else {
+                else if (player.wicket.method === "hitWicket")
+                    bowlerText.innerHTML = "hit wicket " + player.wicket.bowler.name
+                else
                     bowlerText.innerHTML = "b " + player.wicket.bowler.name
-                }
             } else {
                 bowlerText.innerHTML = ""
             }

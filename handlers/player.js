@@ -55,16 +55,25 @@ const updateView = () => {
     balls.innerHTML = " (" + batStats.balls + ")"
 
     if (wicket.bowler) {
+        fielder.style.display = "none"
         if (wicket.method === "lbw")
             bowler.innerHTML = "lbw " + wicket.bowler.name
+        else if (wicket.method === "hitWicket")
+            bowler.innerHTML = "hit wicket " + wicket.bowler.name
+        else if (wicket.method === "bowled")
+            bowler.innerHTML = "b " + wicket.bowler.name
         else {
+            fielder.style.display = "block"
             bowler.innerHTML = "b " + wicket.bowler.name
         }
     } else {
         bowler.innerHTML = ""
     }
     if (wicket.method === "retired") fielder.innerHTML = 'retired'
-    else if (Object.keys(outMethods).includes(wicket.method)) fielder.innerHTML = outMethods[wicket.method] + " " + wicket.fielder.name
+    else if (Object.keys(outMethods).includes(wicket.method)) {
+        fielder.style.display = "block"
+        fielder.innerHTML = outMethods[wicket.method] + " " + wicket.fielder.name
+    }
     else fielder.innerHTML = ""
 
     fours.innerHTML = "FOURS " + batStats.fours
