@@ -94,18 +94,22 @@
 			<label for="boundariesRadio">Boundaries</label>
 			<input type="radio" name="msg" id="predictedRadio" />
 			<label for="predictedRadio">Predicted</label>
+			<input type="radio" name="msg" id="extrasRadio" />
+			<label for="extrasRadio">Extras</label>
 
 			<br />
-			<input type="radio" name="msg" id="targetRadio" />
-			<label for="targetRadio">Target</label>
-			<input type="radio" name="msg" id="inning1Radio" />
-			<label for="inning1Radio">Inning 1</label>
-			<input type="radio" name="msg" id="reqRunRateRadio" />
-			<label for="reqRunRateRadio">Required RR</label>
-			<input type="radio" name="msg" id="chaseRadio" />
-			<label for="chaseRadio">Run Chase</label>
-			<input type="radio" name="msg" id="resultRadio" />
-			<label for="resultRadio">Result</label>
+			<div class="secondInningsRadios">
+				<input type="radio" name="msg" id="targetRadio" />
+				<label for="targetRadio">Target</label>
+				<input type="radio" name="msg" id="inning1Radio" />
+				<label for="inning1Radio">Inning 1</label>
+				<input type="radio" name="msg" id="reqRunRateRadio" />
+				<label for="reqRunRateRadio">Required RR</label>
+				<input type="radio" name="msg" id="chaseRadio" />
+				<label for="chaseRadio">Run Chase</label>
+				<input type="radio" name="msg" id="resultRadio" />
+				<label for="resultRadio">Result</label>
+			</div>
 			<br />
 			<button id="endOfInnings" style="visibility: hidden">End Innings</button>
 		</div>

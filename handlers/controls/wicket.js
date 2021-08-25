@@ -59,7 +59,7 @@ stumpedButton.addEventListener('click', () => {
 })
 
 runoutButton.addEventListener('click', () => {
-    if (runoutRuns.value) {
+    if (runoutRuns.value && !wideRadio.checked) {
         matchState.battingTeam.batStats.runs += parseInt(runoutRuns.value)
         matchState.live.striker.batStats.runs += parseInt(runoutRuns.value)
         matchState.live.bowler.bowlStats.runs += parseInt(runoutRuns.value)

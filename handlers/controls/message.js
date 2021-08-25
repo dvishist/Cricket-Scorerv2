@@ -15,6 +15,7 @@ const inning1Radio = document.getElementById('inning1Radio')
 const chaseRadio = document.getElementById('chaseRadio')
 const resultRadio = document.getElementById('resultRadio')
 const predictedRadio = document.getElementById('predictedRadio')
+const extrasRadio = document.getElementById('extrasRadio')
 
 messageRadio.addEventListener('click', e => {
     sendMessage(textMessage.value.toUpperCase())
@@ -107,5 +108,15 @@ resultRadio.addEventListener('click', e => {
 predictedRadio.addEventListener('click', e => {
     let runRate = getRunRate(matchState.battingTeam)
     let runs = parseInt(runRate * matchState.overs)
-    sendMessage("PREDICTED:   " + runs.toString() + " RUNS @ " + runRate.toString() + " RPO")
+    sendMessage("PREDICTED:  " + runs.toString() + " RUNS AT " + runRate.toString() + " RPO")
+})
+
+extrasRadio.addEventListener('click', e => {
+    let extras = matchState.bowlingTeam.extras
+    const total = Object.values(extras).reduce((acc, val) => acc + val)
+    const wides = extras.wides
+    const noBalls = extras.noBalls
+    const byes = extras.byes
+    const legByes = extras.legByes
+    sendMessage(`EXTRAS: ${total} (${wides}W, ${noBalls}NB, ${byes}B, ${legByes}LB)`)
 })

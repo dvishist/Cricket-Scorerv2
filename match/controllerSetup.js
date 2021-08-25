@@ -188,6 +188,8 @@ const assessResult = () => {
 
     let matchData = JSON.stringify(cloneState)
     fs.writeFileSync(`./saved-games/${filename}`, matchData)
+
+    Array.prototype.slice.call(document.getElementsByClassName('wicketButtons')).forEach(btn => btn.disabled = true)
 }
 
 const parseMatch = matchState => {
@@ -217,6 +219,7 @@ const parseMatch = matchState => {
 
 
 ipcRenderer.on('undo', e => {
+    Array.prototype.slice.call(document.getElementsByClassName('wicketButtons')).forEach(btn => btn.disabled = false)
     if (activityStack.length > 1) {
         activityStack.pop()
         matchState = cloneDeep(activityStack.pop())

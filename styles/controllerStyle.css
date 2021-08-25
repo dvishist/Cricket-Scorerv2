@@ -1,78 +1,82 @@
-body{
-    display: flex;
-    flex-direction: column;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 14px;
+body {
+	display: flex;
+	flex-direction: column;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial,
+		sans-serif;
+	font-size: 14px;
 }
 
-body div{
-    margin: 3px;
-    padding: 3px;
-    background-color:aliceblue;
+body div {
+	margin: 3px;
+	padding: 3px;
+	background-color: aliceblue;
 }
 
-body div *{
-    margin-top: 10px;
+body div * {
+	margin-top: 10px;
 }
 
-h3{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;;
-    font-size: 20;
-    font-weight: bolder;
-    color:darkslateblue;
-    margin-top: 0;
+h3 {
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial,
+		sans-serif;
+	font-size: 20;
+	font-weight: bolder;
+	color: darkslateblue;
+	margin-top: 0;
 }
 
-
-select{
-    width:150px;
-    font-size: 16px;
-    border-radius: 50px;
+select {
+	width: 150px;
+	font-size: 16px;
+	border-radius: 50px;
 }
 
-
-button{
-    border-radius: 100px;
-    border-width: 0;
-    color: white;
-    font-size: 16px;
-    background-color:crimson;
-    padding-left : 10px;
-    padding-right: 10px;
+button {
+	border-radius: 100px;
+	border-width: 0;
+	color: white;
+	font-size: 16px;
+	background-color: crimson;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
-button:active{
-    background-color: brown;
+button:active {
+	background-color: brown;
 }
 
-button:focus{
-    outline: 0;
+button:focus {
+	outline: 0;
 }
 
-.boundary{
-    background-color: cornflowerblue;
+.boundary {
+	background-color: cornflowerblue;
 }
 
-.boundary:active{
-    background-color: darkcyan;
+.boundary:active {
+	background-color: darkcyan;
 }
 
-.wicketButtons{
-    background-color: darkcyan;
+.wicketButtons {
+	background-color: darkcyan;
 }
 
-
-
-.dot ,.changeStrike{
- border-radius: 40px;   
+.dot,
+.changeStrike {
+	border-radius: 40px;
 }
 
-#changeStrike{
-    margin-left: 80px;
+#changeStrike {
+	margin-left: 80px;
 }
 
-#runoutRuns{
-    border-radius: 100px;
-    text-align: center;
-    border-width: 0.2px;
+#runoutRuns {
+	border-radius: 100px;
+	text-align: center;
+	border-width: 0.2px;
+}
+
+.secondInningsRadios {
+	background-color: #d4e2df;
+	padding-bottom: 10px;
 }

@@ -105,6 +105,7 @@ const playBall = (runs, boundary) => {
             runsType = 'byes'
             if (ballText.length === 1) ballText = ballText + 'b'
             matchState.bowlingTeam.extras.byes += runs
+            if (wideRadio.checked) matchState.live.bowler.bowlStats.runs += runs
         } else if (legByesRadio.checked) {
             runsType = 'legByes'
             if (ballText.length === 1) ballText = ballText + 'lb'
