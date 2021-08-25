@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu, ipcMain } = require('electron')
+const { app, BrowserWindow, Menu, dialog, ipcMain } = require('electron')
 
 const mainMenu = Menu.buildFromTemplate([
     {
@@ -87,6 +87,7 @@ app.on('ready', () => {
     indexWindow.show()
     indexWindow.setResizable(false)
     indexWindow.loadFile('views/index.html')
+    indexWindow.on('close', e => e.preventDefault())
 
     const setupWindow = new BrowserWindow({
         width: 450,
@@ -119,9 +120,12 @@ app.on('ready', () => {
                 enableRemoteModule: true
             },
         })
+
         controllerWindow.show()
         controllerWindow.loadFile("views/controllerWindow.html")
         controllerWindow.setMenu(controlMenu)
+        controllerWindow.on('close', () => app.quit())
+
 
         indexWindow.webContents.send('match-created', match)
         controllerWindow.webContents.on('dom-ready', () => {
@@ -143,6 +147,7 @@ app.on('ready', () => {
         playerWindow.setMenu(null)
         playerWindow.show()
         playerWindow.loadFile("views/playerWindow.html")
+        playerWindow.on('close', e => e.preventDefault())
 
         const battingScorecardWindow = new BrowserWindow({
             title: 'BATTING SCORECARDS',
@@ -160,6 +165,8 @@ app.on('ready', () => {
         battingScorecardWindow.show()
         battingScorecardWindow.loadFile("views/battingScorecardWindow.html")
         battingScorecardWindow.setMenu(scorecardMenu)
+        battingScorecardWindow.on('close', e => e.preventDefault())
+
 
         const bowlingScorecardWindow = new BrowserWindow({
             title: 'BOWLING SCORECARDS',
@@ -177,6 +184,7 @@ app.on('ready', () => {
         bowlingScorecardWindow.show()
         bowlingScorecardWindow.loadFile("views/bowlingScorecardWindow.html")
         bowlingScorecardWindow.setMenu(scorecardMenu)
+        bowlingScorecardWindow.on('close', e => e.preventDefault())
 
         ipcMain.on('controller-Setup', (e, matchState) => {
             controllerWindow.webContents.send('controller-setup', matchState)
