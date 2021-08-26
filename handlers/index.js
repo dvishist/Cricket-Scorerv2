@@ -68,7 +68,6 @@ ipcRenderer.on('update-main', (e, matchState) => {
     runsWickets.innerHTML = matchState.battingTeam.batStats.runs + "-" + matchState.battingTeam.batStats.wickets
     let teamOversText = getOversText(matchState.battingTeam.batStats.balls)
     overs.innerHTML = teamOversText
-    // msgDisplay.innerHTML = "READY TO PLAY"
 
     batsman1.name.innerHTML = matchState.live.batsman1.name
     batsman1.balls.innerHTML = matchState.live.batsman1.batStats.balls

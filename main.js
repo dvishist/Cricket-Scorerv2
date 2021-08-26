@@ -1,19 +1,5 @@
-const { app, BrowserWindow, Menu, dialog, ipcMain } = require('electron')
+const { app, BrowserWindow, Menu, ipcMain } = require('electron')
 
-const mainMenu = Menu.buildFromTemplate([
-    {
-        label: 'File',
-        submenu: [
-            {
-                label: 'Toggle DevTools',
-                click(item, focusedWindow) {
-                    focusedWindow.toggleDevTools()
-                },
-                accelerator: 'Ctrl+I'
-            }
-        ]
-    }
-])
 
 const scorecardMenu = Menu.buildFromTemplate([
     {
