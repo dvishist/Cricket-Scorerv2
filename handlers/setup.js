@@ -38,19 +38,31 @@ form.addEventListener('submit', async e => {
         const { team1Obj, team2Obj } = loadTeams(team1FileName, team2FileName)
 
         //needs refactoring lol
-        let tossWinner = tossWinnerName === team1FileName ? team1Obj : team2Obj
+        let tossWinner
+        if (tossWinnerName === team1FileName) {
+            tossWinner = team1Obj
+        } else if (tossWinnerName === team2FileName) {
+            tossWinner = team2Obj
+        } else {
+            throw new Error()
+        }
 
         //needs refactoring to check if any radio is selected 
         let decision = bat ? 'bat' : 'bowl'
         let overs = parseInt(oversText)
 
-        tossWinner.playerList[0].batStats.order = 1
-        tossWinner.playerList[1].batStats.order = 2
+        if ((tossWinner === team1Obj && decision === 'bat') || (tossWinner === team2Obj && decision === 'bowl')) {
+            team1Obj.playerList[0].batStats.order = 1
+            team1Obj.playerList[1].batStats.order = 2
+        } else {
+            team2Obj.playerList[0].batStats.order = 1
+            team2Obj.playerList[1].batStats.order = 2
+        }
 
         const match = createMatch(team1Obj, team2Obj, tossWinner, decision, overs)
         ipcRenderer.send('match-created', match)
         remote.getCurrentWindow().close()
     } catch (err) {
-        alert('Please make sure file names are correct')
+        document.getElementById('errorMessage').style.display = 'block'
     }
 })

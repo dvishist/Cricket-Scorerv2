@@ -71,6 +71,7 @@ const playBall = (runs, boundary) => {
             ballType = 'noBall'
             ballText = ballText + 'nb'
             matchState.bowlingTeam.extras.noBalls++
+            matchState.live.striker.batStats.balls++
             matchState.live.bowler.bowlStats.noBalls++
             matchState.live.bowler.bowlStats.runs++
             matchState.battingTeam.batStats.runs++
