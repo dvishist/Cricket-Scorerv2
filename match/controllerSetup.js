@@ -165,7 +165,7 @@ const endOfInnings = () => {
 
 
 const assessResult = () => {
-    matchState.result = {}
+    matchState.result = { }
     if (matchState.battingTeam.batStats.runs < matchState.bowlingTeam.batStats.runs) {
         matchState.result.winner = matchState.bowlingTeam
         matchState.result.margin = matchState.bowlingTeam.batStats.runs - matchState.battingTeam.batStats.runs
@@ -197,10 +197,10 @@ const parseMatch = matchState => {
 
     cloneState.toss = cloneState.toss.name
     cloneState.result.winner = cloneState.result.winner.name
-    cloneState.battingTeam.captain = cloneState.battingTeam.captain.name
-    cloneState.battingTeam.wk = cloneState.battingTeam.wk.name
-    cloneState.bowlingTeam.captain = cloneState.bowlingTeam.captain.name
-    cloneState.bowlingTeam.wk = cloneState.bowlingTeam.wk.name
+    cloneState.battingTeam.captain = cloneState.battingTeam.captain ? cloneState.battingTeam.captain.name : ""
+    cloneState.battingTeam.wk = cloneState.battingTeam.wk ? cloneState.battingTeam.wk.name : ""
+    cloneState.bowlingTeam.captain = cloneState.bowlingTeam.captain ? cloneState.bowlingTeam.captain.name : ""
+    cloneState.bowlingTeam.wk = cloneState.bowlingTeam.wk ? cloneState.bowlingTeam.wk.name : ""
     cloneState.battingTeam.batStats.overs = getOversText(cloneState.battingTeam.batStats.balls)
     cloneState.bowlingTeam.batStats.overs = getOversText(cloneState.bowlingTeam.batStats.balls)
     delete cloneState.innings
