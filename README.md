@@ -2,7 +2,7 @@
 New take on Cricket-Scorer using Javascript/Electron
 
 
-##Application
+## Application
 
 - This is a desktop app built on electron for scoring and streaming cricket games (using OBS)
 - Can be used to build for windows and macOS
