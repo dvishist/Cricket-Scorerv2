@@ -61,7 +61,7 @@ form.addEventListener('submit', async e => {
 
         const match = createMatch(team1Obj, team2Obj, tossWinner, decision, overs)
         ipcRenderer.send('match-created', match)
-        remote.getCurrentWindow().close()
+        remote.getCurrentWindow().hide()
     } catch (err) {
         document.getElementById('errorMessage').style.display = 'block'
     }

@@ -92,6 +92,8 @@ app.on('ready', () => {
     setupWindow.setMenu(null)
     setupWindow.show()
     setupWindow.loadFile("views/setupWindow.html")
+    setupWindow.on('close', e => app.quit())
+
 
     ipcMain.on('match-created', (e, match) => {
         const controllerWindow = new BrowserWindow({
