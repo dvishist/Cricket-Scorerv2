@@ -5,6 +5,8 @@ const playerName = document.getElementById('name')
 const runs = document.getElementById('runs')
 const balls = document.getElementById('balls')
 
+const wicketDiv = document.getElementById('wicket')
+
 const fielder = document.getElementById('fielder')
 const bowler = document.getElementById('bowler')
 
@@ -53,6 +55,8 @@ const updateView = () => {
     if (!wicket.out) runsText += "*"
     runs.innerHTML = runsText
     balls.innerHTML = " (" + batStats.balls + ")"
+
+    wicketDiv.style.display = wicket.out ? 'flex' : 'none'
 
     if (wicket.bowler) {
         fielder.style.display = "none"
