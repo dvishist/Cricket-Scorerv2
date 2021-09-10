@@ -197,10 +197,10 @@ const parseMatch = matchState => {
 
     cloneState.toss = cloneState.toss.name
     cloneState.result.winner = cloneState.result.winner.name
-    cloneState.battingTeam.captain = cloneState.battingTeam.captain ? cloneState.battingTeam.captain.name : ""
-    cloneState.battingTeam.wk = cloneState.battingTeam.wk ? cloneState.battingTeam.wk.name : ""
-    cloneState.bowlingTeam.captain = cloneState.bowlingTeam.captain ? cloneState.bowlingTeam.captain.name : ""
-    cloneState.bowlingTeam.wk = cloneState.bowlingTeam.wk ? cloneState.bowlingTeam.wk.name : ""
+    cloneState.battingTeam.captain = cloneState.battingTeam.captain || ""
+    cloneState.battingTeam.wk = cloneState.battingTeam.wk || ""
+    cloneState.bowlingTeam.captain = cloneState.bowlingTeam.captain || ""
+    cloneState.bowlingTeam.wk = cloneState.bowlingTeam.wk || ""
     cloneState.battingTeam.batStats.overs = getOversText(cloneState.battingTeam.batStats.balls)
     cloneState.bowlingTeam.batStats.overs = getOversText(cloneState.bowlingTeam.batStats.balls)
     delete cloneState.innings

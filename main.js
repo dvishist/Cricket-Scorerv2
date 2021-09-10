@@ -57,24 +57,6 @@ const controlMenu = Menu.buildFromTemplate([
 
 
 app.on('ready', () => {
-
-    const indexWindow = new BrowserWindow({
-        webPreferences: {
-            nodeIntegration: true
-        },
-        height: 210,
-        width: 1600,
-        x: 0,
-        y: 0,
-        show: false,
-        title: 'CRICKET SCORER V2 ©Vishist Dura 2021'
-    })
-    indexWindow.setMenu(controlMenu)
-    indexWindow.show()
-    indexWindow.setResizable(false)
-    indexWindow.loadFile('views/index.html')
-    indexWindow.on('close', e => e.preventDefault())
-
     const setupWindow = new BrowserWindow({
         width: 450,
         height: 700,
@@ -96,6 +78,23 @@ app.on('ready', () => {
 
 
     ipcMain.on('match-created', (e, match) => {
+        const indexWindow = new BrowserWindow({
+            webPreferences: {
+                nodeIntegration: true
+            },
+            height: 220,
+            width: 1600,
+            x: 0,
+            y: 0,
+            show: false,
+            title: 'CRICKET SCORER V2 ©Vishist Dura 2021'
+        })
+        indexWindow.setMenu(controlMenu)
+        indexWindow.show()
+        indexWindow.setResizable(false)
+        indexWindow.loadFile('views/index.html')
+        indexWindow.on('close', e => e.preventDefault())
+
         const controllerWindow = new BrowserWindow({
             width: 1200,
             height: 700,
