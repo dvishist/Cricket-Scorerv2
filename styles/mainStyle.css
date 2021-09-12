@@ -60,7 +60,7 @@ body {
 	width: 100%;
 	height: 40px;
 	border-radius: 100px 100px 0px 0px;
-	background-color: var(--dark-background);
+	background-color: var(--primary-gradient-1);
 	display: flex;
 	flex-direction: row;
 	align-content: center;
@@ -100,7 +100,7 @@ body {
 
 #bowlTeamShort {
 	margin: auto;
-	color: #71abf3;
+	color: var(--bowl-text);
 	font-size: 18px;
 	font-family: sans-serif;
 	margin-bottom: 5px;
@@ -126,7 +126,7 @@ body {
 #oversText {
 	width: 20%;
 	display: flex;
-	background-image: linear-gradient(to right, var(--overs-gradient-1), var(--overs-gradient-2));
+	background-image: linear-gradient(to right, var(--primary-gradient-1), var(--overs-gradient-2));
 	height: 86%;
 	margin: auto;
 	margin-right: 20px;
@@ -236,7 +236,7 @@ body {
 }
 
 .overBall {
-	background-color: var(--dark-background);
+	background-color: var(--primary-gradient-1);
 	height: 28px;
 	width: 28px;
 	margin-bottom: 10px;
@@ -255,6 +255,14 @@ body {
 	font-size: 14px;
 	font-weight: bold;
 	color: #d0d8e5;
+}
+
+.boundaryBall {
+	background-color: var(--primary-gradient-2);
+}
+
+.wicketBall {
+	background-color: var(--overs-gradient-2);
 }
 
 .logoBars img {

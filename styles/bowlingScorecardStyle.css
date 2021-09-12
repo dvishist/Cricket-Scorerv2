@@ -97,7 +97,7 @@ body {
 	align-items: center;
 	border-width: 2px;
 	border-style: solid;
-	border-color: #f11a49;
+	border-color: var(--line);
 	border-top: 0;
 	border-bottom: 0;
 	border-right: 0;

@@ -121,7 +121,7 @@ ipcRenderer.on('send-message', (e, msg) => {
     msgDisplay.innerHTML = msg
 })
 
-ipcRenderer.on('add-ball', (e, ballText, n) => {
+ipcRenderer.on('add-ball', (e, ballText, n, boundary) => {
     if (ballText === 'clear') {
         overSymbols.innerHTML = null
     } else if (ballText === 'remove') {
@@ -134,9 +134,9 @@ ipcRenderer.on('add-ball', (e, ballText, n) => {
         let overBall = document.createElement("div")
         overBall.setAttribute("class", "overBall")
         if (ballText === 'W') {
-            overBall.style.backgroundColor = '#fc1d4e'
-        } else if (ballText === '4' || ballText === '6') {
-            overBall.style.backgroundColor = '#3796da'
+            overBall.className += " wicketBall"
+        } else if (boundary) {
+            overBall.className += " boundaryBall"
         } else if (ballText === '0') {
             overBall.style.backgroundColor = '#151749'
         }

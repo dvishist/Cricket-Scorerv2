@@ -32,7 +32,7 @@ const updateMain = state => {
 // ball by ball buttons
 Array.from(document.getElementsByClassName("valued")).forEach(btn => {
     btn.addEventListener('click', () => {
-        playBall(btn.value, btn.value == 4 || btn.value == 6)
+        playBall(btn.value, btn.className.includes("boundary"))
     })
 })
 
@@ -148,7 +148,7 @@ const playBall = (runs, boundary) => {
         if (ballText === '0') ballText = '●'
         if (ballText === '0nb') ballText = 'nb'
         if (ballText === '0wd') ballText = 'wd'
-        ipcRenderer.send('add-ball', ballText)
+        ipcRenderer.send('add-ball', ballText, 0, boundary)
         let remBalls = 6 - matchState.battingTeam.batStats.balls % 6
         remBalls = remBalls === 6 ? 0 : remBalls
         ipcRenderer.send('add-remaining-balls', remBalls)

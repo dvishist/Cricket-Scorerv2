@@ -81,7 +81,7 @@ body {
 	align-items: center;
 	width: 800px;
 	border-style: solid;
-	border-color: #f11a49;
+	border-color: var(--line);
 	border-width: 2px;
 	border-top: 0;
 	border-bottom: 0;
@@ -97,7 +97,7 @@ body {
 
 .batsman .runs {
 	border-style: solid;
-	border-color: #f11a49;
+	border-color: var(--line);
 	border-width: 2px;
 	border-top: 0;
 	border-bottom: 0;

@@ -1,5 +1,5 @@
 /* 
-DEFAULT
+DEFAULT (BLUE-PINK)
 :root {
 	--dark-background: #222677;
 	--primary-gradient-1: #222677;
@@ -7,15 +7,18 @@ DEFAULT
 	--overs-gradient-1: #222677;
 	--overs-gradient-2: #3b97db;
 	--dark-text: #27256e;
+	--bowl-text: #71abf3;
 	--msg-background: #151749;
+	--line: #f11a49;
 } */
 
+/* PURP-YELLOW */
 :root {
-	--dark-background: #4d194d;
-	--primary-gradient-1: #4d194d;
-	--primary-gradient-2: #006466;
-	--overs-gradient-1: #4d194d;
-	--overs-gradient-2: #236364;
-	--dark-text: #27256e;
-	--msg-background: #151749;
+	--primary-gradient-1: #29335c;
+	--primary-gradient-2: #f3a712;
+	--overs-gradient-2: #db2b39;
+	--dark-text: #182042;
+	--bowl-text: #f0cea0;
+	--msg-background: #1c233d;
+	--line: #db2b39;
 }
