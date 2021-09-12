@@ -144,16 +144,19 @@ const playBall = (runs, boundary) => {
                 matchState.innings = 'break'
             }
         }
-        updateMain()
         if (ballText === '0') ballText = '●'
         if (ballText === '0nb') ballText = 'nb'
         if (ballText === '0wd') ballText = 'wd'
-        ipcRenderer.send('add-ball', ballText, 0, boundary)
         let remBalls = 6 - matchState.battingTeam.batStats.balls % 6
-        remBalls = remBalls === 6 ? 0 : remBalls
+        if (remBalls === 6 && !noBallRadio.checked && !wideRadio.checked)
+            remBalls = 0
+        ipcRenderer.send('add-ball', ballText, 0, boundary)
         ipcRenderer.send('add-remaining-balls', remBalls)
+        updateMain()
     }
 }
+
+
 
 const changeStrike = document.getElementById('changeStrikeButton')
 changeStrike.addEventListener('click', () => {
