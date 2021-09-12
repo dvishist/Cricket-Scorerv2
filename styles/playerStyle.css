@@ -62,7 +62,7 @@ body {
 	z-index: 2;
 	font-size: 32px;
 	font-family: sans-serif;
-	color: #111799;
+	color: var(--dark-text);
 	display: flex;
 }
 
