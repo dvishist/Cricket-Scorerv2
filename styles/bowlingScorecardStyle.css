@@ -17,7 +17,7 @@ body {
 	background-image: linear-gradient(#fdfdf6, #c7d3eb);
 	border-radius: 100px;
 	display: flex;
-	color: #222677;
+	color: var(--dark-text);
 	font-size: 30px;
 	font-family: sans-serif;
 	font-weight: bolder;
@@ -61,20 +61,28 @@ body {
 	font-family: sans-serif;
 	font-weight: bold;
 	justify-content: space-around;
-	color: #222677;
+	color: var(--dark-text);
 }
 
 .labels {
-	background-image: linear-gradient(to right, #f11a49, #222677);
+	background-image: linear-gradient(
+		to right,
+		var(--primary-gradient-2),
+		var(--primary-gradient-1)
+	);
 }
 
 .labels2 {
-	background-image: linear-gradient(to right, #222677, #f11a49);
+	background-image: linear-gradient(
+		to right,
+		var(--primary-gradient-1),
+		var(--primary-gradient-2)
+	);
 }
 
 .bowlerName {
 	width: 450px;
-	color: #222677;
+	color: var(--dark-text);
 	display: flex;
 	justify-content: start;
 	padding-left: 20px;
@@ -82,7 +90,7 @@ body {
 }
 
 .bowlerStats {
-	color: #222677;
+	color: var(--dark-text);
 	width: 180px;
 	display: flex;
 	justify-content: space-around;
@@ -125,7 +133,7 @@ body {
 	background-image: linear-gradient(#fdfdf6, #c7d3eb);
 	border-radius: 100px;
 	display: flex;
-	color: #222677;
+	color: var(--dark-text);
 	font-size: 32px;
 	font-family: sans-serif;
 	font-weight: bolder;

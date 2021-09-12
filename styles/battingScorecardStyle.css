@@ -17,7 +17,7 @@ body {
 	background-image: linear-gradient(#fdfdf6, #c7d3eb);
 	border-radius: 100px;
 	display: flex;
-	color: #222677;
+	color: var(--dark-text);
 	font-size: 30px;
 	font-family: sans-serif;
 	font-weight: bolder;
@@ -61,7 +61,7 @@ body {
 	font-family: sans-serif;
 	font-weight: bold;
 	justify-content: space-around;
-	color: #222677;
+	color: var(--dark-text);
 }
 
 .batsman .name {
@@ -136,7 +136,11 @@ body {
 }
 
 .notout {
-	background-image: linear-gradient(to right, #f11a49, #222677);
+	background-image: linear-gradient(
+		to right,
+		var(--primary-gradient-2),
+		var(--primary-gradient-1)
+	);
 	border-radius: 100px;
 	width: 1300px;
 	padding-left: 25px;
@@ -162,7 +166,7 @@ body {
 	background-image: linear-gradient(#fdfdf6, #c7d3eb);
 	border-radius: 100px;
 	display: flex;
-	color: #222677;
+	color: var(--dark-text);
 	font-size: 32px;
 	font-family: sans-serif;
 	font-weight: bolder;

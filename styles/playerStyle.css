@@ -11,7 +11,11 @@ body {
 	width: 98%;
 	height: 130px;
 	border-radius: 100px;
-	background-image: linear-gradient(to right, #111799, #f11a49);
+	background-image: linear-gradient(
+		to right,
+		var(--primary-gradient-1),
+		var(--primary-gradient-2)
+	);
 	z-index: 1;
 }
 
