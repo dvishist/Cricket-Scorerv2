@@ -108,7 +108,7 @@ resultRadio.addEventListener('click', e => {
 predictedRadio.addEventListener('click', e => {
     let runRate = getRunRate(matchState.battingTeam)
     let runs = parseInt(runRate * matchState.overs)
-    sendMessage("PREDICTED:  " + runs.toString() + " RUNS AT " + runRate.toString() + " RPO")
+    sendMessage("PROJECTED:  " + runs.toString() + " RUNS AT " + runRate.toString() + " RPO")
 })
 
 extrasRadio.addEventListener('click', e => {
@@ -118,5 +118,12 @@ extrasRadio.addEventListener('click', e => {
     const noBalls = extras.noBalls
     const byes = extras.byes
     const legByes = extras.legByes
-    sendMessage(`EXTRAS: ${total} (${wides}W, ${noBalls}NB, ${byes}B, ${legByes}LB)`)
+
+    let message = `EXTRAS: ${total} (`
+    if (byes) message += `${byes}B, `
+    if (legByes) message += `${legByes}LB, `
+    if (wides) message += `${wides}W, `
+    if (noBalls) message += `${noBalls}NB`
+    message += ')'
+    sendMessage(message)
 })
