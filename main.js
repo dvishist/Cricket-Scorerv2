@@ -197,6 +197,10 @@ app.on('ready', () => {
             indexWindow.webContents.send('unfade-batsman', batsman)
         })
 
+        ipcMain.on('fade-bowler', (e, fade) => {
+            indexWindow.webContents.send('fade-bowler', fade)
+        })
+
         ipcMain.on('send-message', (e, msg) => {
             indexWindow.webContents.send('send-message', msg)
         })

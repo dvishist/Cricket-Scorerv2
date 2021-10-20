@@ -128,8 +128,11 @@ const playBall = (runs, boundary) => {
 
         if (runs % 2 === 1) changeStriker()
         if (matchState.battingTeam.batStats.balls % 6 === 0 && !noBallRadio.checked && !wideRadio.checked) {
+            ipcRenderer.send('fade-bowler', true)
             changeStriker()
             assessMaiden()
+        } else {
+            ipcRenderer.send('fade-bowler', false)
         }
 
         //if overs completed or team all out

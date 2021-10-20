@@ -8,6 +8,7 @@ bowlerDropdown.addEventListener('change', function () {
     ipcRenderer.send('add-ball', 'clear')
     bowlerStartingRuns = matchState.live.bowler.bowlStats.runs
     ipcRenderer.send('add-remaining-balls', 6)
+    ipcRenderer.send('fade-bowler', false)
 })
 
 
