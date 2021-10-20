@@ -119,11 +119,12 @@ extrasRadio.addEventListener('click', e => {
     const byes = extras.byes
     const legByes = extras.legByes
 
-    let message = `EXTRAS: ${total} (`
+    let message = `EXTRAS: ${total} `
+    if (total) message += '('
     if (byes) message += `${byes}B, `
     if (legByes) message += `${legByes}LB, `
     if (wides) message += `${wides}W, `
     if (noBalls) message += `${noBalls}NB`
-    message += ')'
+    if (total) message += ')'
     sendMessage(message)
 })
