@@ -3,17 +3,6 @@ const { app, BrowserWindow, Menu, ipcMain } = require('electron')
 
 const scorecardMenu = Menu.buildFromTemplate([
     {
-        label: 'File',
-        submenu: [
-            {
-                label: 'Toggle DevTools',
-                click(item, focusedWindow) {
-                    focusedWindow.toggleDevTools()
-                },
-                accelerator: 'Ctrl+I'
-            }
-        ]
-    }, {
         label: 'Toggle Teams',
         submenu: [
             {
