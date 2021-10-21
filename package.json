@@ -30,6 +30,9 @@
 		"nsis": {
 			"allowToChangeInstallationDirectory": true,
 			"oneClick": false
-		}
+		},
+		"win": {
+    		"icon": "icon.png"
+  		}
 	}
 }
