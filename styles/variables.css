@@ -1,5 +1,5 @@
 /* DEFAULT (BLUE-PINK) */
-/* :root {
+:root {
 	--primary-gradient-1: #222677;
 	--primary-gradient-2: #f11a49;
 	--overs-gradient-2: #3b97db;
@@ -7,10 +7,10 @@
 	--bowl-text: #71abf3;
 	--msg-background: #151749;
 	--line: #f11a49;
-} */
+}
 
 /* PURP-YELLOW */
-:root {
+/* :root {
 	--primary-gradient-1: #29335c;
 	--primary-gradient-2: #f36c12;
 	--overs-gradient-2: #db2b39;
@@ -18,4 +18,4 @@
 	--bowl-text: #f1a53a;
 	--msg-background: #1c233d;
 	--line: #db2b39;
-}
+} */
