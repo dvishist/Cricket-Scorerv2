@@ -9,13 +9,33 @@
 	--line: #f11a49;
 }
 
-/* PURP-YELLOW */
+/* PURPLE */
 /* :root {
-	--primary-gradient-1: #29335c;
-	--primary-gradient-2: #f36c12;
-	--overs-gradient-2: #db2b39;
-	--dark-text: #101942;
-	--bowl-text: #f1a53a;
-	--msg-background: #1c233d;
-	--line: #db2b39;
+	--primary-gradient-1: #240046;
+	--primary-gradient-2: #c77dff;
+	--overs-gradient-2: #5a189a;
+	--dark-text: #10002b;
+	--bowl-text: #e0aaff;
+	--msg-background: #240046;
+	--line: #ff006e;
+} */
+
+/* :root {
+	--primary-gradient-1: #006466;
+	--primary-gradient-2: #4d194d;
+	--overs-gradient-2: #272640;
+	--dark-text: #2b2d42;
+	--bowl-text: white;
+	--msg-background: #3b133b;
+	--line: #212f45;
+} */
+
+/* :root {
+	--primary-gradient-1: #5f0f40;
+	--primary-gradient-2: #0f4c5c;
+	--overs-gradient-2: rgb(233, 111, 36);
+	--dark-text: #000814;
+	--bowl-text: #fb8b24;
+	--msg-background: #0b3742;
+	--line: #9a031e;
 } */
