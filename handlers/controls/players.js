@@ -55,5 +55,4 @@ replaceBatsman = (newBatsmanName, oldBatsman) => {
         matchState.live.batsman2 = newBatsman
     }
     matchState.live.striker = newBatsman
-    matchState.battingTeam.fallOfWickets.push({ ...matchState.battingTeam.batStats })
 }

@@ -23,6 +23,7 @@
 	"build": {
 		"appId": "com.dvishist.cricketscorerv2",
 		"productName": "Cricket Scorer 2",
+		"copyright": "Copyright Vishist Dura 2022",
 		"target": "NSIS",
 		"directories": {
 			"output": "build"
@@ -32,7 +33,7 @@
 			"oneClick": false
 		},
 		"win": {
-    		"icon": "icon.png"
-  		}
+			"icon": "icon.png"
+		}
 	}
 }

@@ -133,6 +133,8 @@ Array.from(document.getElementsByClassName('wicketButtons')).forEach(btn => {
                     wickets: matchState.battingTeam.batStats.wickets
                 }
             })
+            matchState.battingTeam.fallOfWickets.push({ ...matchState.battingTeam.batStats })
+
 
             //if overs completed or team all out
             if (matchState.battingTeam.batStats.balls === matchState.overs * 6 || matchState.battingTeam.batStats.wickets === 10) {
