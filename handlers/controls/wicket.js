@@ -42,6 +42,7 @@ hitWicket.addEventListener('click', () => {
 
 retiredButton.addEventListener('click', () => {
     matchState.live.striker.wicket.method = 'retired'
+    if (matchState.live.striker.batStats.runs < 1 && matchState.live.striker.batStats.balls < 1) matchState.live.striker.batStats.order = undefined
 })
 
 caughtButton.addEventListener('click', () => {
